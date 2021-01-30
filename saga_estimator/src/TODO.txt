@@ -1,0 +1,8 @@
+## TODO:
+
+- Change some metrics after adapting data models
+- Finish metric calculations
+
+- Unit tests on Estimation function in codebase package
+
+- File module function to generate CSV with orchestrator per feature

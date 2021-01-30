@@ -43,7 +43,7 @@ func (svc *DefaultHandler) ClusterComplexityAndCohesion(cluster *values.Cluster)
 	for _, feature := range cluster.Features {
 		numberEntitiesTouched = 0
 		for _, entity := range cluster.Entities {
-			if _, found := feature.EntityAccesses[entity]; found {
+			if _, found := feature.GetMonolithRedesign().EntityAccesses[entity]; found {
 				numberEntitiesTouched++
 			}
 		}
@@ -76,11 +76,11 @@ func (svc *DefaultHandler) RedesignComplexities(redesign *values.Redesign) {
 }
 
 func (svc *DefaultHandler) queryRedesignComplexity(redesign *values.Redesign) {
-	entitiesRead := redesign.Feature.GetEntitiesTouchedInMode(ReadAccess)
+	entitiesRead := redesign.GetEntitiesTouchedInMode(ReadAccess)
 
 	for _, feature := range redesign.Feature.Codebase.Features {
 		if feature.Name != redesign.Feature.Name && feature.Type == Saga {
-			entitiesWritten := feature.GetEntitiesTouchedInMode(WriteAccess)
+			entitiesWritten := feature.GetMonolithRedesign().GetEntitiesTouchedInMode(WriteAccess)
 
 			var matches []*values.Entity
 			var commonClusters []*values.Cluster
@@ -110,25 +110,25 @@ func (svc *DefaultHandler) queryRedesignComplexity(redesign *values.Redesign) {
 	}
 }
 
-func (svc *DefaultHandler) sagasRedesignComplexity(redesign *values.Redesign) {
-	for invocation := redesign.FirstInvocation; invocation != nil; invocation = invocation.NextInvocation {
-		for _, access := range invocation.Accesses {
-			if access.Type == WriteAccess {
-				if invocation.Type == Compensatable {
-					redesign.FunctionalityComplexity++
-					svc.systemComplexity(redesign, access.Entity)
-				}
-			} else if access.Type == ReadAccess {
-				// svc.sostOfRead() //TODO
-			}
-		}
-	}
+func (svc *DefaultHandler) sagasRedesignComplexity(redesign *values.Redesign) { // TODOL: revisit this since nextInvocation is now an array
+	// for invocation := redesign.FirstInvocation; invocation != nil; invocation = invocation.NextInvocation {
+	// 	for _, access := range invocation.Accesses {
+	// 		if access.Type == WriteAccess {
+	// 			if invocation.Type == Compensatable {
+	// 				redesign.FunctionalityComplexity++
+	// 				svc.systemComplexity(redesign, access.Entity)
+	// 			}
+	// 		} else if access.Type == ReadAccess {
+	// 			// svc.sostOfRead() //TODO
+	// 		}
+	// 	}
+	// }
 }
 
 func (svc *DefaultHandler) systemComplexity(redesign *values.Redesign, entity *values.Entity) {
 	for _, feature := range entity.Features {
 		if feature.Name != redesign.Feature.Name {
-			for _, access := range feature.EntityAccesses[entity] {
+			for _, access := range feature.GetMonolithRedesign().EntityAccesses[entity] {
 				if access.Type == ReadAccess { // TODO this.controllerClusters.get(otherController.getName()).size() > 1) {
 					redesign.SystemComplexity++
 				}

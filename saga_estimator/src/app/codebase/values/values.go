@@ -1,9 +1,11 @@
 package values
 
+import "fmt"
+
 type Codebase struct {
-	Name     string
-	Clusters []*Cluster
-	Features []*Feature
+	Name     string     `json:"name,omitempty"`
+	Clusters []*Cluster `json:"clusters,omitempty"`
+	Features []*Feature `json:"features,omitempty"`
 }
 
 func (c *Codebase) GetClusterByName(name string) (cluster *Cluster, exists bool) {
@@ -27,13 +29,12 @@ func (c *Codebase) GetFeatureByName(name string) (feature *Feature, exists bool)
 }
 
 type Feature struct {
-	Name           string
-	Codebase       *Codebase
-	Type           string // SAGA or QUERY
-	Complexity     float32
-	Clusters       []*Cluster
-	EntityAccesses map[*Entity][]*Access
-	Redesigns      []*Redesign
+	Name       string      `json:"name,omitempty"`
+	Codebase   *Codebase   `json:"codebase,omitempty"`
+	Type       string      `json:"type,omitempty"` // SAGA or QUERY
+	Complexity float32     `json:"complexity,omitempty"`
+	Clusters   []*Cluster  `json:"clusters,omitempty"`
+	Redesigns  []*Redesign `json:"redesigns,omitempty"`
 }
 
 func (f *Feature) GetMonolithRedesign() *Redesign {
@@ -50,27 +51,16 @@ func (f *Feature) GetClusterByName(name string) (cluster *Cluster, exists bool) 
 	return
 }
 
-func (f *Feature) GetEntitiesTouchedInMode(mode string) (entities []*Entity) {
-	for entity, accesses := range f.EntityAccesses {
-		for _, access := range accesses {
-			if access.Type == mode {
-				entities = append(entities, entity)
-				break
-			}
-		}
-	}
-	return
-}
-
 type Redesign struct {
-	Name                    string
-	Feature                 *Feature
-	FirstInvocation         *Invocation
-	InvocationsByEntity     map[*Entity][]*Invocation
-	InvocationsByCluster    map[*Cluster][]*Invocation
-	SystemComplexity        int
-	FunctionalityComplexity int
-	InconsistencyComplexity int
+	Name                    string                     `json:"name,omitempty"`
+	Feature                 *Feature                   `json:"feature,omitempty"`
+	FirstInvocation         *Invocation                `json:"first_invocation,omitempty"`
+	InvocationsByEntity     map[*Entity][]*Invocation  `json:"invocations_by_entity,omitempty"`
+	InvocationsByCluster    map[*Cluster][]*Invocation `json:"invocations_by_cluster,omitempty"`
+	EntityAccesses          map[*Entity][]*Access      `json:"entity_accesses,omitempty"`
+	SystemComplexity        int                        `json:"system_complexity,omitempty"`
+	FunctionalityComplexity int                        `json:"functionality_complexity,omitempty"`
+	InconsistencyComplexity int                        `json:"inconsistency_complexity,omitempty"`
 }
 
 func (r *Redesign) AddInvocation(clusterName string, invocationType string, accessedEntities []string) (invocation *Invocation) {
@@ -92,11 +82,11 @@ func (r *Redesign) AddInvocation(clusterName string, invocationType string, acce
 	}
 
 	invocation = &Invocation{
-		Cluster:        cluster,
-		Redesign:       r,
-		Type:           invocationType,
-		Accesses:       []*Access{},
-		NextInvocation: nil,
+		Cluster:         cluster,
+		Redesign:        r,
+		Type:            invocationType,
+		Accesses:        []*Access{},
+		NextInvocations: []*Invocation{},
 	}
 
 	r.InvocationsByCluster[cluster] = append(r.InvocationsByCluster[cluster], invocation)
@@ -117,14 +107,55 @@ func (r *Redesign) AddInvocation(clusterName string, invocationType string, acce
 	return
 }
 
+func (r *Redesign) GetEntitiesTouchedInMode(mode string) (entities []*Entity) {
+	for entity, accesses := range r.EntityAccesses {
+		for _, access := range accesses {
+			if access.Type == mode {
+				entities = append(entities, entity)
+				break
+			}
+		}
+	}
+	return
+}
+
+func (r *Redesign) GetPrunedEntityAccesses() map[*Entity][]*Access {
+	entityAccesses := make(map[*Entity][]*Access)
+	var operation string
+	for entity, accesses := range r.EntityAccesses {
+		for _, access := range accesses {
+			if access.Type == "R" {
+				if operation == "" {
+					operation = "R"
+				}
+			} else {
+				if operation == "" {
+					operation = "W"
+				} else if operation == "R" {
+					operation = "RW"
+				}
+				break
+			}
+		}
+		entityAccesses[entity] = []*Access{
+			{
+				Entity: entity,
+				Type:   operation,
+			},
+		}
+		operation = ""
+	}
+	return entityAccesses
+}
+
 type Cluster struct {
-	Name         string
-	Features     []*Feature
-	Entities     []*Entity
-	Dependencies []*Cluster
-	Complexity   float32
-	Cohesion     float32
-	Coupling     float32
+	Name         string     `json:"name,omitempty"`
+	Features     []*Feature `json:"features,omitempty"`
+	Entities     []*Entity  `json:"entities,omitempty"`
+	Dependencies []*Cluster `json:"dependencies,omitempty"`
+	Complexity   float32    `json:"complexity,omitempty"`
+	Cohesion     float32    `json:"cohesion,omitempty"`
+	Coupling     float32    `json:"coupling,omitempty"`
 }
 
 func (c *Cluster) GetEntityByName(name string) (entity *Entity, exists bool) {
@@ -147,12 +178,34 @@ func (c *Cluster) GetFeatureByName(name string) (feature *Feature, exists bool) 
 	return
 }
 
+func (c *Cluster) AddDependencyIfNew(dependency *Cluster) {
+	dependencyAlreadyAdded := false
+	for _, cluster := range c.Dependencies {
+		if cluster == dependency {
+			dependencyAlreadyAdded = true
+		}
+	}
+	if !dependencyAlreadyAdded {
+		c.Dependencies = append(c.Dependencies, dependency)
+	}
+}
+
 type Invocation struct {
-	Cluster        *Cluster
-	Redesign       *Redesign
-	Type           string // COMPENSATABLE or PIVOT or RETRIABLE
-	Accesses       []*Access
-	NextInvocation *Invocation
+	Cluster         *Cluster      `json:"cluster,omitempty"`
+	Redesign        *Redesign     `json:"redesign,omitempty"`
+	Type            string        `json:"type,omitempty"` // COMPENSATABLE or PIVOT or RETRIABLE
+	Accesses        []*Access     `json:"accesses,omitempty"`
+	NextInvocations []*Invocation `json:"next_invocations,omitempty"`
+}
+
+func (i *Invocation) FindAndDeleteNextInvocation(invocation Invocation) (newInvocations []*Invocation) {
+	for _, i := range i.NextInvocations {
+		if i.Cluster.Name != invocation.Cluster.Name {
+			fmt.Printf("in %v", i.NextInvocations)
+			newInvocations = append(newInvocations, i)
+		}
+	}
+	return
 }
 
 func (i *Invocation) AddEntityAccess(entityName string, operation string) (access *Access) {
@@ -174,17 +227,17 @@ func (i *Invocation) AddEntityAccess(entityName string, operation string) (acces
 	}
 
 	i.Accesses = append(i.Accesses, access)
-	i.Redesign.Feature.EntityAccesses[entity] = append(i.Redesign.Feature.EntityAccesses[entity], access)
+	i.Redesign.EntityAccesses[entity] = append(i.Redesign.EntityAccesses[entity], access)
 	return
 }
 
 type Entity struct {
-	Name     string
-	Cluster  *Cluster
-	Features []*Feature
+	Name     string     `json:"name,omitempty"`
+	Cluster  *Cluster   `json:"cluster,omitempty"`
+	Features []*Feature `json:"features,omitempty"`
 }
 
 type Access struct {
-	Entity *Entity
-	Type   string // R or W
+	Entity *Entity `json:"entity,omitempty"`
+	Type   string  `json:"type,omitempty"` // R or W
 }

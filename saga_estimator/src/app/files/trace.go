@@ -89,13 +89,12 @@ func (svc *DefaultHandler) ReadTrace(codebase string, filename string) (*Trace, 
 
 func (svc *DefaultHandler) DecodeTrace(codebase *cb.Codebase, trace *Trace) (feature *cb.Feature) {
 	feature = &cb.Feature{
-		Name:           trace.Name,
-		Codebase:       codebase,
-		Type:           "QUERY",
-		Complexity:     trace.Complexity,
-		Clusters:       []*cb.Cluster{},
-		EntityAccesses: map[*cb.Entity][]*cb.Access{},
-		Redesigns:      []*cb.Redesign{},
+		Name:       trace.Name,
+		Codebase:   codebase,
+		Type:       "QUERY",
+		Complexity: trace.Complexity,
+		Clusters:   []*cb.Cluster{},
+		Redesigns:  []*cb.Redesign{},
 	}
 	feature.Redesigns = append(
 		feature.Redesigns,
@@ -111,6 +110,7 @@ func (svc *DefaultHandler) decodeRedesign(feature *cb.Feature, traceRedesign *Fu
 		FirstInvocation:         &cb.Invocation{},
 		InvocationsByEntity:     map[*cb.Entity][]*cb.Invocation{},
 		InvocationsByCluster:    map[*cb.Cluster][]*cb.Invocation{},
+		EntityAccesses:          map[*cb.Entity][]*cb.Access{},
 		SystemComplexity:        traceRedesign.SystemComplexity,
 		FunctionalityComplexity: traceRedesign.FunctionalityComplexity,
 	}
@@ -131,7 +131,8 @@ func (svc *DefaultHandler) decodeRedesign(feature *cb.Feature, traceRedesign *Fu
 		if idx == 1 {
 			redesign.FirstInvocation = invocation
 		} else {
-			prevInvocation.NextInvocation = invocation
+			prevInvocation.NextInvocations = append(prevInvocation.NextInvocations, invocation)
+			prevInvocation.Cluster.AddDependencyIfNew(invocation.Cluster)
 		}
 
 		prevInvocation = invocation
