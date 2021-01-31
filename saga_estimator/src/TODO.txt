@@ -1,8 +1,13 @@
 ## TODO:
 
-- Change some metrics after adapting data models
-- Finish metric calculations
+-- Metrics are giving bad results!
 
+- Unit tests on Values folder
 - Unit tests on Estimation function in codebase package
 
 - File module function to generate CSV with orchestrator per feature
+
+??
+Should repeted entites be added to the coupling dependencies. If they are the next LT first access
+multiple times.
+--- Currently they are being added -----

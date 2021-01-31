@@ -6,6 +6,7 @@ import (
 	"app/common/log"
 	"app/files"
 	"app/metrics"
+	"fmt"
 )
 
 var (
@@ -23,6 +24,7 @@ func main() {
 	codebaseFoldersNames := filesHandler.GetCodebaseFoldersNames()
 
 	var bestRedesign *values.Redesign
+	var bestCodebaseComplexity float32
 	for _, folderName := range codebaseFoldersNames {
 		codebase, err := codebaseHandler.GenerateCodebase(folderName)
 		if err != nil {
@@ -31,11 +33,14 @@ func main() {
 		}
 
 		for _, feature := range codebase.Features {
-			bestRedesign, err = codebaseHandler.EstimateBestFeatureRedesign(feature)
+			bestRedesign, bestCodebaseComplexity, err = codebaseHandler.EstimateBestFeatureRedesign(feature)
 			if err != nil {
 				logger.Log(err.Error())
+				fmt.Printf("Feature %v doesnt have more than 2 clusters! Skipping..\n\n", feature.Name)
 				continue
 			}
+
+			fmt.Printf("Feature %v best redesign with orchestrator %v | Codebase complexity: %v\n\n", feature.Name, bestRedesign.FirstInvocation.Cluster.Name, bestCodebaseComplexity)
 		}
 	}
 }

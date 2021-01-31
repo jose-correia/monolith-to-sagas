@@ -15,7 +15,7 @@ const (
 
 type CodebaseHandler interface {
 	GenerateCodebase(string) (*values.Codebase, error)
-	EstimateBestFeatureRedesign(*values.Feature) (*values.Redesign, error)
+	EstimateBestFeatureRedesign(*values.Feature) (*values.Redesign, float32, error)
 	RedesignFeatureWithOrchestrator(*values.Redesign, *values.Cluster) *values.Redesign
 	SwapRedesignOrchestrator(*values.Redesign, *values.Cluster)
 }
@@ -58,33 +58,52 @@ func (svc *DefaultHandler) GenerateCodebase(codebaseName string) (codebase *valu
 	return codebase, nil
 }
 
-func (svc *DefaultHandler) EstimateBestFeatureRedesign(feature *values.Feature) (*values.Redesign, error) {
+func (svc *DefaultHandler) EstimateBestFeatureRedesign(feature *values.Feature) (*values.Redesign, float32, error) {
 	if len(feature.Clusters) < 3 {
-		return nil, fmt.Errorf("In order to decide the best redesign the feature must have more than 2 clusters")
+		return nil, 0, fmt.Errorf("In order to decide the best redesign the feature must have more than 2 clusters")
 	}
 
 	initialRedesign := feature.GetMonolithRedesign()
+	feature.RedesignUsedForMetrics = initialRedesign
+	svc.metricsHandler.CalculateCodebaseMetrics(feature.Codebase)
+	fmt.Printf("Feature: %v\n", feature.Name)
+	fmt.Printf("System complexity: %v\n", feature.Codebase.Complexity)
+	fmt.Printf("System cohesion: %v\n", feature.Codebase.Cohesion)
+	fmt.Printf("System coupling: %v\n", feature.Codebase.Coupling)
+	fmt.Printf("Feature complexity: %v\n", feature.Complexity)
 
-	var newRedesign *values.Redesign
-	newRedesign = svc.RedesignFeatureWithOrchestrator(initialRedesign, feature.Clusters[0])
-	// calculate metrics for first cluster
+	newRedesign := svc.RedesignFeatureWithOrchestrator(initialRedesign, feature.Clusters[0])
+	feature.RedesignUsedForMetrics = newRedesign
+
+	var bestCodebaseComplexity float32
+	svc.metricsHandler.CalculateCodebaseMetrics(feature.Codebase)
+	bestCodebaseComplexity = feature.Codebase.Complexity
 
 	for idx := 1; idx < len(feature.Clusters); idx++ {
+		fmt.Printf("Current complexity: %v\n", feature.Codebase.Complexity)
+		fmt.Printf("Current cohesion: %v\n", feature.Codebase.Cohesion)
+		fmt.Printf("Current coupling: %v\n", feature.Codebase.Coupling)
+
 		svc.SwapRedesignOrchestrator(newRedesign, feature.Clusters[idx])
-		// recalculate metrics
+		svc.metricsHandler.CalculateCodebaseMetrics(feature.Codebase)
+
+		if feature.Codebase.Complexity < bestCodebaseComplexity {
+			bestCodebaseComplexity = feature.Codebase.Complexity
+		}
 	}
 
-	return newRedesign, nil
+	return newRedesign, bestCodebaseComplexity, nil
 }
 
 func (svc *DefaultHandler) RedesignFeatureWithOrchestrator(initialRedesign *values.Redesign, orchestrator *values.Cluster) (redesign *values.Redesign) {
 	redesign = &values.Redesign{
-		Name:                 defaultRedesignName,
-		Feature:              initialRedesign.Feature,
-		FirstInvocation:      &values.Invocation{},
-		InvocationsByEntity:  map[*values.Entity][]*values.Invocation{},
-		InvocationsByCluster: map[*values.Cluster][]*values.Invocation{},
-		EntityAccesses:       map[*values.Entity][]*values.Access{},
+		Name:                        defaultRedesignName,
+		Feature:                     initialRedesign.Feature,
+		FirstInvocation:             &values.Invocation{},
+		InvocationsByEntity:         map[*values.Entity][]*values.Invocation{},
+		InvocationsByCluster:        map[*values.Cluster][]*values.Invocation{},
+		EntityAccesses:              map[*values.Entity][]*values.Access{},
+		ClusterCouplingDependencies: map[*values.Cluster]map[*values.Cluster][]*values.Entity{},
 	}
 
 	// Initialize Invocation, set dependencies and orchestrator
@@ -112,6 +131,11 @@ func (svc *DefaultHandler) RedesignFeatureWithOrchestrator(initialRedesign *valu
 	for entity, accesses := range initialRedesign.GetPrunedEntityAccesses() {
 		invocation = redesign.InvocationsByCluster[entity.Cluster][0]
 		invocation.AddEntityAccess(accesses[0].Entity.Name, accesses[0].Type)
+	}
+
+	// Add coupling dependencies of the orchestrator
+	for _, invocation := range redesign.FirstInvocation.NextInvocations {
+		redesign.AddCouplingDependency(redesign.FirstInvocation, invocation)
 	}
 
 	return

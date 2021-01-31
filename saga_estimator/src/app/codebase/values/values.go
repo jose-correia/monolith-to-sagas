@@ -1,11 +1,12 @@
 package values
 
-import "fmt"
-
 type Codebase struct {
-	Name     string     `json:"name,omitempty"`
-	Clusters []*Cluster `json:"clusters,omitempty"`
-	Features []*Feature `json:"features,omitempty"`
+	Name       string     `json:"name,omitempty"`
+	Clusters   []*Cluster `json:"clusters,omitempty"`
+	Features   []*Feature `json:"features,omitempty"`
+	Coupling   float32    `json:"coupling,omitempty"`
+	Cohesion   float32    `json:"cohesion,omitempty"`
+	Complexity float32    `json:"complexity,omitempty"`
 }
 
 func (c *Codebase) GetClusterByName(name string) (cluster *Cluster, exists bool) {
@@ -29,12 +30,13 @@ func (c *Codebase) GetFeatureByName(name string) (feature *Feature, exists bool)
 }
 
 type Feature struct {
-	Name       string      `json:"name,omitempty"`
-	Codebase   *Codebase   `json:"codebase,omitempty"`
-	Type       string      `json:"type,omitempty"` // SAGA or QUERY
-	Complexity float32     `json:"complexity,omitempty"`
-	Clusters   []*Cluster  `json:"clusters,omitempty"`
-	Redesigns  []*Redesign `json:"redesigns,omitempty"`
+	Name                   string      `json:"name,omitempty"`
+	Codebase               *Codebase   `json:"codebase,omitempty"`
+	Type                   string      `json:"type,omitempty"` // SAGA or QUERY
+	Complexity             float32     `json:"complexity,omitempty"`
+	Clusters               []*Cluster  `json:"clusters,omitempty"`
+	Redesigns              []*Redesign `json:"redesigns,omitempty"`
+	RedesignUsedForMetrics *Redesign   `json:"redesign_used_for_metrics,omitempty"`
 }
 
 func (f *Feature) GetMonolithRedesign() *Redesign {
@@ -52,15 +54,16 @@ func (f *Feature) GetClusterByName(name string) (cluster *Cluster, exists bool) 
 }
 
 type Redesign struct {
-	Name                    string                     `json:"name,omitempty"`
-	Feature                 *Feature                   `json:"feature,omitempty"`
-	FirstInvocation         *Invocation                `json:"first_invocation,omitempty"`
-	InvocationsByEntity     map[*Entity][]*Invocation  `json:"invocations_by_entity,omitempty"`
-	InvocationsByCluster    map[*Cluster][]*Invocation `json:"invocations_by_cluster,omitempty"`
-	EntityAccesses          map[*Entity][]*Access      `json:"entity_accesses,omitempty"`
-	SystemComplexity        int                        `json:"system_complexity,omitempty"`
-	FunctionalityComplexity int                        `json:"functionality_complexity,omitempty"`
-	InconsistencyComplexity int                        `json:"inconsistency_complexity,omitempty"`
+	Name                        string                              `json:"name,omitempty"`
+	Feature                     *Feature                            `json:"feature,omitempty"`
+	FirstInvocation             *Invocation                         `json:"first_invocation,omitempty"`
+	InvocationsByEntity         map[*Entity][]*Invocation           `json:"invocations_by_entity,omitempty"`
+	InvocationsByCluster        map[*Cluster][]*Invocation          `json:"invocations_by_cluster,omitempty"`
+	EntityAccesses              map[*Entity][]*Access               `json:"entity_accesses,omitempty"`
+	ClusterCouplingDependencies map[*Cluster]map[*Cluster][]*Entity `json:"cluster_coupling_dependencies,omitempty"`
+	SystemComplexity            int                                 `json:"system_complexity,omitempty"`
+	FunctionalityComplexity     int                                 `json:"functionality_complexity,omitempty"`
+	InconsistencyComplexity     int                                 `json:"inconsistency_complexity,omitempty"`
 }
 
 func (r *Redesign) AddInvocation(clusterName string, invocationType string, accessedEntities []string) (invocation *Invocation) {
@@ -116,6 +119,27 @@ func (r *Redesign) GetEntitiesTouchedInMode(mode string) (entities []*Entity) {
 			}
 		}
 	}
+	return
+}
+
+func (r *Redesign) AddCouplingDependency(invocation *Invocation, nextInvocation *Invocation) {
+	dependencyEntity := nextInvocation.Accesses[0].Entity
+
+	clusterCouplingDependencies := make(map[*Cluster][]*Entity)
+	clusterDependencies, found := r.ClusterCouplingDependencies[invocation.Cluster]
+	if !found {
+		clusterCouplingDependencies[nextInvocation.Cluster] = []*Entity{dependencyEntity}
+		r.ClusterCouplingDependencies[invocation.Cluster] = clusterCouplingDependencies
+		return
+	}
+
+	dependencyCluster, found := clusterDependencies[nextInvocation.Cluster]
+	if !found {
+		clusterDependencies[invocation.Cluster] = []*Entity{dependencyEntity}
+		return
+	}
+
+	dependencyCluster = append(dependencyCluster, dependencyEntity)
 	return
 }
 
@@ -201,7 +225,6 @@ type Invocation struct {
 func (i *Invocation) FindAndDeleteNextInvocation(invocation Invocation) (newInvocations []*Invocation) {
 	for _, i := range i.NextInvocations {
 		if i.Cluster.Name != invocation.Cluster.Name {
-			fmt.Printf("in %v", i.NextInvocations)
 			newInvocations = append(newInvocations, i)
 		}
 	}
@@ -222,8 +245,9 @@ func (i *Invocation) AddEntityAccess(entityName string, operation string) (acces
 	i.Redesign.InvocationsByEntity[entity] = append(i.Redesign.InvocationsByEntity[entity], i)
 
 	access = &Access{
-		Entity: entity,
-		Type:   operation,
+		Entity:     entity,
+		Type:       operation,
+		Invocation: i,
 	}
 
 	i.Accesses = append(i.Accesses, access)
@@ -238,6 +262,14 @@ type Entity struct {
 }
 
 type Access struct {
-	Entity *Entity `json:"entity,omitempty"`
-	Type   string  `json:"type,omitempty"` // R or W
+	Entity     *Entity     `json:"entity,omitempty"`
+	Type       string      `json:"type,omitempty"` // R or W
+	Invocation *Invocation `json:"invocation,omitempty"`
+}
+
+func (a *Access) GetOpositeAccessType() string {
+	if a.Type == "W" {
+		return "R"
+	}
+	return "W"
 }

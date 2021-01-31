@@ -15,10 +15,11 @@ const (
 )
 
 type MetricsHandler interface {
-	FeatureComplexityAndClusterDependencies(feature *values.Feature) (complexity float32, err error)
-	ClusterComplexityAndCohesion(cluster *values.Cluster)
-	ClusterCoupling(cluster *values.Cluster)
-	RedesignComplexities(redesign *values.Redesign)
+	CalculateCodebaseMetrics(*values.Codebase)
+	CalculateFeatureComplexity(*values.Feature)
+	CalculateClusterComplexityAndCohesion(*values.Cluster)
+	CalculateClusterCoupling(*values.Cluster)
+	CalculateRedesignComplexities(*values.Redesign)
 }
 
 type DefaultHandler struct {
@@ -31,19 +32,77 @@ func New(logger log.Logger) MetricsHandler {
 	}
 }
 
-func (svc *DefaultHandler) FeatureComplexityAndClusterDependencies(feature *values.Feature) (complexity float32, err error) {
+func (svc *DefaultHandler) CalculateCodebaseMetrics(codebase *values.Codebase) {
+	var complexity float32
+	var cohesion float32
+	var coupling float32
 
+	for _, feature := range codebase.Features {
+		svc.CalculateFeatureComplexity(feature)
+		svc.CalculateRedesignComplexities(feature.RedesignUsedForMetrics)
+		complexity += feature.Complexity
+	}
+
+	for _, cluster := range codebase.Clusters {
+		svc.CalculateClusterComplexityAndCohesion(cluster)
+		cohesion += cluster.Cohesion
+
+		svc.CalculateClusterCoupling(cluster)
+		coupling += cluster.Coupling
+	}
+
+	codebase.Complexity = complexity / float32(len(codebase.Features))
+	codebase.Cohesion = cohesion / float32(len(codebase.Clusters))
+	codebase.Coupling = coupling / float32(len(codebase.Clusters))
+}
+
+func (svc *DefaultHandler) CalculateFeatureComplexity(feature *values.Feature) {
+	if len(feature.Clusters) == 1 {
+		feature.Complexity = 0
+		return
+	}
+
+	var complexity float32
+	for _, accesses := range feature.RedesignUsedForMetrics.EntityAccesses {
+		for _, access := range accesses {
+			complexity += float32(svc.numberFeaturesThatTouchEntity(access))
+		}
+	}
+
+	feature.Complexity = float32(complexity)
 	return
 }
 
-func (svc *DefaultHandler) ClusterComplexityAndCohesion(cluster *values.Cluster) {
+func (svc *DefaultHandler) numberFeaturesThatTouchEntity(access *values.Access) int {
+	var numberFeaturesTouchingEntity int
+	var containsEntity bool
+	var entityAccesses []*values.Access
+
+	for _, otherFeature := range access.Invocation.Redesign.Feature.Codebase.Features {
+		entityAccesses, containsEntity = otherFeature.RedesignUsedForMetrics.EntityAccesses[access.Entity]
+
+		if otherFeature == access.Invocation.Redesign.Feature || !containsEntity || len(otherFeature.Clusters) == 1 {
+			continue
+		}
+
+		for _, entityAccess := range entityAccesses {
+			if entityAccess.Type == access.GetOpositeAccessType() {
+				numberFeaturesTouchingEntity++
+				break
+			}
+		}
+	}
+	return numberFeaturesTouchingEntity
+}
+
+func (svc *DefaultHandler) CalculateClusterComplexityAndCohesion(cluster *values.Cluster) {
 	var complexity float32
 	var cohesion float32
 	var numberEntitiesTouched float32
 	for _, feature := range cluster.Features {
 		numberEntitiesTouched = 0
 		for _, entity := range cluster.Entities {
-			if _, found := feature.GetMonolithRedesign().EntityAccesses[entity]; found {
+			if _, found := feature.RedesignUsedForMetrics.EntityAccesses[entity]; found {
 				numberEntitiesTouched++
 			}
 		}
@@ -62,12 +121,25 @@ func (svc *DefaultHandler) ClusterComplexityAndCohesion(cluster *values.Cluster)
 	return
 }
 
-func (svc *DefaultHandler) ClusterCoupling(cluster *values.Cluster) {
-	// TODO
+func (svc *DefaultHandler) CalculateClusterCoupling(cluster *values.Cluster) {
+	var coupling float32
+
+	for _, clusterFeature := range cluster.Features {
+		for dependencyCluster, entities := range clusterFeature.RedesignUsedForMetrics.ClusterCouplingDependencies[cluster] {
+			coupling += float32(len(entities) / len(dependencyCluster.Entities))
+		}
+
+		nrCodebaseClusters := len(clusterFeature.Codebase.Clusters)
+		if nrCodebaseClusters > 1 {
+			coupling = coupling / float32(nrCodebaseClusters-1)
+		}
+	}
+
+	cluster.Coupling = coupling
 	return
 }
 
-func (svc *DefaultHandler) RedesignComplexities(redesign *values.Redesign) {
+func (svc *DefaultHandler) CalculateRedesignComplexities(redesign *values.Redesign) {
 	if redesign.Feature.Type == Query {
 		svc.queryRedesignComplexity(redesign)
 	} else {
@@ -80,7 +152,7 @@ func (svc *DefaultHandler) queryRedesignComplexity(redesign *values.Redesign) {
 
 	for _, feature := range redesign.Feature.Codebase.Features {
 		if feature.Name != redesign.Feature.Name && feature.Type == Saga {
-			entitiesWritten := feature.GetMonolithRedesign().GetEntitiesTouchedInMode(WriteAccess)
+			entitiesWritten := feature.RedesignUsedForMetrics.GetEntitiesTouchedInMode(WriteAccess)
 
 			var matches []*values.Entity
 			var commonClusters []*values.Cluster
@@ -110,26 +182,26 @@ func (svc *DefaultHandler) queryRedesignComplexity(redesign *values.Redesign) {
 	}
 }
 
-func (svc *DefaultHandler) sagasRedesignComplexity(redesign *values.Redesign) { // TODOL: revisit this since nextInvocation is now an array
-	// for invocation := redesign.FirstInvocation; invocation != nil; invocation = invocation.NextInvocation {
-	// 	for _, access := range invocation.Accesses {
-	// 		if access.Type == WriteAccess {
-	// 			if invocation.Type == Compensatable {
-	// 				redesign.FunctionalityComplexity++
-	// 				svc.systemComplexity(redesign, access.Entity)
-	// 			}
-	// 		} else if access.Type == ReadAccess {
-	// 			// svc.sostOfRead() //TODO
-	// 		}
-	// 	}
-	// }
+func (svc *DefaultHandler) sagasRedesignComplexity(redesign *values.Redesign) {
+	for entity, accesses := range redesign.EntityAccesses {
+		for _, access := range accesses {
+			if access.Type == WriteAccess {
+				if access.Invocation.Type == Compensatable {
+					redesign.FunctionalityComplexity++
+					svc.systemComplexity(redesign, entity)
+				}
+			} else if access.Type == ReadAccess {
+				svc.costOfRead(redesign, entity)
+			}
+		}
+	}
 }
 
 func (svc *DefaultHandler) systemComplexity(redesign *values.Redesign, entity *values.Entity) {
 	for _, feature := range entity.Features {
-		if feature.Name != redesign.Feature.Name {
-			for _, access := range feature.GetMonolithRedesign().EntityAccesses[entity] {
-				if access.Type == ReadAccess { // TODO this.controllerClusters.get(otherController.getName()).size() > 1) {
+		if feature.Name != redesign.Feature.Name && len(feature.Clusters) > 1 {
+			for _, access := range feature.RedesignUsedForMetrics.EntityAccesses[entity] {
+				if access.Type == ReadAccess {
 					redesign.SystemComplexity++
 				}
 			}
@@ -137,7 +209,29 @@ func (svc *DefaultHandler) systemComplexity(redesign *values.Redesign, entity *v
 	}
 }
 
-func (svc *DefaultHandler) sostOfRead(codebase *values.Codebase) {
+func (svc *DefaultHandler) costOfRead(redesign *values.Redesign, entity *values.Entity) {
+	var containsEntity bool
+	var accesses []*values.Access
+	var entityIsWritten bool
 
+	for _, feature := range redesign.Feature.Codebase.Features {
+		accesses, containsEntity = feature.RedesignUsedForMetrics.EntityAccesses[entity]
+		if feature == redesign.Feature || !containsEntity || len(feature.Clusters) == 1 {
+			continue
+		}
+
+		entityIsWritten = false
+		for _, access := range accesses {
+			if access.Type == WriteAccess {
+				entityIsWritten = true
+			}
+		}
+
+		if !entityIsWritten {
+			continue
+		}
+
+		redesign.FunctionalityComplexity++
+	}
 	return
 }

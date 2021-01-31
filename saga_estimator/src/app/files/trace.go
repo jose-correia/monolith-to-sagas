@@ -96,23 +96,25 @@ func (svc *DefaultHandler) DecodeTrace(codebase *cb.Codebase, trace *Trace) (fea
 		Clusters:   []*cb.Cluster{},
 		Redesigns:  []*cb.Redesign{},
 	}
-	feature.Redesigns = append(
-		feature.Redesigns,
-		svc.decodeRedesign(feature, trace.getMonolithRedesign()),
-	)
+
+	monolithRedesign := svc.decodeRedesign(feature, trace.getMonolithRedesign())
+	feature.Redesigns = append(feature.Redesigns, monolithRedesign)
+	feature.RedesignUsedForMetrics = monolithRedesign
 	return
 }
 
 func (svc *DefaultHandler) decodeRedesign(feature *cb.Feature, traceRedesign *FunctionalityRedesign) (redesign *cb.Redesign) {
 	redesign = &cb.Redesign{
-		Name:                    traceRedesign.Name,
-		Feature:                 feature,
-		FirstInvocation:         &cb.Invocation{},
-		InvocationsByEntity:     map[*cb.Entity][]*cb.Invocation{},
-		InvocationsByCluster:    map[*cb.Cluster][]*cb.Invocation{},
-		EntityAccesses:          map[*cb.Entity][]*cb.Access{},
-		SystemComplexity:        traceRedesign.SystemComplexity,
-		FunctionalityComplexity: traceRedesign.FunctionalityComplexity,
+		Name:                        traceRedesign.Name,
+		Feature:                     feature,
+		FirstInvocation:             &cb.Invocation{},
+		InvocationsByEntity:         map[*cb.Entity][]*cb.Invocation{},
+		InvocationsByCluster:        map[*cb.Cluster][]*cb.Invocation{},
+		EntityAccesses:              map[*cb.Entity][]*cb.Access{},
+		ClusterCouplingDependencies: map[*cb.Cluster]map[*cb.Cluster][]*cb.Entity{},
+		SystemComplexity:            traceRedesign.SystemComplexity,
+		FunctionalityComplexity:     traceRedesign.FunctionalityComplexity,
+		InconsistencyComplexity:     0,
 	}
 
 	// for each invocation in the trace we add its operations and add it to a linked list
@@ -133,6 +135,7 @@ func (svc *DefaultHandler) decodeRedesign(feature *cb.Feature, traceRedesign *Fu
 		} else {
 			prevInvocation.NextInvocations = append(prevInvocation.NextInvocations, invocation)
 			prevInvocation.Cluster.AddDependencyIfNew(invocation.Cluster)
+			redesign.AddCouplingDependency(prevInvocation, invocation)
 		}
 
 		prevInvocation = invocation
