@@ -1,46 +1,39 @@
 package main
 
 import (
-	"app/codebase"
-	"app/codebase/values"
 	"app/common/log"
 	"app/files"
 	"app/metrics"
-	"fmt"
+	"app/redesign"
 )
 
-var (
-	traceFolderPath = "/Users/josecorreia/Desktop/tese/automation/traces"
+const (
+	useExpertDecompositions = true
 )
 
 func main() {
 	logger := log.NewLogger()
-
-	filesHandler := files.New(logger, traceFolderPath)
+	filesHandler := files.New(logger)
 	metricsHandler := metrics.New(logger)
-	codebaseHandler := codebase.New(logger, filesHandler, metricsHandler)
+	redesignHandler := redesign.New(logger, metricsHandler)
 
-	// find file names
-	codebaseFoldersNames := filesHandler.GetCodebaseFoldersNames()
+	codebaseNames := []string{
+		"ldod-static",
+	}
 
-	var bestRedesign *values.Redesign
-	var bestCodebaseComplexity float32
-	for _, folderName := range codebaseFoldersNames {
-		codebase, err := codebaseHandler.GenerateCodebase(folderName)
+	for _, folderName := range codebaseNames {
+		codebase, err := filesHandler.ReadCodebase(folderName)
 		if err != nil {
-			logger.Log(err.Error())
+			logger.Log("Failed to decode codebase %s | %s", folderName, err.Error())
 			continue
 		}
 
-		for _, feature := range codebase.Features {
-			bestRedesign, bestCodebaseComplexity, err = codebaseHandler.EstimateBestFeatureRedesign(feature)
-			if err != nil {
-				logger.Log(err.Error())
-				fmt.Printf("Feature %v doesnt have more than 2 clusters! Skipping..\n\n", feature.Name)
-				continue
-			}
-
-			fmt.Printf("Feature %v best redesign with orchestrator %v | Codebase complexity: %v\n\n", feature.Name, bestRedesign.FirstInvocation.Cluster.Name, bestCodebaseComplexity)
+		idToEntityMap, err := filesHandler.ReadIDToEntityFile(folderName)
+		if err != nil {
+			logger.Log("Failed to decode id_to_entity map %s | %s", folderName, err.Error())
+			continue
 		}
+
+		redesignHandler.EstimateCodebaseOrchestrators(codebase, idToEntityMap, useExpertDecompositions)
 	}
 }

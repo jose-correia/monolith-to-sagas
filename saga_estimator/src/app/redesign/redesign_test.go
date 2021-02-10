@@ -1,14 +1,13 @@
 // +build unit
 
-package codebase_test
+package redesign_test
 
 import (
 	"app/common/log"
 	"app/files"
 	"testing"
 
-	"app/codebase"
-	"app/codebase/values"
+	"app/redesign/values"
 
 	"github.com/stretchr/testify/assert"
 )

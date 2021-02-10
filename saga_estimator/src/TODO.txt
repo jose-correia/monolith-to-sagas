@@ -1,7 +1,5 @@
 ## TODO:
 
--- Metrics are giving bad results!
-
 - Unit tests on Values folder
 - Unit tests on Estimation function in codebase package
 
@@ -11,3 +9,6 @@
 Should repeted entites be added to the coupling dependencies. If they are the next LT first access
 multiple times.
 --- Currently they are being added -----
+
+
+// We are not populating the invocation type (comp, piv, retr) when we redesign
