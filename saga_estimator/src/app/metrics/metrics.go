@@ -3,6 +3,7 @@ package metrics
 import (
 	"app/files"
 	"strconv"
+	"sync"
 
 	"github.com/go-kit/kit/log"
 )
@@ -14,6 +15,10 @@ const (
 	Compensatable = "COMPENSATABLE"
 	Saga          = "SAGA"
 	Query         = "QUERY"
+)
+
+var (
+	mapMutex = sync.RWMutex{}
 )
 
 type MetricsHandler interface {
@@ -72,24 +77,35 @@ func (svc *DefaultHandler) CalculateControllerComplexityAndDependencies(decompos
 
 		cluster := decomposition.GetClusterFromID(invocation.ClusterID)
 		for i := idx; i < len(redesign.Redesign); i++ {
+			mapMutex.Lock()
 			cluster.AddCouplingDependency(
 				redesign.GetInvocation(i).ClusterID,
 				redesign.GetInvocation(i).GetAccessEntityID(0),
 			)
+			mapMutex.Unlock()
 		}
 
+		controllersTouchingSameEntities := map[string]bool{}
 		for i := range invocation.ClusterAccesses {
 			mode := files.MapAccessTypeToMode(invocation.GetAccessType(i))
-			complexity += float32(svc.numberControllersThatTouchEntity(decomposition, controller, invocation.GetAccessEntityID(i), mode))
+			controllers := svc.controllersThatTouchEntity(decomposition, controller, invocation.GetAccessEntityID(i), mode)
+
+			for _, controller := range controllers {
+				_, alreadySaved := controllersTouchingSameEntities[controller]
+				if !alreadySaved {
+					controllersTouchingSameEntities[controller] = true
+				}
+			}
 		}
+		complexity += float32(len(controllersTouchingSameEntities))
 	}
 
 	controller.Complexity = float32(complexity)
 	return
 }
 
-func (svc *DefaultHandler) numberControllersThatTouchEntity(decomposition *files.Decomposition, controller *files.Controller, entityID int, mode int) int {
-	var numberFeaturesTouchingEntity int
+func (svc *DefaultHandler) controllersThatTouchEntity(decomposition *files.Decomposition, controller *files.Controller, entityID int, mode int) []string {
+	var controllers []string
 
 	for _, otherController := range decomposition.Controllers {
 		entityMode, containsEntity := otherController.GetEntityMode(entityID)
@@ -98,11 +114,11 @@ func (svc *DefaultHandler) numberControllersThatTouchEntity(decomposition *files
 		}
 
 		if entityMode != mode {
-			numberFeaturesTouchingEntity++
+			controllers = append(controllers, otherController.Name)
 		}
 	}
 
-	return numberFeaturesTouchingEntity
+	return controllers
 }
 
 func (svc *DefaultHandler) CalculateClusterComplexityAndCohesion(cluster *files.Cluster) {
@@ -158,10 +174,12 @@ func (svc *DefaultHandler) CalculateRedesignComplexities(decomposition *files.De
 
 func (svc *DefaultHandler) queryRedesignComplexity(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign) {
 	entitiesRead := controller.EntitiesTouchedInMode(files.MapAccessTypeToMode("R"))
-	var entitiesReadThatAreWrittenInOther []int
-	var clustersInCommon []*files.Cluster
 
+	var inconsistencyComplexity int
 	for _, otherController := range decomposition.Controllers {
+		var entitiesReadThatAreWrittenInOther []int
+		var clustersInCommon []*files.Cluster
+
 		if otherController.Name == controller.Name || len(otherController.EntitiesPerCluster) <= 1 || otherController.Type != "SAGA" {
 			continue
 		}
@@ -180,12 +198,17 @@ func (svc *DefaultHandler) queryRedesignComplexity(decomposition *files.Decompos
 		}
 
 		if len(clustersInCommon) > 1 {
-			redesign.InconsistencyComplexity += len(clustersInCommon)
+			inconsistencyComplexity += len(clustersInCommon)
 		}
 	}
+
+	redesign.InconsistencyComplexity = inconsistencyComplexity
 }
 
 func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign) {
+	var functionalityComplexity int
+	var systemComplexity int
+
 	for _, invocation := range redesign.Redesign {
 		for i := range invocation.ClusterAccesses {
 			entity := invocation.GetAccessEntityID(i)
@@ -193,31 +216,40 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 
 			if mode >= WriteMode { // 2 -> W, 3 -> RW
 				if invocation.Type == "COMPENSATABLE" {
-					redesign.FunctionalityComplexity++
-					svc.systemComplexity(decomposition, controller, redesign, entity)
+					functionalityComplexity++
+					systemComplexity += svc.systemComplexity(decomposition, controller, redesign, entity)
 				}
 				continue
 			}
 
 			if mode != WriteMode { // 1 -> R, 3 -> RW
-				svc.costOfRead(decomposition, controller, redesign, entity)
+				functionalityComplexity += svc.costOfRead(decomposition, controller, redesign, entity)
 			}
 		}
 	}
+
+	redesign.FunctionalityComplexity = functionalityComplexity
+	redesign.SystemComplexity = systemComplexity
 }
 
-func (svc *DefaultHandler) systemComplexity(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, entity int) {
+func (svc *DefaultHandler) systemComplexity(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, entity int) int {
+	var systemComplexity int
+
 	for _, otherController := range decomposition.Controllers {
 		mode, containsEntity := otherController.GetEntityMode(entity)
 		if otherController.Name == controller.Name || len(otherController.EntitiesPerCluster) <= 1 || !containsEntity || mode == WriteMode {
 			continue
 		}
 
-		redesign.SystemComplexity++
+		systemComplexity++
 	}
+
+	return systemComplexity
 }
 
-func (svc *DefaultHandler) costOfRead(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, entity int) {
+func (svc *DefaultHandler) costOfRead(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, entity int) int {
+	var functionalityComplexity int
+
 	for _, otherController := range decomposition.Controllers {
 		mode, containsEntity := otherController.GetEntityMode(entity)
 		if otherController.Name == controller.Name || len(otherController.EntitiesPerCluster) <= 1 || !containsEntity {
@@ -226,9 +258,9 @@ func (svc *DefaultHandler) costOfRead(decomposition *files.Decomposition, contro
 
 		mode, exists := otherController.GetEntityMode(entity)
 		if exists && mode >= WriteMode {
-			redesign.FunctionalityComplexity++
+			functionalityComplexity++
 		}
 	}
 
-	return
+	return functionalityComplexity
 }

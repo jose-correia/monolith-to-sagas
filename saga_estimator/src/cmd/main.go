@@ -5,6 +5,7 @@ import (
 	"app/files"
 	"app/metrics"
 	"app/redesign"
+	"fmt"
 )
 
 const (
@@ -34,6 +35,9 @@ func main() {
 			continue
 		}
 
-		redesignHandler.EstimateCodebaseOrchestrators(codebase, idToEntityMap, useExpertDecompositions)
+		csvData := redesignHandler.EstimateCodebaseOrchestrators(codebase, idToEntityMap, useExpertDecompositions)
+
+		outputFileName := fmt.Sprintf("%s.csv", folderName)
+		filesHandler.GenerateCSV(outputFileName, csvData)
 	}
 }

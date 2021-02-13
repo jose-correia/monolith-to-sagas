@@ -1,22 +1,26 @@
 package files
 
 import (
+	"encoding/csv"
 	"encoding/json"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"github.com/go-kit/kit/log"
 )
 
 const (
-	codebaseFolderPath = "/Users/josecorreia/Desktop/tese/automation/saga_estimator/data/"
+	codebaseFolderPath = "../../data/"
 	codebaseFileName   = "/codebase.json"
 	idToEntityFileName = "/IDToEntity.json"
+	outputPath         = "../../output/"
 )
 
 type FilesHandler interface {
 	ReadCodebase(string) (*Codebase, error)
 	ReadIDToEntityFile(string) (map[string]string, error)
+	GenerateCSV(string, [][]string) error
 }
 
 type DefaultHandler struct {
@@ -30,7 +34,7 @@ func New(logger log.Logger) FilesHandler {
 }
 
 func (svc *DefaultHandler) ReadCodebase(codebaseFolder string) (*Codebase, error) {
-	path := codebaseFolderPath + codebaseFolder + codebaseFileName
+	path, _ := filepath.Abs(codebaseFolderPath + codebaseFolder + codebaseFileName)
 	jsonFile, err := os.Open(path)
 	if err != nil {
 		svc.logger.Log(err)
@@ -79,4 +83,29 @@ func (svc *DefaultHandler) ReadIDToEntityFile(codebaseFolder string) (map[string
 	}
 
 	return idToEntityMap, nil
+}
+
+func (svc *DefaultHandler) GenerateCSV(filename string, data [][]string) error {
+	path := outputPath + filename
+
+	file, err := os.Create(path)
+	if err != nil {
+		svc.logger.Log(err)
+		return err
+	}
+
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	for _, value := range data {
+		err := writer.Write(value)
+		if err != nil {
+			svc.logger.Log(err)
+			return err
+		}
+	}
+
+	return nil
 }

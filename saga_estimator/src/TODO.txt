@@ -3,12 +3,27 @@
 - Unit tests on Values folder
 - Unit tests on Estimation function in codebase package
 
-- File module function to generate CSV with orchestrator per feature
 
-??
-Should repeted entites be added to the coupling dependencies. If they are the next LT first access
-multiple times.
---- Currently they are being added -----
+// Cohesion not being calculated now
 
 
 // We are not populating the invocation type (comp, piv, retr) when we redesign
+
+
+// Implement redesign with rules
+Initial:
+     For each invocation:
+            add the cluster before, if it wasnt already
+
+
+For each invocation:
+    check if it can be merged with the last invocation of that cluster (we have to store the last always)
+    if it can:
+       merge
+       prune accesses 
+
+
+(do this x times until no changes are done to the trace)
+
+
+// Minimizar System Complexity ou FunctionalityComplexity ????
