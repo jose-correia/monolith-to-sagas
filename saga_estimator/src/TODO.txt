@@ -4,9 +4,6 @@
 - Unit tests on Estimation function in codebase package
 
 
-// Cohesion not being calculated now
-
-
 // We are not populating the invocation type (comp, piv, retr) when we redesign
 
 
@@ -26,4 +23,4 @@ For each invocation:
 (do this x times until no changes are done to the trace)
 
 
-// Minimizar System Complexity ou FunctionalityComplexity ????
+// Minimizar System Complexity ou FunctionalityComplexity ???? -> its almost the same for most cases

@@ -25,7 +25,6 @@ type MetricsHandler interface {
 	CalculateDecompositionMetrics(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign)
 	CalculateControllerComplexityAndDependencies(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign)
 	CalculateClusterComplexityAndCohesion(*files.Cluster)
-	// CalculateClusterCoupling(*values.Cluster)
 	CalculateRedesignComplexities(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign)
 }
 
@@ -145,24 +144,6 @@ func (svc *DefaultHandler) CalculateClusterComplexityAndCohesion(cluster *files.
 	cluster.Cohesion = cohesion
 	return
 }
-
-// func (svc *DefaultHandler) CalculateClusterCoupling(cluster *files.Cluster) {
-// 	var coupling float32
-
-// 	for _, clusterFeature := range cluster.Features {
-// 		for dependencyCluster, entities := range clusterFeature.RedesignUsedForMetrics.ClusterCouplingDependencies[cluster] {
-// 			coupling += float32(len(entities)) / float32(len(dependencyCluster.Entities))
-// 		}
-
-// 		nrCodebaseClusters := len(clusterFeature.Codebase.Clusters)
-// 		if nrCodebaseClusters > 1 {
-// 			coupling = coupling / float32(nrCodebaseClusters-1)
-// 		}
-// 	}
-
-// 	cluster.Coupling = coupling
-// 	return
-// }
 
 func (svc *DefaultHandler) CalculateRedesignComplexities(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign) {
 	if controller.Type == Query {

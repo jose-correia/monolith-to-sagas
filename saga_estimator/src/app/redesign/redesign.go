@@ -11,7 +11,8 @@ import (
 )
 
 const (
-	defaultRedesignName = "currentRedesign"
+	defaultRedesignName            = "currentRedesign"
+	addSecondBestRedesignToDataset = false
 )
 
 var (
@@ -21,7 +22,7 @@ var (
 
 type RedesignHandler interface {
 	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, bool) [][]string
-	EstimateBestControllerOrchestrator(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) (*files.FunctionalityRedesign, int, error)
+	EstimateBestControllerOrchestrator(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) (map[*files.FunctionalityRedesign]int, error)
 	RedesignControllerWithOrchestrator(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
 }
 
@@ -73,17 +74,23 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 				}
 
 				initialRedesign := controller.GetFunctionalityRedesign()
-				bestRedesign, bestOrchestratorID, _ := svc.EstimateBestControllerOrchestrator(decomposition, controller, initialRedesign)
+				bestRedesigns, _ := svc.EstimateBestControllerOrchestrator(decomposition, controller, initialRedesign)
 
-				csvData = svc.addResultToDataset(
-					csvData,
-					codebase,
-					controller,
-					initialRedesign,
-					bestRedesign,
-					bestOrchestratorID,
-					idToEntityMap,
-				)
+				for redesign, orchestratorID := range bestRedesigns {
+					csvData = svc.addResultToDataset(
+						csvData,
+						codebase,
+						controller,
+						initialRedesign,
+						redesign,
+						orchestratorID,
+						idToEntityMap,
+					)
+
+					if !addSecondBestRedesignToDataset {
+						break
+					}
+				}
 			}(controller)
 		}
 		wg.Wait()
@@ -120,13 +127,18 @@ func (svc *DefaultHandler) addResultToDataset(
 	return data
 }
 
-func (svc *DefaultHandler) EstimateBestControllerOrchestrator(decomposition *files.Decomposition, controller *files.Controller, initialRedesign *files.FunctionalityRedesign) (*files.FunctionalityRedesign, int, error) {
-	first := true
+func (svc *DefaultHandler) EstimateBestControllerOrchestrator(decomposition *files.Decomposition, controller *files.Controller, initialRedesign *files.FunctionalityRedesign) (map[*files.FunctionalityRedesign]int, error) {
 	var currentRedesign *files.FunctionalityRedesign
+
 	bestRedesign := &files.FunctionalityRedesign{}
 	var bestClusterID int
 	bestCodebaseComplexity := 999999999999999999
 
+	secondBestRedesign := &files.FunctionalityRedesign{}
+	var secondBestClusterID int
+	secondBestCodebaseComplexity := 999999999999999999
+
+	first := true
 	for clusterName := range controller.EntitiesPerCluster {
 		cluster := decomposition.Clusters[clusterName]
 
@@ -139,31 +151,38 @@ func (svc *DefaultHandler) EstimateBestControllerOrchestrator(decomposition *fil
 
 		svc.metricsHandler.CalculateDecompositionMetrics(decomposition, controller, currentRedesign)
 
-		// if currentRedesign.SystemComplexity < bestCodebaseComplexity {
-		// 	bestClusterID, _ = strconv.Atoi(clusterName)
-		// 	bestCodebaseComplexity = currentRedesign.SystemComplexity
-		// 	*bestRedesign = *currentRedesign
-		// }
+		// metric := currentRedesign.SystemComplexity
+		complexity := currentRedesign.FunctionalityComplexity
 
-		if currentRedesign.FunctionalityComplexity < bestCodebaseComplexity {
+		if complexity < bestCodebaseComplexity {
+			secondBestClusterID = bestClusterID
+			*secondBestRedesign = *bestRedesign
+
 			bestClusterID, _ = strconv.Atoi(clusterName)
-			bestCodebaseComplexity = currentRedesign.FunctionalityComplexity
 			*bestRedesign = *currentRedesign
+			bestCodebaseComplexity = complexity
+
+			continue
+		}
+
+		if complexity < secondBestCodebaseComplexity {
+			secondBestClusterID, _ = strconv.Atoi(clusterName)
+			*secondBestRedesign = *currentRedesign
+			secondBestCodebaseComplexity = complexity
 		}
 	}
 
-	return bestRedesign, bestClusterID, nil
+	return map[*files.FunctionalityRedesign]int{
+		bestRedesign:       bestClusterID,
+		secondBestRedesign: secondBestClusterID,
+	}, nil
 }
 
 func (svc *DefaultHandler) printRedesign(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, orchestratorName string) {
 	fmt.Printf("Orchestrator: %v\n", orchestratorName)
 	fmt.Printf("System complexity: %v\n", decomposition.Complexity)
-	// fmt.Printf("System cohesion: %v\n", decomposition.Cohesion)
-	// fmt.Printf("System coupling: %v\n", decomposition.Coupling)
-	// fmt.Printf("Controller complexity: %v\n", controller.Complexity)
 	fmt.Printf("Redesign functionality complexity: %v\n", redesign.FunctionalityComplexity)
 	fmt.Printf("Redesign system complexity: %v\n\n", redesign.SystemComplexity)
-	// fmt.Printf("Redesign inconsistency complexity: %v\n\n", redesign.InconsistencyComplexity)
 }
 
 func (svc *DefaultHandler) RedesignControllerWithOrchestrator(controller *files.Controller, initialRedesign *files.FunctionalityRedesign, orchestrator *files.Cluster) *files.FunctionalityRedesign {
@@ -218,11 +237,6 @@ func (svc *DefaultHandler) RedesignControllerWithOrchestrator(controller *files.
 		}
 	}
 
-	// // Add coupling dependencies of the orchestrator
-	// for _, invocation := range redesign.FirstInvocation.NextInvocations {
-	// 	redesign.AddCouplingDependency(redesign.FirstInvocation, invocation)
-	// }
-
 	return redesign
 }
 
@@ -249,10 +263,4 @@ func (svc *DefaultHandler) swapRedesignOrchestrator(redesign *files.Functionalit
 	redesign.FunctionalityComplexity = 0
 	redesign.InconsistencyComplexity = 0
 	redesign.SystemComplexity = 0
-
-	// Add coupling dependencies of the orchestrator
-	// redesign.ClusterCouplingDependencies = make(map[*values.Cluster]map[*values.Cluster][]*values.Entity)
-	// for _, invocation := range redesign.FirstInvocation.NextInvocations {
-	// 	redesign.AddCouplingDependency(redesign.FirstInvocation, invocation)
-	// }
 }
