@@ -1,52 +1,51 @@
-Codebase,Feature,Orchestrator,Entities,Initial System Complexity,Final System Complexity,Redesign Complexity
-ldod-static,AdminController.loadUsersXML,0,"LdoD, ",617,71,1
-ldod-static,VirtualEditionController.approveParticipant,0,"LdoD, ",28,0,100
-ldod-static,VirtualEditionController.switchRole,0,"LdoD, ",28,0,99
-ldod-static,VirtualEditionController.listVirtualEdition,0,"ExpertEdition, LdoD, Edition, ",0,0,122
-ldod-static,FragmentController.getTaxonomy,2,"LdoDUser, ",254,56,82
-ldod-static,FragmentController.searchAnnotations,2,"LdoDUser, ",0,0,281
-ldod-static,VirtualEditionController.createClassificationGame,2,"LdoDUser, ",265,55,27
-ldod-static,SearchController.getVirtualEditions,2,"LdoDUser, ",0,0,100
-ldod-static,EditionController.getUserContributions,3,"Player, ClassificationGame, ClassificationGameParticipant, ",0,0,164
-ldod-static,VirtualEditionController.addParticipant,0,"LdoD, ",183,0,23
-ldod-static,RecommendationController.setLinearVirtualEdition,0,"ExpertEdition, LdoD, Edition, ",141,0,124
-ldod-static,VirtualEditionController.associateCategory,0,"ExpertEdition, FragInter, SimpleText, LdoD, Edition, ",2014,16,74
-ldod-static,VirtualEditionController.deleteCategory,2,"LdoDUser, ",714,56,1
-ldod-static,ClassificationGameController.end,2,"LdoDUser, ",364,55,58
-ldod-static,AdminController.exportUsers,3,"Player, ",0,0,102
-ldod-static,ClassificationGameController.getActiveGames,1,"Member, VirtualEdition, Taxonomy, ",0,0,162
-ldod-static,VirtualEditionController.createTopicModelling,0,"LdoD, ",226,0,58
-ldod-static,VirtualEditionController.createVirtualEdition,2,"LdoDUser, ",1862,55,10
-ldod-static,AdminController.removeTweets,2,"LdoDUser, ",390,55,1
-ldod-static,ClassificationGameController.getLeaderboard,2,"LdoDUser, ",0,0,164
-ldod-static,FragmentController.deleteAnnotation,0,"SimpleText, ",900,16,1
-ldod-static,VirtualEditionController.generateTopicModelling,1,"Section, VirtualEdition, VirtualEditionInter, Category, Taxonomy, ",0,0,212
-ldod-static,VirtualEditionController.dissociate,2,"LdoDUser, ",1570,56,1
-ldod-static,FragmentController.createAnnotation,0,"ExpertEdition, SimpleText, LdoD, Edition, ",679,16,97
-ldod-static,FragmentController.getInter,1,"VirtualEditionInter, ",0,0,223
-ldod-static,VirtualEditionController.removeClassificationGame,2,"LdoDUser, ",651,55,1
-ldod-static,RecommendationController.createLinearVirtualEdition,2,"LdoDUser, ",2914,56,10
-ldod-static,VirtualEditionController.editVirtualEdition,2,"LdoDUser, ",1488,56,98
-ldod-static,SignupController.signup,0,"LdoD, ",2837,71,1
-ldod-static,RecommendationController.presentEditionWithRecommendation,0,"LdoD, Edition, ",141,0,120
-ldod-static,VirtualEditionController.deleteTaxonomy,2,"LdoDUser, ",900,55,1
-ldod-static,VirtualEditionController.mergeCategories,2,"LdoDUser, ",1433,55,1
-ldod-static,APIVirtualEditionController.getVirtualEditionIndex,1,"Member, Section, VirtualEdition, VirtualEditionInter, Category, Taxonomy, ",0,0,359
-ldod-static,AdminController.removeUser,0,"LdoD, ",2430,71,1
-ldod-static,VirtualEditionController.getEditions,0,"AddText, AltText, AltTextWeight, AnnexNote, UnclearText, AppText, DelText, Edition, ExpertEdition, ExpertEditionInter, FragInter, Fragment, GapText, LbText, LdoD, NoteText, PbText, RdgGrpText, RdgText, RefText, Rend, SegText, SimpleText, SourceInter, SpaceText, Surface, TextPortion, ",0,0,350
-ldod-static,FragmentController.updateAnnotation,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",1127,82,97
-ldod-static,FragmentController.getFragmentWithInterForUrlId,1,"Member, Section, VirtualEdition, VirtualEditionInter, ",254,72,224
-ldod-static,AdminController.loadVirtualFragments,2,"LdoDUser, ",2516,55,39
-ldod-static,APIVirtualEditionController.getPublicVirtualEditions4User,0,"AddText, AltText, AltTextWeight, AnnexNote, UnclearText, AppText, DelText, Edition, ExpertEdition, ExpertEditionInter, FragInter, Fragment, GapText, LbText, LdoD, NoteText, PbText, RdgGrpText, RdgText, RefText, Rend, SegText, SimpleText, SourceInter, SpaceText, Surface, TextPortion, ",0,0,364
-ldod-static,AdminController.deleteFragment,4,"AwareAnnotation, Citation, InfoRange, ",3462,27,3
-ldod-static,VirtualEditionController.deleteVirtualEdition,2,"LdoDUser, ",6829,55,1
-ldod-static,AdminController.deleteAllFragments,2,"LdoDUser, ",3462,56,1
-ldod-static,AdminController.loadVirtualCorpus,2,"LdoDUser, ",9337,55,10
-ldod-static,AdminController.deleteVirtualEdition,2,"LdoDUser, ",6829,55,1
-ldod-static,RecommendationController.createSectionVirtualEdition,2,"LdoDUser, ",7247,55,10
-ldod-static,RecommendationController.saveLinearVirtualEdition,2,"LdoDUser, ",4974,56,30
-ldod-static,VirtualEditionController.reorderVirtualEdition,2,"LdoDUser, ",3394,55,32
-ldod-static,APIVirtualEditionController.getVirtualEditions4User,0,"AddText, AltText, AltTextWeight, AnnexNote, UnclearText, AppText, DelText, Edition, ExpertEdition, ExpertEditionInter, FragInter, Fragment, GapText, LbText, LdoD, NoteText, PbText, RdgGrpText, RdgText, RefText, Rend, SegText, SimpleText, SourceInter, SpaceText, Surface, TextPortion, ",0,0,351
-ldod-static,AdminController.exportVirtualEditions,1,"Member, Section, Annotation, VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Range, Tag, Taxonomy, ",0,0,431
-ldod-static,AdminController.generateCitations,2,"LdoDUser, ",5449,55,55
-ldod-static,AdminController.loadTEIFragmentsAtOnce,2,"LdoDUser, ",5163,56,1
+Codebase,Feature,Orchestrator,Entities,Type,Initial System Complexity,Final System Complexity,System Complexity Reduction,Initial Inconsistency Complexity,Final Inconsistency Complexity,Inconsistency Complexity Reduction,Initial Functionality Complexity,Final Functionality Complexity,Functionality Complexity Reduction
+ldod-static,AdminController.loadUsersXML,3,"Player, ",SAGA,617,155,462,0,18,-18,150,6,144
+ldod-static,VirtualEditionController.createClassificationGame,3,"ClassificationGame, ",SAGA,265,209,56,0,0,0,11,30,-19
+ldod-static,ClassificationGameController.getLeaderboard,2,"LdoDUser, ",QUERY,0,0,0,7,0,7,0,164,-164
+ldod-static,VirtualEditionController.approveParticipant,0,"LdoD, ",SAGA,28,29,-1,0,0,0,10,103,-93
+ldod-static,ClassificationGameController.getActiveGames,3,"ClassificationGame, ",QUERY,0,0,0,11,13,-2,0,165,-165
+ldod-static,VirtualEditionController.generateTopicModelling,1,"Section, VirtualEdition, VirtualEditionInter, Category, Taxonomy, ",QUERY,0,0,0,43,0,43,0,206,-206
+ldod-static,VirtualEditionController.deleteCategory,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,714,380,334,0,6,-6,181,11,170
+ldod-static,AdminController.exportUsers,3,"Player, ",QUERY,0,0,0,17,12,5,0,103,-103
+ldod-static,VirtualEditionController.listVirtualEdition,1,"Member, VirtualEdition, ",QUERY,0,0,0,27,0,27,0,121,-121
+ldod-static,VirtualEditionController.addParticipant,0,"LdoD, ",SAGA,183,157,26,0,36,-36,48,26,22
+ldod-static,FragmentController.getTaxonomy,0,"LdoD, ",SAGA,254,72,182,0,0,0,25,83,-58
+ldod-static,VirtualEditionController.deleteTaxonomy,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,900,387,513,0,11,-11,172,11,161
+ldod-static,EditionController.getUserContributions,1,"VirtualEdition, ",QUERY,0,0,0,103,0,103,0,165,-165
+ldod-static,VirtualEditionController.removeClassificationGame,1,"VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Tag, Taxonomy, ",SAGA,651,385,266,0,28,-28,82,11,71
+ldod-static,RecommendationController.setLinearVirtualEdition,2,"LdoDUser, ",SAGA,141,55,86,0,0,0,132,166,-34
+ldod-static,RecommendationController.presentEditionWithRecommendation,2,"LdoDUser, ",SAGA,141,55,86,0,22,-22,221,166,55
+ldod-static,SearchController.getVirtualEditions,0,"LdoD, ",QUERY,0,0,0,54,13,41,0,100,-100
+ldod-static,FragmentController.createAnnotation,0,"ExpertEdition, SimpleText, LdoD, Edition, ",SAGA,679,228,451,0,6,-6,794,102,692
+ldod-static,ClassificationGameController.end,2,"LdoDUser, ",SAGA,364,285,79,0,0,0,356,148,208
+ldod-static,VirtualEditionController.dissociate,2,"LdoDUser, ",SAGA,1570,553,1017,0,0,0,390,16,374
+ldod-static,FragmentController.getInter,1,"VirtualEditionInter, ",QUERY,0,0,0,0,13,-13,0,223,-223
+ldod-static,VirtualEditionController.switchRole,0,"LdoD, ",SAGA,28,28,0,0,12,-12,93,101,-8
+ldod-static,VirtualEditionController.mergeCategories,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,1433,380,1053,0,4,-4,447,11,436
+ldod-static,APIVirtualEditionController.getVirtualEditionIndex,0,"AddText, AltText, AltTextWeight, AnnexNote, UnclearText, AppText, DelText, Edition, ExpertEdition, ExpertEditionInter, FragInter, Fragment, GapText, LbText, LdoD, NoteText, PbText, RdgGrpText, RdgText, RefText, Rend, SegText, SimpleText, SourceInter, SpaceText, Surface, TextPortion, ",QUERY,0,0,0,20,2,18,0,360,-360
+ldod-static,VirtualEditionController.createVirtualEdition,2,"LdoDUser, ",SAGA,1862,446,1416,0,13,-13,1866,20,1846
+ldod-static,VirtualEditionController.getEditions,1,"Member, Section, VirtualEdition, VirtualEditionInter, Category, Taxonomy, ",QUERY,0,0,0,0,2,-2,0,363,-363
+ldod-static,FragmentController.searchAnnotations,0,"FragInter, ",QUERY,0,0,0,17,20,-3,0,290,-290
+ldod-static,RecommendationController.createLinearVirtualEdition,0,"ExpertEdition, ExpertEditionInter, FragInter, Fragment, NullEdition, SourceInter, Heteronym, LdoD, Edition, LdoDDate, ",SAGA,2914,499,2415,0,6,-6,2694,108,2586
+ldod-static,FragmentController.deleteAnnotation,0,"SimpleText, ",SAGA,900,446,454,0,0,0,360,14,346
+ldod-static,APIVirtualEditionController.getVirtualEditions4User,0,"AddText, AltText, AltTextWeight, AnnexNote, UnclearText, AppText, DelText, Edition, ExpertEdition, ExpertEditionInter, FragInter, Fragment, GapText, LbText, LdoD, NoteText, PbText, RdgGrpText, RdgText, RefText, Rend, SegText, SimpleText, SourceInter, SpaceText, Surface, TextPortion, ",QUERY,0,0,0,32,18,14,0,389,-389
+ldod-static,AdminController.removeTweets,0,"FragInter, Fragment, LdoD, ",SAGA,390,348,42,0,2,-2,55,13,42
+ldod-static,APIVirtualEditionController.getPublicVirtualEditions4User,2,"LdoDUser, ",QUERY,0,0,0,32,0,32,0,400,-400
+ldod-static,VirtualEditionController.editVirtualEdition,4,"TimeWindow, Tweet, MediaSource, TwitterCitation, Frequency, SocialMediaCriteria, GeographicLocation, AwareAnnotation, Citation, InfoRange, ",SAGA,1488,300,1188,0,36,-36,1234,115,1119
+ldod-static,AdminController.removeUser,0,"LdoD, ",SAGA,2430,560,1870,0,8,-8,556,19,537
+ldod-static,FragmentController.getFragmentWithInterForUrlId,1,"Member, Section, VirtualEdition, VirtualEditionInter, ",SAGA,254,72,182,0,0,0,460,229,231
+ldod-static,FragmentController.updateAnnotation,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,1127,82,1045,0,10,-10,686,99,587
+ldod-static,SignupController.signup,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,2837,557,2280,0,0,0,1107,19,1088
+ldod-static,VirtualEditionController.associateCategory,0,"ExpertEdition, FragInter, SimpleText, LdoD, Edition, ",SAGA,2014,437,1577,0,22,-22,174,101,73
+ldod-static,AdminController.exportVirtualEditions,4,"TimeWindow, MediaSource, Frequency, SocialMediaCriteria, GeographicLocation, ",QUERY,0,0,0,124,0,124,0,453,-453
+ldod-static,AdminController.loadVirtualFragments,2,"LdoDUser, ",SAGA,2516,591,1925,0,4,-4,805,57,748
+ldod-static,VirtualEditionController.reorderVirtualEdition,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,3394,747,2647,0,4,-4,304,59,245
+ldod-static,AdminController.deleteAllFragments,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,3462,928,2534,0,4,-4,646,35,611
+ldod-static,AdminController.deleteFragment,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,3462,905,2557,0,0,0,497,35,462
+ldod-static,VirtualEditionController.deleteVirtualEdition,4,"SocialMediaCriteria, Citation, InfoRange, ",SAGA,6829,857,5972,0,0,0,504,31,473
+ldod-static,RecommendationController.saveLinearVirtualEdition,4,"Citation, InfoRange, ",SAGA,4974,747,4227,0,4,-4,959,59,900
+ldod-static,AdminController.deleteVirtualEdition,4,"SocialMediaCriteria, Citation, InfoRange, ",SAGA,6829,861,5968,0,4,-4,1727,31,1696
+ldod-static,AdminController.loadVirtualCorpus,4,"TimeWindow, MediaSource, Frequency, SocialMediaCriteria, GeographicLocation, Citation, InfoRange, ",SAGA,9337,887,8450,0,10,-10,1038,44,994
+ldod-static,RecommendationController.createSectionVirtualEdition,4,"Citation, InfoRange, ",SAGA,7247,879,6368,0,13,-13,3725,40,3685
+ldod-static,AdminController.loadTEIFragmentsAtOnce,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,5163,1191,3972,0,22,-22,179,54,125
+ldod-static,AdminController.generateCitations,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,5449,796,4653,0,4,-4,4267,80,4187

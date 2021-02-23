@@ -212,6 +212,31 @@ func (i *Invocation) GetAccessType(idx int) string {
 	return i.ClusterAccesses[idx][0].(string)
 }
 
+func (i *Invocation) ContainsLock() bool {
+	for _, access := range i.ClusterAccesses {
+		if access[0] == "W" || access[0] == "RW" {
+			return true
+		}
+	}
+	return false
+}
+
+func (i *Invocation) ContainsRead() bool {
+	for _, access := range i.ClusterAccesses {
+		if access[0] == "R" {
+			return true
+		}
+	}
+	return false
+}
+
+func (i *Invocation) GetTypeFromAccesses() string {
+	if i.ContainsLock() {
+		return "COMPENSATABLE"
+	}
+	return "RETRIABLE"
+}
+
 func MapAccessTypeToMode(accessType string) int {
 	modeMap := map[string]int{
 		"R":  1,

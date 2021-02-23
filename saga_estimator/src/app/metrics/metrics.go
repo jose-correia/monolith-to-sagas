@@ -76,12 +76,18 @@ func (svc *DefaultHandler) CalculateControllerComplexityAndDependencies(decompos
 
 		cluster := decomposition.GetClusterFromID(invocation.ClusterID)
 		for i := idx; i < len(redesign.Redesign); i++ {
-			mapMutex.Lock()
-			cluster.AddCouplingDependency(
-				redesign.GetInvocation(i).ClusterID,
-				redesign.GetInvocation(i).GetAccessEntityID(0),
-			)
-			mapMutex.Unlock()
+			if len(redesign.GetInvocation(i).ClusterAccesses) > 0 {
+				mapMutex.Lock()
+				cluster.AddCouplingDependency(
+					redesign.GetInvocation(i).ClusterID,
+					redesign.GetInvocation(i).GetAccessEntityID(0),
+				)
+				mapMutex.Unlock()
+			}
+		}
+
+		if len(invocation.ClusterAccesses) == 0 {
+			continue
 		}
 
 		controllersTouchingSameEntities := map[string]bool{}
@@ -191,6 +197,10 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 	var systemComplexity int
 
 	for _, invocation := range redesign.Redesign {
+		if len(invocation.ClusterAccesses) == 0 {
+			continue
+		}
+
 		for i := range invocation.ClusterAccesses {
 			entity := invocation.GetAccessEntityID(i)
 			mode := files.MapAccessTypeToMode(invocation.GetAccessType(i))
