@@ -3,6 +3,7 @@ package redesign
 import (
 	"app/files"
 	"app/metrics"
+	"app/training"
 	"fmt"
 	"strconv"
 	"sync"
@@ -28,43 +29,28 @@ var (
 )
 
 type RedesignHandler interface {
-	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, bool) [][]string
+	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, bool, bool) [][]string
 	EstimateBestControllerOrchestrator(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) (map[*files.FunctionalityRedesign]int, error)
 	RedesignControllerUsingSimpleStrategy(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
 	RedesignControllerUsingRules(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
 }
 
 type DefaultHandler struct {
-	logger         log.Logger
-	metricsHandler metrics.MetricsHandler
+	logger          log.Logger
+	metricsHandler  metrics.MetricsHandler
+	trainingHandler training.TrainingHandler
 }
 
-func New(logger log.Logger, metricsHandler metrics.MetricsHandler) RedesignHandler {
+func New(logger log.Logger, metricsHandler metrics.MetricsHandler, trainingHandler training.TrainingHandler) RedesignHandler {
 	return &DefaultHandler{
-		logger:         log.With(logger, "module", "redesignHandler"),
-		metricsHandler: metricsHandler,
+		logger:          log.With(logger, "module", "redesignHandler"),
+		metricsHandler:  metricsHandler,
+		trainingHandler: trainingHandler,
 	}
 }
 
-func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebase, idToEntityMap map[string]string, useExpertDecompositions bool) [][]string {
-	csvData := [][]string{
-		{
-			"Codebase",
-			"Feature",
-			"Orchestrator",
-			"Entities",
-			"Type",
-			"Initial System Complexity",
-			"Final System Complexity",
-			"System Complexity Reduction",
-			"Initial Inconsistency Complexity",
-			"Final Inconsistency Complexity",
-			"Inconsistency Complexity Reduction",
-			"Initial Functionality Complexity",
-			"Final Functionality Complexity",
-			"Functionality Complexity Reduction",
-		},
-	}
+func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebase, idToEntityMap map[string]string, useExpertDecompositions bool, trainingDatasetFormat bool) [][]string {
+	var data [][]string
 
 	for _, dendogram := range codebase.Dendrograms {
 		decomposition := dendogram.GetDecomposition(useExpertDecompositions)
@@ -102,32 +88,25 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 				}
 
 				initialRedesign := controller.GetFunctionalityRedesign()
+
+				controllerTrainingFeatures := svc.trainingHandler.CalculateControllerTrainingFeatures(initialRedesign)
+
 				bestRedesigns, _ := svc.EstimateBestControllerOrchestrator(decomposition, controller, initialRedesign)
 
-				// for redesign := range bestRedesigns {
-				// 	for _, invocation := range redesign.Redesign {
-				// 		fmt.Printf("\n%v Cluster: %v\n", invocation.ID, invocation.ClusterID)
-				// 		for idx := range invocation.ClusterAccesses {
-				// 			entityID := invocation.GetAccessEntityID(idx)
-				// 			mode := invocation.GetAccessType(idx)
-				// 			entityName := idToEntityMap[strconv.Itoa(entityID)]
-
-				// 			fmt.Printf("%v - %v\n", entityName, mode)
-				// 		}
-				// 	}
-				// 	fmt.Printf("\n-----------------------------\n")
-				// }
-
 				for redesign, orchestratorID := range bestRedesigns {
-					csvData = svc.addResultToDataset(
-						csvData,
-						codebase,
-						controller,
-						initialRedesign,
-						redesign,
-						orchestratorID,
-						idToEntityMap,
-					)
+					if trainingDatasetFormat {
+						data = svc.trainingHandler.AddDataToTrainingDataset(data, codebase, controller, controllerTrainingFeatures, orchestratorID, idToEntityMap)
+					} else {
+						data = svc.addResultToDataset(
+							data,
+							codebase,
+							controller,
+							initialRedesign,
+							redesign,
+							orchestratorID,
+							idToEntityMap,
+						)
+					}
 
 					if !addSecondBestRedesignToDataset {
 						break
@@ -138,7 +117,7 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 		wg.Wait()
 	}
 
-	return csvData
+	return data
 }
 
 func (svc *DefaultHandler) addResultToDataset(

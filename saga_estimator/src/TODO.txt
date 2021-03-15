@@ -1,26 +1,3 @@
 ## TODO:
 
-- Unit tests on Values folder
-- Unit tests on Estimation function in codebase package
-
-
-// We are not populating the invocation type (comp, piv, retr) when we redesign
-
-
-// Implement redesign with rules
-Initial:
-     For each invocation:
-            add the cluster before, if it wasnt already
-
-
-For each invocation:
-    check if it can be merged with the last invocation of that cluster (we have to store the last always)
-    if it can:
-       merge
-       prune accesses 
-
-
-(do this x times until no changes are done to the trace)
-
-
-// Minimizar System Complexity ou FunctionalityComplexity ???? -> its almost the same for most cases
+Analisar os casos do Joao e perceber porque e' que o script da diferente.
