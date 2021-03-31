@@ -107,7 +107,7 @@ func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureM
 
 	for _, metrics := range clusterMetrics {
 		metrics.PivotInvocationFactor = float32(metrics.AveragePivotInvocations) / float32(featureMetrics.AveragePivotInvocations)
-		metrics.InvocationOperationFactor = float32(metrics.Operations) / float32(featureMetrics.Operations)
+		metrics.InvocationOperationFactor = float32(metrics.AverageInvocationOperations) / float32(featureMetrics.AverageInvocationOperations)
 	}
 }
 
@@ -134,9 +134,9 @@ func (svc *DefaultHandler) AddDataToTrainingDataset(
 		data = append(data, []string{
 			codebase.Name,
 			controller.Name,
-			controller.Type,
+			//controller.Type,
 			strconv.Itoa(cluster),
-			entityNamesCSVFormat,
+			//entityNamesCSVFormat,
 			fmt.Sprintf("%f", metrics.LockInvocationProbability),
 			fmt.Sprintf("%f", metrics.ReadInvocationProbability),
 			fmt.Sprintf("%f", metrics.ReadOperationProbability),

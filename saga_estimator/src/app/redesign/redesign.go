@@ -5,6 +5,7 @@ import (
 	"app/metrics"
 	"app/training"
 	"fmt"
+	"sort"
 	"strconv"
 	"sync"
 
@@ -13,14 +14,13 @@ import (
 
 const (
 	defaultRedesignName = "currentRedesign"
-	// add the second best orchestrator as a line in the CSV data
-	addSecondBestRedesignToDataset = false
-	// use the new redesign rules in order to redesign. If false, will use the simple redesign,
-	// with one invocation per cluster
-	useRedesignRules = true
+	// add only the best redesign as a line in the CSV data
+	onlyExportBestRedesign = false
 	// number of accesses previous to the invocation that will be taken into account to assert dependency
 	// if set to 0, there will be a dependency if the previous cluster does any R, and the next one does a W
-	previousReadDistanceThreshold = 3
+	//previousReadDistanceThreshold = 3
+	previousReadDistanceThreshold = 0
+	printTraces                   = true
 )
 
 var (
@@ -29,9 +29,8 @@ var (
 )
 
 type RedesignHandler interface {
-	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, bool, bool) [][]string
-	EstimateBestControllerOrchestrator(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) (map[*files.FunctionalityRedesign]int, error)
-	RedesignControllerUsingSimpleStrategy(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
+	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, float32, bool, []string, bool) [][]string
+	CreateSagaRedesigns(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) ([]*files.FunctionalityRedesign, error)
 	RedesignControllerUsingRules(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
 }
 
@@ -49,11 +48,24 @@ func New(logger log.Logger, metricsHandler metrics.MetricsHandler, trainingHandl
 	}
 }
 
-func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebase, idToEntityMap map[string]string, useExpertDecompositions bool, trainingDatasetFormat bool) [][]string {
+func (svc *DefaultHandler) shouldUseController(controllerName string, controllersToUse []string) bool {
+	if len(controllersToUse) != 0 {
+		for _, name := range controllersToUse {
+			if name == controllerName {
+				return true
+			}
+		}
+		return false
+	}
+
+	return true
+}
+
+func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebase, idToEntityMap map[string]string, cutValue float32, useExpertDecompositions bool, controllersToUse []string, trainingDatasetFormat bool) [][]string {
 	var data [][]string
 
 	for _, dendogram := range codebase.Dendrograms {
-		decomposition := dendogram.GetDecomposition(useExpertDecompositions)
+		decomposition := dendogram.GetDecomposition(cutValue, useExpertDecompositions)
 		if decomposition == nil {
 			svc.logger.Log("Failed to get decomposition from dendogram")
 			continue
@@ -61,6 +73,10 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 
 		// Add to each cluster, the list of controllers that use it
 		for _, controller := range decomposition.Controllers {
+			if !svc.shouldUseController(controller.Name, controllersToUse) {
+				continue
+			}
+
 			wg.Add(1)
 			go func(controller *files.Controller) {
 				defer wg.Done()
@@ -76,13 +92,14 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 		wg.Wait()
 
 		for _, controller := range decomposition.Controllers {
-			if controller.Name == "VirtualEditionController.createTopicModelling" {
+			if !svc.shouldUseController(controller.Name, controllersToUse) || controller.Name == "VirtualEditionController.createTopicModelling" || controller.Type == "QUERY" {
 				continue
 			}
+
 			wg.Add(1)
 			go func(controller *files.Controller) {
 				defer wg.Done()
-				if len(controller.EntitiesPerCluster) < 3 {
+				if len(controller.EntitiesPerCluster) <= 2 {
 					//svc.logger.Log("In order to decide the best redesign the controller must have more than 2 clusters.. Skiping %s", controller.Name)
 					return
 				}
@@ -91,11 +108,11 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 
 				controllerTrainingFeatures := svc.trainingHandler.CalculateControllerTrainingFeatures(initialRedesign)
 
-				bestRedesigns, _ := svc.EstimateBestControllerOrchestrator(decomposition, controller, initialRedesign)
+				sagaRedesigns, _ := svc.CreateSagaRedesigns(decomposition, controller, initialRedesign)
 
-				for redesign, orchestratorID := range bestRedesigns {
+				for idx, redesign := range sagaRedesigns {
 					if trainingDatasetFormat {
-						data = svc.trainingHandler.AddDataToTrainingDataset(data, codebase, controller, controllerTrainingFeatures, orchestratorID, idToEntityMap)
+						data = svc.trainingHandler.AddDataToTrainingDataset(data, codebase, controller, controllerTrainingFeatures, redesign.OrchestratorID, idToEntityMap)
 					} else {
 						data = svc.addResultToDataset(
 							data,
@@ -103,12 +120,21 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 							controller,
 							initialRedesign,
 							redesign,
-							orchestratorID,
+							redesign.OrchestratorID,
 							idToEntityMap,
 						)
 					}
 
-					if !addSecondBestRedesignToDataset {
+					if idx == 0 && printTraces {
+						fmt.Printf("\n\n---------- %v ----------\n\n", controller.Name)
+						fmt.Printf("Initial redesign\n\n")
+						svc.printRedesignTrace(initialRedesign.Redesign, idToEntityMap)
+
+						fmt.Printf("\n\nSAGA\n")
+						svc.printRedesignTrace(redesign.Redesign, idToEntityMap)
+					}
+
+					if onlyExportBestRedesign {
 						break
 					}
 				}
@@ -118,6 +144,15 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(codebase *files.Codebas
 	}
 
 	return data
+}
+
+func (svc *DefaultHandler) printRedesignTrace(invocations []*files.Invocation, idToEntityMap map[string]string) {
+	for _, invocation := range invocations {
+		fmt.Printf("\n- %v  (%v)\n", invocation.ClusterID, invocation.Type)
+		for idx, _ := range invocation.ClusterAccesses {
+			fmt.Printf("%v (%v) | ", idToEntityMap[strconv.Itoa(invocation.GetAccessEntityID(idx))], invocation.GetAccessType(idx))
+		}
+	}
 }
 
 func (svc *DefaultHandler) addResultToDataset(
@@ -136,7 +171,6 @@ func (svc *DefaultHandler) addResultToDataset(
 	}
 
 	systemComplexityReduction := initialRedesign.SystemComplexity - bestRedesign.SystemComplexity
-	inconsistencyComplexityReduction := initialRedesign.InconsistencyComplexity - bestRedesign.InconsistencyComplexity
 	functionalityComplexityReduction := initialRedesign.FunctionalityComplexity - bestRedesign.FunctionalityComplexity
 
 	data = append(data, []string{
@@ -144,13 +178,9 @@ func (svc *DefaultHandler) addResultToDataset(
 		controller.Name,
 		strconv.Itoa(orchestratorID),
 		entityNamesCSVFormat,
-		controller.Type,
 		strconv.Itoa(initialRedesign.SystemComplexity),
 		strconv.Itoa(bestRedesign.SystemComplexity),
 		strconv.Itoa(systemComplexityReduction),
-		strconv.Itoa(initialRedesign.InconsistencyComplexity),
-		strconv.Itoa(bestRedesign.InconsistencyComplexity),
-		strconv.Itoa(inconsistencyComplexityReduction),
 		strconv.Itoa(initialRedesign.FunctionalityComplexity),
 		strconv.Itoa(bestRedesign.FunctionalityComplexity),
 		strconv.Itoa(functionalityComplexityReduction),
@@ -159,150 +189,32 @@ func (svc *DefaultHandler) addResultToDataset(
 	return data
 }
 
-func (svc *DefaultHandler) EstimateBestControllerOrchestrator(decomposition *files.Decomposition, controller *files.Controller, initialRedesign *files.FunctionalityRedesign) (map[*files.FunctionalityRedesign]int, error) {
-	var currentRedesign *files.FunctionalityRedesign
+func (svc *DefaultHandler) CreateSagaRedesigns(decomposition *files.Decomposition, controller *files.Controller, initialRedesign *files.FunctionalityRedesign) ([]*files.FunctionalityRedesign, error) {
+	sagaRedesigns := []*files.FunctionalityRedesign{}
 
-	bestRedesign := &files.FunctionalityRedesign{}
-	var bestClusterID int
-	bestCodebaseComplexity := 999999999999999999
-
-	secondBestRedesign := &files.FunctionalityRedesign{}
-	var secondBestClusterID int
-	secondBestCodebaseComplexity := 999999999999999999
-
-	first := true
 	for clusterName := range controller.EntitiesPerCluster {
 		cluster := decomposition.Clusters[clusterName]
 
-		if useRedesignRules {
-			currentRedesign = svc.RedesignControllerUsingRules(controller, initialRedesign, cluster)
-		} else {
-			if first {
-				currentRedesign = svc.RedesignControllerUsingSimpleStrategy(controller, initialRedesign, cluster)
-				first = false
-			} else {
-				svc.swapRedesignOrchestrator(currentRedesign, cluster)
-			}
-		}
+		redesign := svc.RedesignControllerUsingRules(controller, initialRedesign, cluster)
 
-		svc.metricsHandler.CalculateDecompositionMetrics(decomposition, controller, currentRedesign)
+		svc.metricsHandler.CalculateDecompositionMetrics(decomposition, controller, redesign)
 
-		// metric := currentRedesign.SystemComplexity
-		complexity := currentRedesign.FunctionalityComplexity
+		orchestratorID, _ := strconv.Atoi(clusterName)
+		redesign.OrchestratorID = orchestratorID
 
-		if complexity < bestCodebaseComplexity {
-			secondBestClusterID = bestClusterID
-			*secondBestRedesign = *bestRedesign
-
-			bestClusterID, _ = strconv.Atoi(clusterName)
-			*bestRedesign = *currentRedesign
-			bestCodebaseComplexity = complexity
-
-			continue
-		}
-
-		if complexity < secondBestCodebaseComplexity {
-			secondBestClusterID, _ = strconv.Atoi(clusterName)
-			*secondBestRedesign = *currentRedesign
-			secondBestCodebaseComplexity = complexity
-		}
+		sagaRedesigns = append(sagaRedesigns, redesign)
 	}
 
-	return map[*files.FunctionalityRedesign]int{
-		bestRedesign:       bestClusterID,
-		secondBestRedesign: secondBestClusterID,
-	}, nil
-}
-
-func (svc *DefaultHandler) printRedesign(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, orchestratorName string) {
-	fmt.Printf("Orchestrator: %v\n", orchestratorName)
-	fmt.Printf("System complexity: %v\n", decomposition.Complexity)
-	fmt.Printf("Redesign functionality complexity: %v\n", redesign.FunctionalityComplexity)
-	fmt.Printf("Redesign system complexity: %v\n\n", redesign.SystemComplexity)
-}
-
-func (svc *DefaultHandler) RedesignControllerUsingSimpleStrategy(controller *files.Controller, initialRedesign *files.FunctionalityRedesign, orchestrator *files.Cluster) *files.FunctionalityRedesign {
-	redesign := &files.FunctionalityRedesign{
-		Name:                    defaultRedesignName,
-		UsedForMetrics:          true,
-		Redesign:                []*files.Invocation{},
-		SystemComplexity:        0,
-		FunctionalityComplexity: 0,
-		InconsistencyComplexity: 0,
-		PivotTransaction:        0,
-	}
-
-	// Initialize Invocation, set dependencies and orchestrator
-	var dependencyInvocationIDs []int
-	var orchestratorInvocation *files.Invocation
-	var invocationID int
-	for clusterName := range controller.EntitiesPerCluster {
-		clusterID, _ := strconv.Atoi(clusterName)
-		invocation := &files.Invocation{
-			Name:              clusterName,
-			ID:                invocationID,
-			ClusterID:         clusterID,
-			ClusterAccesses:   [][]interface{}{},
-			RemoteInvocations: []int{},
-			Type:              "RETRIABLE",
+	// order the redesigns by ascending complexity
+	sort.Slice(sagaRedesigns, func(i, j int) bool {
+		// return sagaRedesigns[i].SystemComplexity < sagaRedesigns[j].SystemComplexity
+		if sagaRedesigns[i].FunctionalityComplexity == sagaRedesigns[j].FunctionalityComplexity {
+			return sagaRedesigns[i].SystemComplexity < sagaRedesigns[j].SystemComplexity
 		}
+		return sagaRedesigns[i].FunctionalityComplexity < sagaRedesigns[j].FunctionalityComplexity
+	})
 
-		if clusterName != orchestrator.Name {
-			dependencyInvocationIDs = append(dependencyInvocationIDs, invocation.ID)
-		} else {
-			invocation.Type = "COMPENSATABLE"
-			orchestratorInvocation = invocation
-		}
-
-		redesign.Redesign = append(redesign.Redesign, invocation)
-		invocationID++
-	}
-
-	orchestratorInvocation.RemoteInvocations = dependencyInvocationIDs
-
-	for _, initialInvocation := range initialRedesign.Redesign {
-		for _, newInvocation := range redesign.Redesign {
-			if initialInvocation.ClusterID == newInvocation.ClusterID {
-				for idx, _ := range initialInvocation.ClusterAccesses {
-					newInvocation.AddPrunedAccess(
-						initialInvocation.GetAccessEntityID(idx),
-						initialInvocation.GetAccessType(idx),
-					)
-
-					if initialInvocation.GetAccessType(idx) == "W" && newInvocation.Type != "COMPENSATABLE" {
-						newInvocation.Type = "COMPENSATABLE"
-					}
-				}
-			}
-		}
-	}
-
-	return redesign
-}
-
-func (svc *DefaultHandler) swapRedesignOrchestrator(redesign *files.FunctionalityRedesign, newOrchestrator *files.Cluster) {
-	var dependencyInvocationIDs []int
-	var orchestratorInvocation *files.Invocation
-	for _, invocation := range redesign.Redesign {
-		clusterID, _ := strconv.Atoi(newOrchestrator.Name)
-		if invocation.ClusterID == clusterID {
-			invocation.Type = "COMPENSATABLE"
-			orchestratorInvocation = invocation
-			continue
-		}
-
-		dependencyInvocationIDs = append(dependencyInvocationIDs, invocation.ID)
-
-		if len(invocation.ClusterAccesses) > 0 {
-			invocation.Type = "RETRIABLE"
-			invocation.RemoteInvocations = []int{}
-		}
-	}
-
-	orchestratorInvocation.RemoteInvocations = dependencyInvocationIDs
-	redesign.FunctionalityComplexity = 0
-	redesign.InconsistencyComplexity = 0
-	redesign.SystemComplexity = 0
+	return sagaRedesigns, nil
 }
 
 func (svc *DefaultHandler) RedesignControllerUsingRules(controller *files.Controller, initialRedesign *files.FunctionalityRedesign, orchestrator *files.Cluster) *files.FunctionalityRedesign {
@@ -360,7 +272,7 @@ func (svc *DefaultHandler) RedesignControllerUsingRules(controller *files.Contro
 	// while any merge is done, iterate all the invocations
 	var noMerges bool
 	for !noMerges {
-		fmt.Printf("%v can be simplified\n", controller.Name)
+		// fmt.Printf("%v can be simplified\n", controller.Name)
 		redesign.Redesign, noMerges = svc.mergeAllPossibleInvocations(redesign.Redesign)
 	}
 
@@ -428,12 +340,18 @@ func (svc *DefaultHandler) isMergeableWithPrevious(
 		return true
 	}
 
+	prevInvocation := invocations[invocationIdx-1]
+	// if the previous is an empty orchestrator call we take into consideration the one before
+	if len(prevInvocation.ClusterAccesses) == 0 && invocationIdx > 1 {
+		prevInvocation = invocations[invocationIdx-2]
+	}
+
 	if previousReadDistanceThreshold != 0 {
 		var distance int
 		var containsReadWithinThreshold bool
-		prevInvocationAccesses := invocations[invocationIdx-1].ClusterAccesses
-		for idx := len(prevInvocationAccesses) - 1; idx >= 0; idx-- {
-			if invocations[invocationIdx-1].GetAccessType(idx) == "R" {
+
+		for idx := len(prevInvocation.ClusterAccesses) - 1; idx >= 0; idx-- {
+			if prevInvocation.GetAccessType(idx) == "R" {
 				containsReadWithinThreshold = true
 				break
 			}
@@ -447,7 +365,7 @@ func (svc *DefaultHandler) isMergeableWithPrevious(
 		if !containsReadWithinThreshold {
 			return true
 		}
-	} else if !invocations[invocationIdx-1].ContainsRead() {
+	} else if !prevInvocation.ContainsRead() {
 		// fmt.Printf("merge: %d\n", invocations[invocationIdx].ClusterID)
 		return true
 	}

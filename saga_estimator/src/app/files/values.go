@@ -26,9 +26,17 @@ type Dendogram struct {
 	Decompositions []*Decomposition `json:"decompositions,omitempty"`
 }
 
-func (d *Dendogram) GetDecomposition(expert bool) *Decomposition {
+func (d *Dendogram) GetDecomposition(cutValue float32, expert bool) *Decomposition {
+	if len(d.Decompositions) == 1 {
+		return d.Decompositions[0]
+	}
+
 	for _, decomposition := range d.Decompositions {
-		if decomposition.Expert {
+		if cutValue == decomposition.CutValue {
+			return decomposition
+		}
+
+		if expert && decomposition.Expert {
 			return decomposition
 		}
 	}
@@ -170,6 +178,7 @@ type FunctionalityRedesign struct {
 	FunctionalityComplexity int           `json:"functionalityComplexity,omitempty"`
 	InconsistencyComplexity int           `json:"inconsistencyComplexity,omitempty"`
 	PivotTransaction        int           `json:"pivotTransaction,omitempty"`
+	OrchestratorID          int
 }
 
 func (f *FunctionalityRedesign) GetInvocation(idx int) *Invocation {

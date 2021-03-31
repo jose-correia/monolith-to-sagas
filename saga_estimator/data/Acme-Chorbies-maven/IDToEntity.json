@@ -1,0 +1,19 @@
+{
+  "1" : "Actor",
+  "2" : "Administrator",
+  "3" : "Attachment",
+  "4" : "Banner",
+  "5" : "Chirp",
+  "6" : "Chorbi",
+  "7" : "Configuration",
+  "8" : "Coordinates",
+  "9" : "CreditCard",
+  "10" : "Customer",
+  "11" : "DomainEntity",
+  "12" : "Event",
+  "13" : "Likes",
+  "14" : "Manager",
+  "15" : "Register",
+  "16" : "SearchTemplate",
+  "17" : "UserAccount"
+}

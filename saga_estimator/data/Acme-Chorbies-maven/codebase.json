@@ -1,0 +1,4841 @@
+{
+  "name" : "Acme-Chorbies-maven",
+  "profiles" : {
+    "Generic" : [ "EventManagerController.create", "EventController.list", "EventController.view", "ChirpCustomerController.forward", "ViewChorbiController.list", "SearchTemplateChorbiController.search", "LikesChorbiController.view", "EventManagerController.save", "ChorbiController.delete", "ChorbiAdministratorController.updateChorbiesChargedFees", "CreditCardCustomerController.delete", "LikesChorbiController.save", "EventController.listAll", "ConfigurationAdministratorController.save", "ChorbiController.save", "ViewChorbiController.recivedLikedList", "ChirpManagerController.write", "CreditCardCustomerController.create", "BannerAdministratorController.save", "BannerAdministratorController.list", "ChirpCustomerController.reply", "ManagerController.edit", "LikesChorbiController.sent", "ViewChorbiController.view", "ManagerController.save", "ChirpManagerController.addAttachment", "ManagerAdministratorController.list", "RegisterChorbiController.register", "EventChorbiController.received", "BannerAdministratorController.edit", "LikesChorbiController.create", "ChirpCustomerController.removeAttachment", "DashboardAdministratorController.dashboard", "CreditCardCustomerController.save", "ChorbiAdministratorController.ban", "RegisterChorbiController.unregister", "ChirpCustomerController.delete", "ConfigurationAdministratorController.edit", "WelcomeController.index", "ChorbiController.edit", "ChirpCustomerController.sent", "BannerAdministratorController.view", "ChirpManagerController.removeAttachment", "ChorbiAdministratorController.unban", "CreditCardCustomerController.edit", "CreditCardCustomerController.view", "ChirpCustomerController.addAttachment", "ManagerController.delete", "EventManagerController.received", "ChorbiAdministratorController.list", "ChirpCustomerController.received", "ViewChorbiController.myProfile", "ChirpCustomerController.view", "LikesChorbiController.delete", "EventManagerController.edit", "ChirpCustomerController.write", "ConfigurationAdministratorController.view" ]
+  },
+  "dendrograms" : [ {
+    "name" : "Test",
+    "codebaseName" : "Acme-Chorbies-maven",
+    "linkageType" : "average",
+    "accessMetricWeight" : 25.0,
+    "writeMetricWeight" : 25.0,
+    "readMetricWeight" : 25.0,
+    "sequenceMetricWeight" : 25.0,
+    "profile" : "Generic",
+    "decompositions" : [ {
+      "name" : "N5",
+      "codebaseName" : "Acme-Chorbies-maven",
+      "dendrogramName" : "Test",
+      "expert" : false,
+      "cutValue" : 5.0,
+      "cutType" : "N",
+      "silhouetteScore" : 0.25,
+      "complexity" : 44.84,
+      "performance" : 6.09,
+      "cohesion" : 0.68,
+      "coupling" : 0.43,
+      "clusters" : {
+        "0" : {
+          "name" : "0",
+          "complexity" : 54.38,
+          "cohesion" : 0.46,
+          "coupling" : 1.0,
+          "couplingDependencies" : {
+            "1" : [ 2, 7 ],
+            "2" : [ 4 ],
+            "3" : [ 16, 6, 8, 13 ],
+            "4" : [ 12, 15 ]
+          },
+          "entities" : [ 1, 17, 3, 5, 9, 10, 11, 14 ]
+        },
+        "1" : {
+          "name" : "1",
+          "complexity" : 125.78,
+          "cohesion" : 0.61,
+          "coupling" : 0.44,
+          "couplingDependencies" : {
+            "0" : [ 17, 9, 10, 11 ],
+            "2" : [ 4 ],
+            "3" : [ 16 ]
+          },
+          "entities" : [ 2, 7 ]
+        },
+        "2" : {
+          "name" : "2",
+          "complexity" : 10.2,
+          "cohesion" : 1.0,
+          "coupling" : 0.03,
+          "couplingDependencies" : {
+            "0" : [ 11 ]
+          },
+          "entities" : [ 4 ]
+        },
+        "3" : {
+          "name" : "3",
+          "complexity" : 103.74,
+          "cohesion" : 0.48,
+          "coupling" : 0.53,
+          "couplingDependencies" : {
+            "0" : [ 17, 1, 5, 9, 11 ],
+            "1" : [ 7 ],
+            "4" : [ 12, 15 ]
+          },
+          "entities" : [ 16, 6, 8, 13 ]
+        },
+        "4" : {
+          "name" : "4",
+          "complexity" : 80.14,
+          "cohesion" : 0.86,
+          "coupling" : 0.16,
+          "couplingDependencies" : {
+            "0" : [ 5, 11, 14 ],
+            "3" : [ 6 ]
+          },
+          "entities" : [ 12, 15 ]
+        }
+      },
+      "controllers" : {
+        "EventManagerController.create" : {
+          "name" : "EventManagerController.create",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventManagerController.create",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "EventController.list" : {
+          "name" : "EventController.list",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "12" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventController.list",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "4" : [ 12, 15 ]
+          }
+        },
+        "EventController.view" : {
+          "name" : "EventController.view",
+          "type" : "QUERY",
+          "complexity" : 85.0,
+          "performance" : 13.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "12" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 5, 11, 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 4",
+              "id" : 4,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 12, 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 16, 6, 8, 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 17, 1, 5, 9, 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 3",
+              "id" : 8,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 0",
+              "id" : 9,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 4",
+              "id" : 10,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 4",
+              "id" : 12,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 12, 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 4",
+              "id" : 14,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ChirpCustomerController.forward" : {
+          "name" : "ChirpCustomerController.forward",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "3" : 2,
+            "5" : 3,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.forward",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 3 ], [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ], [ "W", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 3,
+            "functionalityComplexity" : 2,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 3, 5, 10, 11 ]
+          }
+        },
+        "ViewChorbiController.list" : {
+          "name" : "ViewChorbiController.list",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "6" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ViewChorbiController.list",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "3" : [ 6 ]
+          }
+        },
+        "SearchTemplateChorbiController.search" : {
+          "name" : "SearchTemplateChorbiController.search",
+          "type" : "SAGA",
+          "complexity" : 251.0,
+          "performance" : 25.0,
+          "type" : "SAGA",
+          "entities" : {
+            "16" : 3,
+            "1" : 1,
+            "17" : 1,
+            "6" : 3,
+            "7" : 1,
+            "8" : 3,
+            "9" : 1,
+            "10" : 1,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "SearchTemplateChorbiController.search",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 1",
+              "id" : 4,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ], [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 8 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "R", 8 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 8 ], [ "W", 8 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 0",
+              "id" : 14,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 3",
+              "id" : 15,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 0",
+              "id" : 16,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 1",
+              "id" : 17,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 18 ],
+              "firstAccessedEntityIDs" : [ 2, 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "18: 3",
+              "id" : 18,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ] ],
+              "remoteInvocations" : [ 19 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "19: 0",
+              "id" : 19,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 20 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "20: 3",
+              "id" : 20,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 8 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 21 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "21: 0",
+              "id" : 21,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 22 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "22: 3",
+              "id" : 22,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 23 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "23: 1",
+              "id" : 23,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 24 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "24: 3",
+              "id" : 24,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 25 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "25: 0",
+              "id" : 25,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 26 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "26: 3",
+              "id" : 26,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 154,
+            "functionalityComplexity" : 14,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ],
+            "1" : [ 7 ],
+            "3" : [ 16, 6, 8 ]
+          }
+        },
+        "LikesChorbiController.view" : {
+          "name" : "LikesChorbiController.view",
+          "type" : "QUERY",
+          "complexity" : 41.0,
+          "performance" : 6.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "13" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "LikesChorbiController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 2,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "EventManagerController.save" : {
+          "name" : "EventManagerController.save",
+          "type" : "SAGA",
+          "complexity" : 315.0,
+          "performance" : 45.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 3,
+            "5" : 2,
+            "6" : 3,
+            "7" : 1,
+            "8" : 3,
+            "9" : 1,
+            "10" : 3,
+            "11" : 3,
+            "12" : 3,
+            "14" : 3,
+            "15" : 1,
+            "16" : 2,
+            "17" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventManagerController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 4",
+              "id" : 3,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 4",
+              "id" : 5,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 4",
+              "id" : 7,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 12 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "W", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 4",
+              "id" : 9,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 12 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 14 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 4",
+              "id" : 11,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ], [ "W", 12 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 4",
+              "id" : 13,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 0",
+              "id" : 14,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 4",
+              "id" : 15,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 0",
+              "id" : 16,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 4",
+              "id" : 17,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 18 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "18: 0",
+              "id" : 18,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ 19 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "19: 1",
+              "id" : 19,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 20 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "20: 0",
+              "id" : 20,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 10 ] ],
+              "remoteInvocations" : [ 21 ],
+              "firstAccessedEntityIDs" : [ 17, 9, 10, 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "21: 3",
+              "id" : 21,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 22 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "22: 0",
+              "id" : 22,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ] ],
+              "remoteInvocations" : [ 23 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "23: 3",
+              "id" : 23,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 8 ], [ "W", 8 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 24 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "24: 0",
+              "id" : 24,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 25 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "25: 3",
+              "id" : 25,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ] ],
+              "remoteInvocations" : [ 26 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "26: 1",
+              "id" : 26,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 27 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "27: 3",
+              "id" : 27,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ], [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 28 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "28: 0",
+              "id" : 28,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ], [ "W", 14 ] ],
+              "remoteInvocations" : [ 29 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "29: 4",
+              "id" : 29,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 30 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "30: 0",
+              "id" : 30,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 14 ] ],
+              "remoteInvocations" : [ 31 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "31: 4",
+              "id" : 31,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 32 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "32: 0",
+              "id" : 32,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 33 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "33: 4",
+              "id" : 33,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ], [ "W", 12 ] ],
+              "remoteInvocations" : [ 34 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "34: 0",
+              "id" : 34,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 35 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "35: 4",
+              "id" : 35,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 36 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "36: 0",
+              "id" : 36,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 37 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "37: 4",
+              "id" : 37,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 38 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "38: 3",
+              "id" : 38,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 39 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "39: 4",
+              "id" : 39,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 40 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "40: 0",
+              "id" : 40,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 41 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "41: 4",
+              "id" : 41,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 42 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "42: 3",
+              "id" : 42,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 43 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "43: 4",
+              "id" : 43,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 44 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "44: 0",
+              "id" : 44,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "W", 10 ], [ "W", 5 ] ],
+              "remoteInvocations" : [ 45 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "45: 4",
+              "id" : 45,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 46 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "46: 0",
+              "id" : 46,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 225,
+            "functionalityComplexity" : 41,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 5, 9, 10, 11, 14 ],
+            "1" : [ 7 ],
+            "3" : [ 16, 6, 8 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ChorbiController.delete" : {
+          "name" : "ChorbiController.delete",
+          "type" : "SAGA",
+          "complexity" : 194.0,
+          "performance" : 22.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "3" : 3,
+            "5" : 3,
+            "6" : 3,
+            "8" : 3,
+            "9" : 3,
+            "10" : 3,
+            "11" : 1,
+            "12" : 1,
+            "13" : 3,
+            "15" : 3,
+            "16" : 3,
+            "17" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiController.delete",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ], [ "W", 9 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 8 ], [ "W", 8 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 16 ], [ "W", 16 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "W", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 3 ], [ "R", 11 ], [ "R", 10 ], [ "W", 10 ], [ "R", 5 ], [ "W", 5 ], [ "R", 3 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 4",
+              "id" : 13,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 3",
+              "id" : 14,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 4",
+              "id" : 15,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 0",
+              "id" : 16,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 3",
+              "id" : 17,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 18 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "18: 0",
+              "id" : 18,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 19 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "19: 4",
+              "id" : 19,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 20 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "20: 3",
+              "id" : 20,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 21 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "21: 4",
+              "id" : 21,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 15 ] ],
+              "remoteInvocations" : [ 22 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "22: 3",
+              "id" : 22,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 6 ] ],
+              "remoteInvocations" : [ 23 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "23: 0",
+              "id" : 23,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 79,
+            "functionalityComplexity" : 60,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 3, 5, 9, 10, 11 ],
+            "3" : [ 16, 6, 8, 13 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ChorbiAdministratorController.updateChorbiesChargedFees" : {
+          "name" : "ChorbiAdministratorController.updateChorbiesChargedFees",
+          "type" : "SAGA",
+          "complexity" : 50.0,
+          "performance" : 7.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "2" : 1,
+            "6" : 3,
+            "7" : 1,
+            "9" : 1,
+            "10" : 3,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiAdministratorController.updateChorbiesChargedFees",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 1",
+              "id" : 3,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 2 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 2 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 9 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 1",
+              "id" : 6,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 10 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 3",
+              "id" : 8,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 26,
+            "functionalityComplexity" : 15,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ],
+            "1" : [ 2, 7 ],
+            "3" : [ 6 ]
+          }
+        },
+        "CreditCardCustomerController.delete" : {
+          "name" : "CreditCardCustomerController.delete",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 2,
+            "10" : 2,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "CreditCardCustomerController.delete",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "W", 11 ], [ "W", 10 ], [ "W", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 40,
+            "functionalityComplexity" : 8,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "LikesChorbiController.save" : {
+          "name" : "LikesChorbiController.save",
+          "type" : "SAGA",
+          "complexity" : 143.0,
+          "performance" : 14.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "1" : 1,
+            "6" : 3,
+            "11" : 3,
+            "13" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "LikesChorbiController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "W", 13 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 0",
+              "id" : 14,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 3",
+              "id" : 15,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "W", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 62,
+            "functionalityComplexity" : 56,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "EventController.listAll" : {
+          "name" : "EventController.listAll",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "12" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventController.listAll",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ConfigurationAdministratorController.save" : {
+          "name" : "ConfigurationAdministratorController.save",
+          "type" : "SAGA",
+          "complexity" : 42.0,
+          "performance" : 5.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "1" : 1,
+            "2" : 1,
+            "7" : 3,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ConfigurationAdministratorController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 1",
+              "id" : 2,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ], [ "W", 7 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 1",
+              "id" : 4,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 2 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 2 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 1 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 1",
+              "id" : 6,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "W", 7 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 36,
+            "functionalityComplexity" : 9,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 11 ],
+            "1" : [ 2, 7 ]
+          }
+        },
+        "ChorbiController.save" : {
+          "name" : "ChorbiController.save",
+          "type" : "SAGA",
+          "complexity" : 208.0,
+          "performance" : 14.0,
+          "type" : "SAGA",
+          "entities" : {
+            "16" : 2,
+            "17" : 3,
+            "1" : 3,
+            "6" : 3,
+            "7" : 1,
+            "8" : 3,
+            "10" : 2,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 17 ], [ "W", 1 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 8 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 8 ], [ "W", 8 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 1",
+              "id" : 14,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 3",
+              "id" : 15,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ], [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 252,
+            "functionalityComplexity" : 49,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 10, 11 ],
+            "1" : [ 7 ],
+            "3" : [ 16, 6, 8 ]
+          }
+        },
+        "ViewChorbiController.recivedLikedList" : {
+          "name" : "ViewChorbiController.recivedLikedList",
+          "type" : "QUERY",
+          "complexity" : 36.0,
+          "performance" : 4.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "1" : 1,
+            "6" : 1,
+            "9" : 1,
+            "10" : 1,
+            "11" : 1,
+            "13" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ViewChorbiController.recivedLikedList",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 1 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 12,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 9, 10, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "ChirpManagerController.write" : {
+          "name" : "ChirpManagerController.write",
+          "type" : "QUERY",
+          "complexity" : 13.0,
+          "performance" : 3.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "11" : 1,
+            "12" : 1,
+            "14" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpManagerController.write",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 4",
+              "id" : 3,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 2,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11, 14 ],
+            "4" : [ 12 ]
+          }
+        },
+        "CreditCardCustomerController.create" : {
+          "name" : "CreditCardCustomerController.create",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 2,
+            "10" : 2,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "CreditCardCustomerController.create",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "W", 10 ], [ "W", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 13,
+            "functionalityComplexity" : 11,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "BannerAdministratorController.save" : {
+          "name" : "BannerAdministratorController.save",
+          "type" : "SAGA",
+          "complexity" : 44.0,
+          "performance" : 9.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "2" : 1,
+            "4" : 3,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "BannerAdministratorController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 2",
+              "id" : 3,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ], [ "W", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 2",
+              "id" : 5,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ], [ "W", 4 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 1",
+              "id" : 7,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 2 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 2 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 1",
+              "id" : 9,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 2 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 2 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 2",
+              "id" : 10,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "W", 4 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 28,
+            "functionalityComplexity" : 18,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "1" : [ 2 ],
+            "2" : [ 4 ]
+          }
+        },
+        "BannerAdministratorController.list" : {
+          "name" : "BannerAdministratorController.list",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "4" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "BannerAdministratorController.list",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 2",
+              "id" : 2,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "2" : [ 4 ]
+          }
+        },
+        "ChirpCustomerController.reply" : {
+          "name" : "ChirpCustomerController.reply",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "5" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.reply",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 5, 10, 11 ]
+          }
+        },
+        "ManagerController.edit" : {
+          "name" : "ManagerController.edit",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 3,
+            "1" : 2,
+            "10" : 2,
+            "11" : 3,
+            "14" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ManagerController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "W", 17 ], [ "W", 1 ], [ "R", 14 ], [ "W", 14 ], [ "R", 11 ], [ "W", 11 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 79,
+            "functionalityComplexity" : 14,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 10, 11, 14 ]
+          }
+        },
+        "LikesChorbiController.sent" : {
+          "name" : "LikesChorbiController.sent",
+          "type" : "QUERY",
+          "complexity" : 35.0,
+          "performance" : 4.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "13" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "LikesChorbiController.sent",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 10,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "ViewChorbiController.view" : {
+          "name" : "ViewChorbiController.view",
+          "type" : "QUERY",
+          "complexity" : 55.0,
+          "performance" : 6.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "13" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ViewChorbiController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 10,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "ManagerController.save" : {
+          "name" : "ManagerController.save",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 2,
+            "1" : 2,
+            "10" : 2,
+            "14" : 2
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ManagerController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 17 ], [ "W", 1 ], [ "W", 14 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 52,
+            "functionalityComplexity" : 4,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 10, 14 ]
+          }
+        },
+        "ChirpManagerController.addAttachment" : {
+          "name" : "ChirpManagerController.addAttachment",
+          "type" : "QUERY",
+          "complexity" : 13.0,
+          "performance" : 3.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "11" : 1,
+            "12" : 1,
+            "14" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpManagerController.addAttachment",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 4",
+              "id" : 3,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 2,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11, 14 ],
+            "4" : [ 12 ]
+          }
+        },
+        "ManagerAdministratorController.list" : {
+          "name" : "ManagerAdministratorController.list",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "14" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ManagerAdministratorController.list",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 14 ]
+          }
+        },
+        "RegisterChorbiController.register" : {
+          "name" : "RegisterChorbiController.register",
+          "type" : "SAGA",
+          "complexity" : 146.0,
+          "performance" : 22.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "6" : 3,
+            "11" : 1,
+            "12" : 3,
+            "15" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "RegisterChorbiController.register",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 4",
+              "id" : 6,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 15 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 4",
+              "id" : 8,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 15 ], [ "W", 12 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 0",
+              "id" : 9,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 3",
+              "id" : 10,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 0",
+              "id" : 11,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 4",
+              "id" : 12,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 0",
+              "id" : 14,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 4",
+              "id" : 15,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 0",
+              "id" : 16,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 4",
+              "id" : 17,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 18 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "18: 0",
+              "id" : 18,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 19 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "19: 4",
+              "id" : 19,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 20 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "20: 0",
+              "id" : 20,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 21 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "21: 4",
+              "id" : 21,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "W", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 22 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "22: 0",
+              "id" : 22,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 23 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "23: 4",
+              "id" : 23,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 51,
+            "functionalityComplexity" : 87,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "EventChorbiController.received" : {
+          "name" : "EventChorbiController.received",
+          "type" : "QUERY",
+          "complexity" : 84.0,
+          "performance" : 12.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "12" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventChorbiController.received",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 4",
+              "id" : 5,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 4",
+              "id" : 7,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 4",
+              "id" : 11,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 3",
+              "id" : 12,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 4",
+              "id" : 13,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 14,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "BannerAdministratorController.edit" : {
+          "name" : "BannerAdministratorController.edit",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "4" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "BannerAdministratorController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 2",
+              "id" : 2,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "2" : [ 4 ]
+          }
+        },
+        "LikesChorbiController.create" : {
+          "name" : "LikesChorbiController.create",
+          "type" : "SAGA",
+          "complexity" : 54.0,
+          "performance" : 6.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "6" : 3,
+            "11" : 1,
+            "13" : 2
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "LikesChorbiController.create",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 13 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 29,
+            "functionalityComplexity" : 29,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "ChirpCustomerController.removeAttachment" : {
+          "name" : "ChirpCustomerController.removeAttachment",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "10" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.removeAttachment",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 10 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 10 ]
+          }
+        },
+        "DashboardAdministratorController.dashboard" : {
+          "name" : "DashboardAdministratorController.dashboard",
+          "type" : "QUERY",
+          "complexity" : 166.0,
+          "performance" : 33.0,
+          "type" : "QUERY",
+          "entities" : {
+            "5" : 1,
+            "6" : 1,
+            "8" : 1,
+            "9" : 1,
+            "10" : 1,
+            "12" : 1,
+            "13" : 1,
+            "14" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "DashboardAdministratorController.dashboard",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 8 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 9 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 9 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 3",
+              "id" : 8,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 0",
+              "id" : 9,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 3",
+              "id" : 10,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 0",
+              "id" : 11,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 3",
+              "id" : 12,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 0",
+              "id" : 13,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 3",
+              "id" : 14,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 4",
+              "id" : 15,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 0",
+              "id" : 16,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 4",
+              "id" : 17,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 18 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "18: 0",
+              "id" : 18,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 19 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "19: 4",
+              "id" : 19,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 20 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "20: 0",
+              "id" : 20,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 21 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "21: 4",
+              "id" : 21,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 22 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "22: 0",
+              "id" : 22,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 23 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "23: 4",
+              "id" : 23,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 24 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "24: 0",
+              "id" : 24,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 25 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "25: 4",
+              "id" : 25,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 26 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "26: 3",
+              "id" : 26,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 27 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "27: 4",
+              "id" : 27,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 28 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "28: 3",
+              "id" : 28,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 29 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "29: 4",
+              "id" : 29,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 30 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "30: 3",
+              "id" : 30,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 31 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "31: 4",
+              "id" : 31,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 32 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "32: 3",
+              "id" : 32,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 33 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "33: 4",
+              "id" : 33,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ] ],
+              "remoteInvocations" : [ 34 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "34: 3",
+              "id" : 34,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 12,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 5, 9, 10, 14 ],
+            "3" : [ 6, 8, 13 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "CreditCardCustomerController.save" : {
+          "name" : "CreditCardCustomerController.save",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 2,
+            "10" : 2,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "CreditCardCustomerController.save",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "W", 11 ], [ "W", 10 ], [ "W", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 40,
+            "functionalityComplexity" : 13,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "ChorbiAdministratorController.ban" : {
+          "name" : "ChorbiAdministratorController.ban",
+          "type" : "SAGA",
+          "complexity" : 43.0,
+          "performance" : 3.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 3,
+            "6" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiAdministratorController.ban",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 17 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 25,
+            "functionalityComplexity" : 19,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 11 ],
+            "3" : [ 6 ]
+          }
+        },
+        "RegisterChorbiController.unregister" : {
+          "name" : "RegisterChorbiController.unregister",
+          "type" : "SAGA",
+          "complexity" : 55.0,
+          "performance" : 9.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "12" : 1,
+            "15" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "RegisterChorbiController.unregister",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 4",
+              "id" : 6,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 4",
+              "id" : 8,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "W", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 0",
+              "id" : 9,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 4",
+              "id" : 10,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 7,
+            "functionalityComplexity" : 48,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ChirpCustomerController.delete" : {
+          "name" : "ChirpCustomerController.delete",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "3" : 3,
+            "5" : 3,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.delete",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 3 ], [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ], [ "W", 5 ], [ "R", 3 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 3,
+            "functionalityComplexity" : 20,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 3, 5, 10, 11 ]
+          }
+        },
+        "ConfigurationAdministratorController.edit" : {
+          "name" : "ConfigurationAdministratorController.edit",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "7" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ConfigurationAdministratorController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 1",
+              "id" : 2,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "1" : [ 7 ]
+          }
+        },
+        "WelcomeController.index" : {
+          "name" : "WelcomeController.index",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "4" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "WelcomeController.index",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 2",
+              "id" : 2,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "2" : [ 4 ]
+          }
+        },
+        "ChorbiController.edit" : {
+          "name" : "ChorbiController.edit",
+          "type" : "SAGA",
+          "complexity" : 222.0,
+          "performance" : 16.0,
+          "type" : "SAGA",
+          "entities" : {
+            "16" : 2,
+            "17" : 3,
+            "1" : 3,
+            "6" : 3,
+            "7" : 1,
+            "8" : 3,
+            "10" : 3,
+            "11" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "W", 17 ], [ "W", 1 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 8 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ], [ "R", 11 ], [ "W", 11 ], [ "R", 10 ], [ "W", 10 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 0",
+              "id" : 10,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 3",
+              "id" : 11,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 0",
+              "id" : 12,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "W", 17 ], [ "W", 1 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 1 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 3",
+              "id" : 13,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 8 ], [ "W", 8 ], [ "R", 6 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 0",
+              "id" : 14,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 15 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "15: 3",
+              "id" : 15,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ] ],
+              "remoteInvocations" : [ 16 ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "16: 1",
+              "id" : 16,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ 17 ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "17: 3",
+              "id" : 17,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 16 ], [ "W", 8 ], [ "W", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 16 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 283,
+            "functionalityComplexity" : 97,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 10, 11 ],
+            "1" : [ 7 ],
+            "3" : [ 16, 6, 8 ]
+          }
+        },
+        "ChirpCustomerController.sent" : {
+          "name" : "ChirpCustomerController.sent",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "5" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.sent",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 5, 10, 11 ]
+          }
+        },
+        "BannerAdministratorController.view" : {
+          "name" : "BannerAdministratorController.view",
+          "type" : "QUERY",
+          "complexity" : 7.0,
+          "performance" : 2.0,
+          "type" : "QUERY",
+          "entities" : {
+            "4" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "BannerAdministratorController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 2",
+              "id" : 2,
+              "clusterID" : 2,
+              "clusterAccesses" : [ [ "R", 4 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 4 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 2,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 11 ],
+            "2" : [ 4 ]
+          }
+        },
+        "ChirpManagerController.removeAttachment" : {
+          "name" : "ChirpManagerController.removeAttachment",
+          "type" : "QUERY",
+          "complexity" : 13.0,
+          "performance" : 3.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "11" : 1,
+            "12" : 1,
+            "14" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpManagerController.removeAttachment",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 4",
+              "id" : 3,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 2,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11, 14 ],
+            "4" : [ 12 ]
+          }
+        },
+        "ChorbiAdministratorController.unban" : {
+          "name" : "ChorbiAdministratorController.unban",
+          "type" : "SAGA",
+          "complexity" : 43.0,
+          "performance" : 3.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 3,
+            "6" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiAdministratorController.unban",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 17 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 25,
+            "functionalityComplexity" : 24,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 11 ],
+            "3" : [ 6 ]
+          }
+        },
+        "CreditCardCustomerController.edit" : {
+          "name" : "CreditCardCustomerController.edit",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "CreditCardCustomerController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "CreditCardCustomerController.view" : {
+          "name" : "CreditCardCustomerController.view",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "9" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "CreditCardCustomerController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 9 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 9, 10, 11 ]
+          }
+        },
+        "ChirpCustomerController.addAttachment" : {
+          "name" : "ChirpCustomerController.addAttachment",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "10" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.addAttachment",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 10 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 10 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 10 ]
+          }
+        },
+        "ManagerController.delete" : {
+          "name" : "ManagerController.delete",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "11" : 1,
+            "14" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ManagerController.delete",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11, 14 ]
+          }
+        },
+        "EventManagerController.received" : {
+          "name" : "EventManagerController.received",
+          "type" : "QUERY",
+          "complexity" : 38.0,
+          "performance" : 8.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "11" : 1,
+            "12" : 1,
+            "14" : 1,
+            "15" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventManagerController.received",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 4",
+              "id" : 3,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 4",
+              "id" : 5,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 14 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 4",
+              "id" : 7,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 14 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 14 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 4",
+              "id" : 9,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 15 ], [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 15 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 4,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11, 14 ],
+            "4" : [ 12, 15 ]
+          }
+        },
+        "ChorbiAdministratorController.list" : {
+          "name" : "ChorbiAdministratorController.list",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "6" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChorbiAdministratorController.list",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "3" : [ 6 ]
+          }
+        },
+        "ChirpCustomerController.received" : {
+          "name" : "ChirpCustomerController.received",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "5" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.received",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 5, 10, 11 ]
+          }
+        },
+        "ViewChorbiController.myProfile" : {
+          "name" : "ViewChorbiController.myProfile",
+          "type" : "QUERY",
+          "complexity" : 70.0,
+          "performance" : 8.0,
+          "type" : "QUERY",
+          "entities" : {
+            "17" : 1,
+            "1" : 1,
+            "6" : 1,
+            "11" : 1,
+            "13" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ViewChorbiController.myProfile",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 3",
+              "id" : 3,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 0",
+              "id" : 4,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 1 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 3",
+              "id" : 5,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 0",
+              "id" : 6,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 3",
+              "id" : 7,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 0",
+              "id" : 8,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 3",
+              "id" : 9,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 12,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 1, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "ChirpCustomerController.view" : {
+          "name" : "ChirpCustomerController.view",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "3" : 1,
+            "5" : 1,
+            "10" : 1,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "R", 5 ], [ "R", 3 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 5 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 3, 5, 10, 11 ]
+          }
+        },
+        "LikesChorbiController.delete" : {
+          "name" : "LikesChorbiController.delete",
+          "type" : "SAGA",
+          "complexity" : 90.0,
+          "performance" : 13.0,
+          "type" : "SAGA",
+          "entities" : {
+            "17" : 1,
+            "6" : 1,
+            "11" : 1,
+            "13" : 3
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "LikesChorbiController.delete",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 3",
+              "id" : 2,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ] ],
+              "remoteInvocations" : [ 3 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "3: 0",
+              "id" : 3,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 4 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "4: 3",
+              "id" : 4,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ] ],
+              "remoteInvocations" : [ 5 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "5: 0",
+              "id" : 5,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 6 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "6: 3",
+              "id" : 6,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 7 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "7: 0",
+              "id" : 7,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ] ],
+              "remoteInvocations" : [ 8 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "8: 3",
+              "id" : 8,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ 9 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "9: 0",
+              "id" : 9,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 10 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "10: 3",
+              "id" : 10,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "W", 13 ] ],
+              "remoteInvocations" : [ 11 ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "11: 0",
+              "id" : 11,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 11 ] ],
+              "remoteInvocations" : [ 12 ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "12: 3",
+              "id" : 12,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 6 ] ],
+              "remoteInvocations" : [ 13 ],
+              "firstAccessedEntityIDs" : [ 6 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "13: 0",
+              "id" : 13,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "R", 17 ], [ "R", 11 ] ],
+              "remoteInvocations" : [ 14 ],
+              "firstAccessedEntityIDs" : [ 17 ],
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "14: 3",
+              "id" : 14,
+              "clusterID" : 3,
+              "clusterAccesses" : [ [ "R", 13 ], [ "R", 6 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 13 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 8,
+            "functionalityComplexity" : 91,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 17, 11 ],
+            "3" : [ 6, 13 ]
+          }
+        },
+        "EventManagerController.edit" : {
+          "name" : "EventManagerController.edit",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "12" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "EventManagerController.edit",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 4",
+              "id" : 2,
+              "clusterID" : 4,
+              "clusterAccesses" : [ [ "R", 12 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 12 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "4" : [ 12 ]
+          }
+        },
+        "ChirpCustomerController.write" : {
+          "name" : "ChirpCustomerController.write",
+          "type" : "SAGA",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "SAGA",
+          "entities" : {
+            "1" : 1,
+            "17" : 1,
+            "3" : 2,
+            "5" : 2,
+            "10" : 3,
+            "11" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ChirpCustomerController.write",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 0",
+              "id" : 2,
+              "clusterID" : 0,
+              "clusterAccesses" : [ [ "W", 3 ], [ "R", 1 ], [ "R", 17 ], [ "R", 11 ], [ "R", 10 ], [ "W", 10 ], [ "W", 5 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 11 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 10,
+            "functionalityComplexity" : 23,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "0" : [ 1, 17, 3, 5, 10, 11 ]
+          }
+        },
+        "ConfigurationAdministratorController.view" : {
+          "name" : "ConfigurationAdministratorController.view",
+          "type" : "QUERY",
+          "complexity" : 0.0,
+          "performance" : 1.0,
+          "type" : "QUERY",
+          "entities" : {
+            "7" : 1
+          },
+          "functionalityRedesigns" : [ {
+            "name" : "Monolith Trace",
+            "usedForMetrics" : true,
+            "redesign" : [ {
+              "name" : "ConfigurationAdministratorController.view",
+              "id" : 0,
+              "clusterID" : -1,
+              "clusterAccesses" : null,
+              "remoteInvocations" : [ 2 ],
+              "firstAccessedEntityIDs" : null,
+              "type" : "COMPENSATABLE"
+            }, {
+              "name" : "2: 1",
+              "id" : 2,
+              "clusterID" : 1,
+              "clusterAccesses" : [ [ "R", 7 ] ],
+              "remoteInvocations" : [ ],
+              "firstAccessedEntityIDs" : [ 7 ],
+              "type" : "COMPENSATABLE"
+            } ],
+            "systemComplexity" : 0,
+            "functionalityComplexity" : 0,
+            "inconsistencyComplexity" : 0,
+            "pivotTransaction" : -1
+          } ],
+          "entitiesPerCluster" : {
+            "1" : [ 7 ]
+          }
+        }
+      },
+      "entityIDToClusterName" : {
+        "1" : "0",
+        "2" : "1",
+        "3" : "0",
+        "4" : "2",
+        "5" : "0",
+        "6" : "3",
+        "7" : "1",
+        "8" : "3",
+        "9" : "0",
+        "10" : "0",
+        "11" : "0",
+        "12" : "4",
+        "13" : "3",
+        "14" : "0",
+        "15" : "4",
+        "16" : "3",
+        "17" : "0"
+      }
+    } ],
+    "tracesMaxLimit" : 0,
+    "traceType" : "ALL"
+  } ],
+  "datafilePath" : "/Users/josecorreia/Desktop/tese/projects/mono2micro/backend/src/main/resources/codebases/Acme-Chorbies-maven/datafile.json"
+}

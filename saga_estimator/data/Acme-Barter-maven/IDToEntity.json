@@ -1,0 +1,17 @@
+{
+  "1" : "Actor",
+  "2" : "Administrator",
+  "3" : "Auditor",
+  "4" : "Barter",
+  "5" : "BaseActor",
+  "6" : "DomainEntity",
+  "7" : "Folder",
+  "8" : "Item",
+  "9" : "LegalText",
+  "10" : "Match",
+  "11" : "Message",
+  "12" : "SocialAccount",
+  "13" : "SocialIdentity",
+  "14" : "User",
+  "15" : "UserAccount"
+}

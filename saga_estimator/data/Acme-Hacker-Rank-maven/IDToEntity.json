@@ -1,0 +1,21 @@
+{
+  "1" : "Actor",
+  "2" : "Administrator",
+  "3" : "Application",
+  "4" : "Company",
+  "5" : "Curriculum",
+  "6" : "DomainEntity",
+  "7" : "EducationData",
+  "8" : "Finder",
+  "9" : "Hacker",
+  "10" : "Message",
+  "11" : "MessageBox",
+  "12" : "MiscellaneousData",
+  "13" : "PersonalData",
+  "14" : "Position",
+  "15" : "PositionData",
+  "16" : "Problem",
+  "17" : "SocialProfile",
+  "18" : "SystemConfiguration",
+  "19" : "UserAccount"
+}

@@ -1,0 +1,724 @@
+Codebase,Feature,Orchestrator,Entities,Type,Initial System Complexity,Final System Complexity,System Complexity Reduction,Initial Inconsistency Complexity,Final Inconsistency Complexity,Inconsistency Complexity Reduction,Initial Functionality Complexity,Final Functionality Complexity,Functionality Complexity Reduction
+ldod-static,AdminController.loadUsersXML,3,"Player, ",SAGA,617,155,462,0,6,-6,150,6,144
+ldod-static,VirtualEditionController.approveParticipant,0,"LdoD, ",SAGA,28,29,-1,0,41,-41,10,100,-90
+ldod-static,VirtualEditionController.switchRole,0,"LdoD, ",SAGA,28,29,-1,0,0,0,93,101,-8
+ldod-static,VirtualEditionController.dissociate,0,"SimpleText, ",SAGA,1570,446,1124,0,4,-4,390,14,376
+ldod-static,RecommendationController.setLinearVirtualEdition,2,"LdoDUser, ",SAGA,141,55,86,0,0,0,132,169,-37
+ldod-static,RecommendationController.presentEditionWithRecommendation,2,"LdoDUser, ",SAGA,141,55,86,0,13,-13,221,163,58
+ldod-static,FragmentController.getFragmentWithInterForUrlId,1,"Member, Section, VirtualEdition, VirtualEditionInter, ",SAGA,254,72,182,0,28,-28,460,229,231
+ldod-static,VirtualEditionController.addParticipant,0,"LdoD, ",SAGA,183,158,25,0,0,0,48,25,23
+ldod-static,FragmentController.createAnnotation,0,"ExpertEdition, SimpleText, LdoD, Edition, ",SAGA,679,227,452,0,41,-41,794,102,692
+ldod-static,VirtualEditionController.createClassificationGame,3,"ClassificationGame, ",SAGA,265,208,57,0,0,0,11,30,-19
+ldod-static,VirtualEditionController.removeClassificationGame,1,"VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Tag, Taxonomy, ",SAGA,651,385,266,0,36,-36,82,11,71
+ldod-static,VirtualEditionController.deleteCategory,2,"LdoDUser, ",SAGA,714,440,274,0,0,0,181,12,169
+ldod-static,ClassificationGameController.end,2,"LdoDUser, ",SAGA,364,285,79,0,13,-13,356,106,250
+ldod-static,AdminController.removeTweets,0,"FragInter, Fragment, LdoD, ",SAGA,390,335,55,0,6,-6,55,13,42
+ldod-static,FragmentController.getTaxonomy,0,"LdoD, ",SAGA,254,72,182,0,6,-6,25,81,-56
+ldod-static,VirtualEditionController.createVirtualEdition,2,"LdoDUser, ",SAGA,1862,446,1416,0,41,-41,1866,20,1846
+ldod-static,RecommendationController.createLinearVirtualEdition,0,"ExpertEdition, ExpertEditionInter, FragInter, Fragment, NullEdition, SourceInter, Heteronym, LdoD, Edition, LdoDDate, ",SAGA,2914,495,2419,0,0,0,2694,106,2588
+ldod-static,VirtualEditionController.deleteTaxonomy,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,900,387,513,0,42,-42,172,11,161
+ldod-static,VirtualEditionController.mergeCategories,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,1433,382,1051,0,13,-13,447,11,436
+ldod-static,FragmentController.updateAnnotation,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,1127,85,1042,0,18,-18,686,102,584
+ldod-static,FragmentController.deleteAnnotation,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,900,437,463,0,15,-15,360,14,346
+ldod-static,SignupController.signup,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,2837,560,2277,0,42,-42,1107,19,1088
+ldod-static,VirtualEditionController.editVirtualEdition,4,"TimeWindow, Tweet, MediaSource, TwitterCitation, Frequency, SocialMediaCriteria, GeographicLocation, AwareAnnotation, Citation, InfoRange, ",SAGA,1488,296,1192,0,4,-4,1234,115,1119
+ldod-static,AdminController.removeUser,0,"LdoD, ",SAGA,2430,549,1881,0,13,-13,556,19,537
+ldod-static,AdminController.loadVirtualFragments,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,2516,539,1977,0,0,0,805,55,750
+ldod-static,VirtualEditionController.associateCategory,0,"ExpertEdition, FragInter, SimpleText, LdoD, Edition, ",SAGA,2014,436,1578,0,41,-41,174,103,71
+ldod-static,RecommendationController.saveLinearVirtualEdition,4,"Citation, InfoRange, ",SAGA,4974,750,4224,0,2,-2,959,58,901
+ldod-static,VirtualEditionController.reorderVirtualEdition,4,"Citation, InfoRange, ",SAGA,3394,749,2645,0,4,-4,304,59,245
+ldod-static,VirtualEditionController.deleteVirtualEdition,4,"SocialMediaCriteria, Citation, InfoRange, ",SAGA,6829,861,5968,0,12,-12,504,31,473
+ldod-static,AdminController.deleteAllFragments,4,"AwareAnnotation, Citation, InfoRange, ",SAGA,3462,899,2563,0,41,-41,646,35,611
+ldod-static,RecommendationController.createSectionVirtualEdition,4,"Citation, InfoRange, ",SAGA,7247,881,6366,0,0,0,3725,40,3685
+ldod-static,AdminController.deleteFragment,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,3462,928,2534,0,25,-25,497,35,462
+ldod-static,AdminController.deleteVirtualEdition,4,"SocialMediaCriteria, Citation, InfoRange, ",SAGA,6829,859,5970,0,4,-4,1727,31,1696
+ldod-static,AdminController.loadVirtualCorpus,4,"TimeWindow, MediaSource, Frequency, SocialMediaCriteria, GeographicLocation, Citation, InfoRange, ",SAGA,9337,901,8436,0,28,-28,1038,45,993
+ldod-static,AdminController.generateCitations,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",SAGA,5449,794,4655,0,28,-28,4267,80,4187
+ldod-static,AdminController.loadTEIFragmentsAtOnce,4,"AwareAnnotation, Citation, InfoRange, ",SAGA,5163,1184,3979,0,4,-4,179,54,125
+Acme-Academy-2.0-maven,AssignmentLecturerController.delete,1,"Assignment, ",SAGA,22,21,1,0,0,0,6,6,0
+Acme-Academy-2.0-maven,LearningMaterialLecturerController.delete,4,"LearningMaterial, ",SAGA,4,4,0,0,0,0,8,6,2
+Acme-Academy-2.0-maven,RubricLecturerController.delete,1,"Assignment, Rubric, ",SAGA,13,13,0,0,0,0,9,11,-2
+Acme-Academy-2.0-maven,SyllabusLecturerController.delete,0,"Actor, ",SAGA,5,0,5,0,0,0,15,5,10
+Acme-Academy-2.0-maven,AssignmentLecturerController.save,1,"Assignment, Rubric, ",SAGA,33,33,0,0,4,-4,24,18,6
+Acme-Academy-2.0-maven,RubricLecturerController.save,2,"Lecturer, Subject, ",SAGA,24,0,24,0,0,0,4,10,-6
+Acme-Academy-2.0-maven,RubricLecturerController.create,3,"UserAccount, DomainEntity, Group, ",SAGA,13,13,0,0,0,0,15,10,5
+Acme-Academy-2.0-maven,LearningMaterialLecturerController.save,4,"LearningMaterial, ",SAGA,4,4,0,0,0,0,15,6,9
+Acme-Academy-2.0-maven,AssignmentLecturerController.create,1,"Assignment, Rubric, ",SAGA,35,35,0,0,0,0,7,7,0
+Acme-AnimalShelter-maven,AdministratorController.saveEdit,3,"UserAccount, ",SAGA,400,101,299,0,10,-10,56,3,53
+Acme-AnimalShelter-maven,RegisterVoluntaryController.save,0,"Actor, Folder, ",SAGA,454,114,340,0,0,0,44,4,40
+Acme-AnimalShelter-maven,MedicalReportVeterinaryController.create,7,"Veterinary, ",SAGA,39,33,6,0,0,0,70,27,43
+Acme-AnimalShelter-maven,VeterinaryController.saveEdit,2,"MedicalReport, ",SAGA,458,120,338,0,0,0,22,5,17
+Acme-AnimalShelter-maven,VoluntaryEmployeeController.untie,3,"UserAccount, DomainEntity, Employee, ",SAGA,26,20,6,0,0,0,5,28,-23
+Acme-AnimalShelter-maven,ApplicationClientController.save,4,"Client, ",SAGA,33,36,-3,0,0,0,152,43,109
+Acme-AnimalShelter-maven,AdministratorController.banVeterinary,7,"Veterinary, ",SAGA,86,88,-2,0,0,0,20,18,2
+Acme-AnimalShelter-maven,DonationClientController.create,5,"Donation, Event, ",SAGA,29,32,-3,0,0,0,102,32,70
+Acme-AnimalShelter-maven,AdministratorController.debanVeterinary,7,"Veterinary, ",SAGA,86,88,-2,0,0,0,24,19,5
+Acme-AnimalShelter-maven,AdministratorController.debanClient,0,"Actor, ",SAGA,88,79,9,0,10,-10,52,51,1
+Acme-AnimalShelter-maven,AdministratorController.banVoluntary,0,"Actor, ",SAGA,90,80,10,0,10,-10,87,48,39
+Acme-AnimalShelter-maven,VeterinaryBossController.save,2,"MedicalReport, ",SAGA,498,127,371,0,0,0,117,6,111
+Acme-AnimalShelter-maven,DonationVoluntaryController.create,5,"Donation, Event, ",SAGA,29,32,-3,0,0,0,31,31,0
+Acme-AnimalShelter-maven,AdministratorController.banClient,0,"Actor, ",SAGA,88,79,9,0,10,-10,6,48,-42
+Acme-AnimalShelter-maven,RegisterVoluntaryController.saveEdit,0,"Actor, Folder, Message, ",SAGA,494,120,374,0,10,-10,74,5,69
+Acme-AnimalShelter-maven,ApplicationClientController.create,4,"Client, ",SAGA,44,36,8,0,0,0,24,30,-6
+Acme-AnimalShelter-maven,StandVoluntaryController.save,4,"Voluntary, ",SAGA,50,0,50,0,0,0,212,28,184
+Acme-AnimalShelter-maven,CenterBossController.delete,5,"Stand, Company, Event, ",SAGA,224,105,119,0,0,0,163,49,114
+Acme-AnimalShelter-maven,AdministratorController.debanVoluntary,4,"Voluntary, ",SAGA,90,93,-3,0,0,0,4,23,-19
+Acme-AnimalShelter-maven,RegisterClientController.saveEdit,2,"Application, ",SAGA,472,125,347,0,0,0,117,5,112
+Acme-AnimalShelter-maven,RegisterClientController.save,2,"Application, ",SAGA,512,131,381,0,0,0,60,6,54
+Acme-AnimalShelter-maven,EmployeeBossController.save,2,"Report, ",SAGA,564,48,516,0,0,0,130,6,124
+Acme-AnimalShelter-maven,EmployeeController.saveEdit,2,"Report, ",SAGA,525,151,374,0,0,0,33,6,27
+Acme-AnimalShelter-maven,CenterAdministratorController.delete,5,"Stand, Company, Event, ",SAGA,224,105,119,0,0,0,21,49,-28
+Acme-Champions-maven,SponsorshipSponsorController.createPlayer,4,"Game, ",SAGA,181,159,22,0,4,-4,173,61,112
+Acme-Champions-maven,ReportManagerController.delete,5,"Manager, ",SAGA,4,5,-1,0,0,0,268,120,148
+Acme-Champions-maven,FinderPresidentController.editFinder,5,"President, Manager, ",SAGA,145,70,75,0,4,-4,82,59,23
+Acme-Champions-maven,TrainingManagerController.delete,5,"Manager, ",SAGA,10,11,-1,0,0,0,116,71,45
+Acme-Champions-maven,ReportPresidentController.punish,5,"President, ",SAGA,58,59,-1,0,0,0,147,63,84
+Acme-Champions-maven,PlayerManagerController.addPlayerScored,4,"StatisticalData, ",SAGA,406,261,145,0,0,0,8,46,-38
+Acme-Champions-maven,RegisterAdministratorController.savePresident,3,"Finder, ",SAGA,655,327,328,0,0,0,129,16,113
+Acme-Champions-maven,ReportManagerController.save,5,"Manager, ",SAGA,73,5,68,0,0,0,137,64,73
+Acme-Champions-maven,GameRefereeController.delete,10,"Sponsorship, ",SAGA,33,35,-2,0,0,0,2,92,-90
+Acme-Champions-maven,TrainingManagerController.create,11,"Training, ",SAGA,117,118,-1,0,6,-6,71,60,11
+Acme-Champions-maven,CompetitionFederationController.save,4,"Referee, Game, ",SAGA,927,75,852,0,11,-11,1339,56,1283
+Acme-Champions-maven,SigningPresidentController.accept,5,"President, Manager, ",SAGA,266,124,142,0,2,-2,376,182,194
+Acme-Champions-maven,TrainingManagerController.save,5,"Manager, ",SAGA,217,70,147,0,2,-2,243,60,183
+Acme-Champions-maven,SponsorshipSponsorController.createTeam,4,"Game, ",SAGA,181,160,21,0,10,-10,128,63,65
+Acme-Champions-maven,TrainingManagerController.addPlayerPost,5,"Manager, ",SAGA,78,0,78,0,2,-2,369,92,277
+Acme-Champions-maven,FinderPresidentController.showFinder,9,"Signing, ",SAGA,106,95,11,0,0,0,11,90,-79
+Acme-Champions-maven,FiringPresidentController.firePlayer,4,"StatisticalData, ",SAGA,528,326,202,0,0,0,159,34,125
+Acme-Champions-maven,CompetitionFederationController.close,2,"Competition, Federation, Format, ",SAGA,1096,40,1056,0,0,0,435,78,357
+Acme-Champions-maven,SigningPlayerController.accept,4,"StatisticalData, ",SAGA,672,328,344,0,0,0,533,34,499
+Acme-Champions-maven,ProfileController.savePresident,3,"Finder, ",SAGA,655,326,329,0,0,0,120,16,104
+Acme-Champions-maven,SponsorshipSponsorController.save,4,"Game, ",SAGA,570,23,547,0,0,0,903,60,843
+Acme-Champions-maven,FiringPresidentController.fireManager,11,"Training, ",SAGA,645,261,384,0,0,0,456,51,405
+Acme-Champions-maven,MinutesRefereeController.closeMinutes,2,"Competition, Format, ",SAGA,2190,381,1809,0,0,0,475,51,424
+Acme-Chollos-Rifas-maven,SurveyController.delete,0,"Company, DomainEntity, UserAccount, ",SAGA,28,19,9,0,0,0,144,34,110
+Acme-Chollos-Rifas-maven,SponsorshipSponsorController.save,3,"Bargain, Sponsorship, ",SAGA,436,108,328,0,0,0,290,10,280
+Acme-Chollos-Rifas-maven,UserController.save,3,"Bargain, ",SAGA,556,221,335,0,0,0,9,20,-11
+Acme-Chollos-Rifas-maven,SponsorshipSponsorController.create,1,"Sponsor, ",SAGA,80,64,16,0,0,0,75,27,48
+Acme-Chollos-Rifas-maven,UserController.addRemoveWishList,3,"Bargain, ",SAGA,150,151,-1,0,0,0,189,35,154
+Acme-Chollos-Rifas-maven,SponsorshipSponsorController.delete,1,"Sponsor, ",SAGA,52,53,-1,0,0,0,125,26,99
+Acme-Chollos-Rifas-maven,SurveyController.save,3,"Bargain, Sponsorship, ",SAGA,376,153,223,0,0,0,73,58,15
+Acme-Chollos-Rifas-maven,CommentUserController.save,4,"Configuration, ",SAGA,567,0,567,0,0,0,38,6,32
+Acme-Chorbies-maven,BannerAdministratorController.save,1,"Administrator, ",SAGA,28,2,26,0,0,0,18,7,11
+Acme-Chorbies-maven,ChorbiAdministratorController.updateChorbiesChargedFees,3,"Chorbi, ",SAGA,26,28,-2,0,0,0,15,28,-13
+Acme-Chorbies-maven,ChorbiController.save,0,"UserAccount, Actor, Customer, DomainEntity, ",SAGA,252,74,178,0,0,0,49,12,37
+Acme-Chorbies-maven,RegisterChorbiController.register,4,"Event, Register, ",SAGA,51,19,32,0,0,0,87,18,69
+Acme-Chorbies-maven,SearchTemplateChorbiController.search,1,"Configuration, ",SAGA,154,28,126,0,0,0,14,18,-4
+Acme-Chorbies-maven,RegisterChorbiController.unregister,0,"UserAccount, DomainEntity, ",SAGA,7,0,7,0,0,0,48,28,20
+Acme-Chorbies-maven,ChorbiController.delete,4,"Event, Register, ",SAGA,79,87,-8,0,0,0,60,23,37
+Acme-Chorbies-maven,ChorbiController.edit,1,"Configuration, ",SAGA,283,102,181,0,0,0,97,8,89
+Acme-Chorbies-maven,EventManagerController.save,1,"Configuration, ",SAGA,225,106,119,0,0,0,41,15,26
+Acme-CinemaDB-maven,ProductProducerController.save,3,"Product, ",SAGA,41,40,1,0,2,-2,73,26,47
+Acme-CinemaDB-maven,ReviewCriticController.create,1,"Content, ",SAGA,7,7,0,0,0,0,12,25,-13
+Acme-CinemaDB-maven,LikeUserUserController.unlike,1,"AssessableEntity, ",SAGA,9,10,-1,0,2,-2,69,32,37
+Acme-CinemaDB-maven,LikeUserUserController.like,1,"AssessableEntity, ",SAGA,72,39,33,0,6,-6,99,14,85
+Acme-CinemaDB-maven,OrderUserController.save,1,"Producer, Content, ",SAGA,112,50,62,0,7,-7,173,41,132
+Acme-CinemaDB-maven,ReviewCriticController.savePublish,1,"Content, ",SAGA,88,58,30,0,6,-6,37,23,14
+Acme-CinemaDB-maven,ReviewCriticController.saveDraft,2,"Review, Critic, ",SAGA,88,53,35,0,6,-6,96,25,71
+Acme-CinemaDB-maven,ProductProducerController.create,3,"Product, ",SAGA,27,27,0,0,6,-6,28,18,10
+Acme-CinemaDB-maven,LikeUserUserController.create,0,"DomainEntity, UserAccount, ",SAGA,63,56,7,0,0,0,56,15,41
+Acme-CinemaDB-maven,LikeUserUserController.save,1,"AssessableEntity, ",SAGA,55,39,16,0,2,-2,105,19,86
+Acme-Conference-maven,CategoryAdministratorController.delete,1,"UserAccount, DomainEntity, ",SAGA,47,48,-1,0,4,-4,5,13,-8
+Acme-Conference-maven,ActivityAdministratorController.createP,0,"Activity, Presentation, Conference, ",SAGA,96,96,0,0,0,0,12,5,7
+Acme-Conference-maven,SubmissionAuthorController.create,0,"Conference, ",SAGA,23,1,22,0,0,0,19,33,-14
+Acme-Conference-maven,CameraReadyPaperController.save,1,"Author, Submission, UserAccount, DomainEntity, ",SAGA,4,0,4,0,0,0,17,32,-15
+Acme-Conference-maven,AuthorAdministratorController.procedure,0,"Conference, ",SAGA,40,21,19,0,2,-2,42,27,15
+Acme-Conference-maven,FinderAuthorController.save,1,"Author, UserAccount, DomainEntity, ",SAGA,42,41,1,0,0,0,34,23,11
+Acme-Conference-maven,SubmissionAuthorController.save,4,"Paper, SubmissionForm, ",SAGA,170,94,76,0,0,0,67,38,29
+Acme-Events-maven,SocialProfileController.save,0,"Actor, UserAccount, DomainEntity, ",SAGA,101,8,93,0,0,0,36,12,24
+Acme-Events-maven,CreditCardClientController.save,0,"Actor, Client, UserAccount, DomainEntity, ",SAGA,126,100,26,0,0,0,60,26,34
+Acme-Events-maven,ClubClientController.follow,6,"Follow, ",SAGA,78,8,70,0,0,0,57,15,42
+Acme-Events-maven,ClubClientController.unfollow,6,"Follow, ",SAGA,40,0,40,0,0,0,134,23,111
+Acme-Events-maven,EventManagerController.save,3,"Category, Configuration, ",SAGA,124,83,41,0,0,0,7,32,-25
+Acme-Events-maven,CategoryAdministratorController.deleteEdit,3,"Category, Configuration, ",SAGA,68,36,32,0,0,0,24,33,-9
+Acme-Events-maven,EventManagerController.delete,3,"Category, Configuration, ",SAGA,22,0,22,0,0,0,74,34,40
+Acme-Events-maven,ClubManagerController.delete,0,"Manager, UserAccount, DomainEntity, ",SAGA,33,34,-1,0,0,0,3,23,-20
+Acme-Events-maven,SocialProfileController.delete,3,"Configuration, ",SAGA,7,8,-1,0,0,0,40,28,12
+Acme-Events-maven,SocialProfileController.save2,0,"Actor, UserAccount, DomainEntity, ",SAGA,61,48,13,0,0,0,19,11,8
+Acme-Events-maven,ClubManagerController.save,2,"ApplicationClub, ",SAGA,268,41,227,0,0,0,57,14,43
+Acme-Events-maven,OpinionClientController.save,3,"Configuration, ",SAGA,113,0,113,0,0,0,209,13,196
+Acme-Events-maven,DownloadPDFController.deletePersonalData,0,"Actor, Manager, Client, UserAccount, DomainEntity, ",SAGA,426,168,258,0,0,0,130,9,121
+Acme-Events-maven,ClubManagerController.save2,3,"Configuration, ",SAGA,130,33,97,0,0,0,66,13,53
+Acme-Events-maven,EventClientController.participate,6,"Follow, ",SAGA,60,0,60,0,0,0,460,23,437
+Acme-Events-maven,MessageController.save,3,"Configuration, ",SAGA,267,136,131,0,0,0,35,18,17
+Acme-Events-maven,RegisterAdministratorController.save,3,"Configuration, ",SAGA,858,266,592,0,0,0,27,10,17
+Acme-Events-maven,MessageController.saveBroadcast,3,"Configuration, ",SAGA,239,134,105,0,0,0,158,17,141
+Acme-Events-maven,RegisterController.save,3,"Configuration, ",SAGA,858,263,595,0,0,0,178,10,168
+Acme-Events-maven,EventManagerController.cancel,3,"Configuration, ",SAGA,396,134,262,0,0,0,354,27,327
+Acme-Events-maven,ClubAdministratorController.accept,3,"Configuration, ",SAGA,407,207,200,0,0,0,115,40,75
+Acme-Events-maven,ActorController.save,1,"Administrator, Publiciter, ",SAGA,858,645,213,0,0,0,119,44,75
+Acme-Events-maven,EventManagerController.save2,6,"Follow, ",SAGA,485,136,349,0,0,0,142,20,122
+Acme-Explorer-maven,ActorAdminController.desactivateManager,0,"Actor, ",SAGA,90,0,90,0,9,-9,88,72,16
+Acme-Explorer-maven,TagAdminController.create,0,"Actor, Admin, ",SAGA,20,20,0,0,15,-15,108,75,33
+Acme-Explorer-maven,EndorserRecordRangerController.save,4,"Ranger, Curriculum, EndorserRecord, ",SAGA,50,53,-3,0,15,-15,174,75,99
+Acme-Explorer-maven,TagAdminController.deleteGet,1,"Trip, UserAccount, Manager, DomainEntity, ",SAGA,18,20,-2,0,4,-4,207,107,100
+Acme-Explorer-maven,ActorAdminController.desactivateRanger,0,"Actor, ",SAGA,90,90,0,0,15,-15,41,72,-31
+Acme-Explorer-maven,ActorAdminController.activateRanger,1,"UserAccount, Manager, ",SAGA,120,121,-1,0,4,-4,22,52,-30
+Acme-Explorer-maven,TagAdminController.save,2,"Tag, ",SAGA,12,12,0,0,15,-15,57,74,-17
+Acme-Explorer-maven,TripManagerController.cancelTrip,1,"Trip, ",SAGA,27,27,0,0,15,-15,61,52,9
+Acme-Explorer-maven,CategoryAdminController.delete,0,"Admin, ",SAGA,35,37,-2,0,2,-2,21,38,-17
+Acme-Explorer-maven,LegalTextAdminController.delete,1,"UserAccount, DomainEntity, ",SAGA,7,8,-1,0,11,-11,14,36,-22
+Acme-Explorer-maven,RangerController.save,0,"Actor, Message, Folder, ",SAGA,203,203,0,0,9,-9,95,5,90
+Acme-Explorer-maven,CategoryAdminController.save,0,"Actor, ",SAGA,16,9,7,0,18,-18,71,74,-3
+Acme-Explorer-maven,TagAdminController.deletePost,0,"Actor, Admin, ",SAGA,18,20,-2,0,0,0,88,97,-9
+Acme-Explorer-maven,RangerAdminController.create,1,"Trip, UserAccount, ",SAGA,384,235,149,0,0,0,9,7,2
+Acme-Explorer-maven,ActorAdminController.activateManager,0,"Actor, ",SAGA,115,0,115,0,9,-9,7,60,-53
+Acme-Explorer-maven,SponsorAdminController.create,0,"Actor, Message, SocialIdentity, Folder, ",SAGA,388,187,201,0,4,-4,10,7,3
+Acme-Explorer-maven,ContactExplorerController.save,0,"Actor, Message, Folder, ",SAGA,252,222,30,0,20,-20,11,8,3
+Acme-Explorer-maven,RangerAdminController.save,0,"Actor, Message, Folder, ",SAGA,203,203,0,0,15,-15,33,5,28
+Acme-Explorer-maven,SponsorshipSponsorController.save,0,"Actor, Message, Folder, ",SAGA,178,181,-3,0,15,-15,124,6,118
+Acme-Explorer-maven,SponsorSponsorController.save,1,"UserAccount, DomainEntity, ",SAGA,176,176,0,0,9,-9,67,5,62
+Acme-Explorer-maven,TripManagerController.save,1,"Trip, UserAccount, Manager, DomainEntity, ",SAGA,54,27,27,0,0,0,247,76,171
+Acme-Explorer-maven,RangerRangerController.save,4,"Ranger, ",SAGA,257,203,54,0,19,-19,10,5,5
+Acme-Explorer-maven,SponsorAdminController.save,0,"Actor, Message, Folder, ",SAGA,176,177,-1,0,20,-20,89,5,84
+Acme-Explorer-maven,RangerController.create,0,"Actor, Message, SocialIdentity, Folder, ",SAGA,384,237,147,0,15,-15,9,7,2
+Acme-Explorer-maven,ExplorerController.create,3,"Contact, ",SAGA,417,240,177,0,3,-3,16,12,4
+Acme-Explorer-maven,CurriculumRangerController.delete,0,"Actor, Message, Folder, ",SAGA,247,219,28,0,4,-4,39,24,15
+Acme-Explorer-maven,PersonalRecordRangerController.save,0,"Actor, Message, Configuration, Folder, ",SAGA,419,155,264,0,5,-5,520,10,510
+Acme-Explorer-maven,TripManagerController.create,4,"Ranger, ",SAGA,140,85,55,0,0,0,67,74,-7
+Acme-Explorer-maven,ApplicationManagerController.due,4,"Ranger, ",SAGA,1962,269,1693,0,3,-3,3481,59,3422
+Acme-Explorer-maven,MessageController.save,4,"Ranger, ",SAGA,656,258,398,0,2,-2,970,28,942
+Acme-Explorer-maven,ApplicationExplorerController.cancel,4,"Ranger, ",SAGA,1962,298,1664,0,0,0,1540,39,1501
+Acme-Explorer-maven,ApplicationManagerController.save,1,"Trip, UserAccount, Manager, Application, DomainEntity, Explorer, ",SAGA,1962,434,1528,0,0,0,1298,124,1174
+Acme-Explorer-maven,TripManagerController.delete,0,"Actor, Message, Folder, ",SAGA,251,254,-3,0,20,-20,88,48,40
+Acme-Food-launcher,SocialProfileRestaurantController.create,0,"Actor, UserAccount, DomainEntity, ",SAGA,40,40,0,0,0,0,58,37,21
+Acme-Food-launcher,SocialProfileRestaurantController.delete,4,"SocialProfile, ",SAGA,118,40,78,0,2,-2,49,15,34
+Acme-Food-launcher,FinderCustomerController.edit,3,"CustomizableSystem, ",SAGA,179,82,97,0,7,-7,24,23,1
+acme-furniture-launcher,RatingCustomerController.save,2,"Rating, ",SAGA,4,4,0,0,2,-2,10,8,2
+acme-furniture-launcher,FurnitureAdministratorController.edit,1,"UserAccount, DomainEntity, ",SAGA,69,46,23,0,4,-4,45,12,33
+acme-furniture-launcher,CritiqueAdministratorController.unban,1,"UserAccount, DomainEntity, ",SAGA,10,11,-1,0,2,-2,22,4,18
+acme-furniture-launcher,CritiqueCriticController.create,1,"UserAccount, DomainEntity, ",SAGA,70,48,22,0,0,0,5,6,-1
+acme-furniture-launcher,RatingCustomerController.create,1,"UserAccount, DomainEntity, ",SAGA,58,44,14,0,0,0,31,14,17
+acme-furniture-launcher,CritiqueCriticController.save,1,"UserAccount, DomainEntity, ",SAGA,44,35,9,0,0,0,20,12,8
+acme-furniture-launcher,FurnitureAdministratorController.create,1,"UserAccount, DomainEntity, ",SAGA,69,45,24,0,2,-2,26,12,14
+acme-furniture-launcher,FurnitureAssemblerController.save,1,"UserAccount, DomainEntity, ",SAGA,39,38,1,0,0,0,8,20,-12
+acme-furniture-launcher,FurnitureAssemblerController.create,1,"UserAccount, DomainEntity, ",SAGA,41,38,3,0,0,0,18,6,12
+acme-furniture-launcher,BudgetLineAdministratorController.accept,2,"Furniture, Maker, Administrator, ",SAGA,19,21,-2,0,4,-4,26,35,-9
+acme-furniture-launcher,BudgetCustomerController.addAndEdit,1,"UserAccount, DomainEntity, ",SAGA,176,35,141,0,4,-4,208,33,175
+acme-furniture-launcher,IncidenceCustomerController.saveCreate,0,"Budget, BudgetLine, Customer, ",SAGA,1,2,-1,0,0,0,21,31,-10
+acme-furniture-launcher,BudgetLineAdministratorController.denny,2,"Furniture, Maker, Administrator, ",SAGA,19,20,-1,0,2,-2,32,34,-2
+acme-furniture-launcher,CustomerController.save,2,"Rating, ",SAGA,160,85,75,0,2,-2,14,7,7
+acme-furniture-launcher,CritiqueAdministratorController.ban,1,"Actor, UserAccount, DomainEntity, ",SAGA,10,0,10,0,2,-2,28,25,3
+acme-furniture-launcher,IncidenceCustomerController.create,0,"Customer, ",SAGA,26,26,0,0,0,0,18,12,6
+acme-furniture-launcher,BannerAdministratorController.save,1,"UserAccount, DomainEntity, ",SAGA,0,0,0,0,0,0,3,4,-1
+acme-furniture-launcher,ReviewAssemblerController.create,1,"UserAccount, DomainEntity, ",SAGA,24,23,1,0,8,-8,35,24,11
+acme-furniture-launcher,BudgetCustomerController.add,2,"Furniture, Piece, ",SAGA,176,35,141,0,2,-2,70,26,44
+Acme-Gallery-maven,ProductDirectorController.create,4,"Museum, Director, ",SAGA,24,25,-1,0,0,0,21,30,-9
+Acme-Gallery-maven,ProductDirectorController.delete,4,"Museum, Director, ",SAGA,23,23,0,0,2,-2,28,30,-2
+Acme-Gallery-maven,ArtworkGuideController.create,0,"Actor, UserAccount, DomainEntity, ",SAGA,56,13,43,0,2,-2,57,24,33
+Acme-Gallery-maven,ArtworkGuideController.delete,3,"Exhibition, ",SAGA,12,13,-1,0,5,-5,109,40,69
+Acme-Gallery-maven,GuideAdministratorController.save,3,"Exhibition, ",SAGA,514,284,230,0,0,0,31,6,25
+Acme-Gallery-maven,RoomDirectorController.edit,3,"Exhibition, ",SAGA,210,146,64,0,5,-5,14,21,-7
+Acme-Gallery-maven,VisitorVisitorController.edit,0,"Actor, Review, UserAccount, DomainEntity, ",SAGA,951,320,631,0,5,-5,131,8,123
+Acme-Gallery-maven,ReviewVisitorController.create,1,"Visitor, ",SAGA,131,49,82,0,0,0,108,43,65
+Acme-Gallery-maven,StoreDirectorController.create,4,"Museum, Director, ",SAGA,98,25,73,0,0,0,6,19,-13
+Acme-Gallery-maven,GroupVisitorController.create,0,"Actor, UserAccount, DomainEntity, ",SAGA,99,100,-1,0,7,-7,12,31,-19
+Acme-Gallery-maven,GroupVisitorController.edit,0,"Actor, UserAccount, DomainEntity, ",SAGA,223,167,56,0,6,-6,177,41,136
+Acme-Gallery-maven,ProductDirectorController.edit,4,"Museum, Director, ",SAGA,32,0,32,0,5,-5,3,28,-25
+Acme-Gallery-maven,MuseumDirectorController.create,0,"Actor, Review, UserAccount, DomainEntity, ",SAGA,340,219,121,0,2,-2,18,20,-2
+Acme-Gallery-maven,VisitorController.save,4,"DayPass, ",SAGA,605,320,285,0,0,0,23,9,14
+Acme-Gallery-maven,GroupVisitorController.delete,0,"Actor, Administrator, UserAccount, DomainEntity, ",SAGA,193,160,33,0,0,0,447,24,423
+Acme-Gallery-maven,RoomDirectorController.create,3,"Exhibition, ",SAGA,120,87,33,0,4,-4,9,29,-20
+Acme-Gallery-maven,ReviewVisitorController.edit,0,"Actor, Review, UserAccount, DomainEntity, ",SAGA,116,60,56,0,0,0,233,60,173
+Acme-Gallery-maven,GroupAdministratorController.delete,0,"Actor, Administrator, UserAccount, DomainEntity, ",SAGA,193,158,35,0,0,0,149,24,125
+Acme-Gallery-maven,ExhibitionDirectorController.delete,0,"Actor, UserAccount, DomainEntity, ",SAGA,128,134,-6,0,0,0,313,62,251
+Acme-Gallery-maven,ExhibitionDirectorController.create,2,"Artwork, ",SAGA,210,123,87,0,2,-2,13,47,-34
+Acme-Gallery-maven,RoomDirectorController.delete,0,"Actor, UserAccount, DomainEntity, ",SAGA,373,245,128,0,0,0,707,43,664
+Acme-Gallery-maven,DayPassVisitorController.create,2,"Artwork, ",SAGA,331,157,174,0,2,-2,34,34,0
+Acme-Gallery-maven,DayPassVisitorController.edit,2,"Artwork, ",SAGA,526,73,453,0,0,0,166,35,131
+Acme-Hacker-Rank-maven,FinderController.save,1,"Position, ",SAGA,62,19,43,0,0,0,8,3,5
+Acme-Hacker-Rank-maven,ApplicationController.create,1,"Problem, Application, Position, ",SAGA,141,85,56,0,0,0,31,11,20
+Acme-HandyWorker-maven,CustomerController.create,0,"Actor, DomainEntity, UserAccount, ",SAGA,313,143,170,0,0,0,10,5,5
+Acme-HandyWorker-maven,ActorController.save,4,"MailBox, ",SAGA,443,197,246,0,20,-20,38,20,18
+Acme-HandyWorker-maven,HandyWorkerController.create,4,"MailBox, Message, ",SAGA,368,193,175,0,0,0,13,7,6
+Acme-Inmigrant-maven,ApplicationImmigrantController.delete,2,"Visa, ",SAGA,304,86,218,0,6,-6,48,20,28
+Acme-Inmigrant-maven,ApplicationImmigrantController.save,3,"SocialSection, ContactSection, WorkSection, EducationSection, PersonalSection, ",SAGA,353,78,275,0,0,0,59,23,36
+Acme-Meals-maven,ReviewLikeController.create,0,"User, ",SAGA,42,40,2,0,6,-6,175,31,144
+Acme-Meals-maven,ManagerCategoryController.delete,0,"Actor, ",SAGA,8,0,8,0,6,-6,39,32,7
+Acme-Meals-maven,ManagerCategoryController.save,0,"Actor, ",SAGA,47,9,38,0,0,0,48,20,28
+Acme-Meals-maven,ManagerCategoryController.saveCreate,0,"Actor, ",SAGA,47,9,38,0,0,0,64,18,46
+Acme-Meals-maven,RegisterCriticController.save,0,"Actor, ",SAGA,269,34,235,0,6,-6,75,11,64
+Acme-Meals-maven,ReviewLikeController.delete,3,"DomainEntity, UserAccount, ",SAGA,5,5,0,0,6,-6,9,47,-38
+Acme-Meals-maven,UserMealOrderController.save,5,"VATNumber, Invoice, ",SAGA,20,3,17,0,0,0,124,48,76
+Acme-Meals-maven,AdministratorMonthBillController.generate,0,"MonthlyBill, ",SAGA,82,38,44,0,6,-6,106,28,78
+Acme-Meals-maven,RegisterUserController.save,0,"Actor, Report, Reporter, Comment, User, ",SAGA,430,123,307,0,0,0,38,17,21
+Acme-Meals-maven,UserController.display,2,"RelationLike, RelationDislike, ",SAGA,363,174,189,0,6,-6,56,10,46
+Acme-Meals-maven,ManagerRestaurantController.enable,2,"Review, ",SAGA,168,130,38,0,6,-6,19,14,5
+Acme-Meals-maven,ManagerRestaurantController.delete,3,"Restaurant, SocialIdentity, DomainEntity, UserAccount, Manager, Meal, MealOrder, Promote, ",SAGA,187,129,58,0,0,0,43,20,23
+Acme-Meals-maven,ManagerMealController.save,0,"Actor, ",SAGA,88,77,11,0,4,-4,224,23,201
+Acme-Meals-maven,ManagerRestaurantController.save,0,"Comment, ",SAGA,168,132,36,0,8,-8,21,14,7
+Acme-Meals-maven,ReviewDislikeController.create,0,"User, ",SAGA,40,41,-1,0,0,0,251,33,218
+Acme-Meals-maven,WelcomeController.index,0,"User, ",SAGA,3,4,-1,0,6,-6,37,46,-9
+Acme-Meals-maven,ReviewDislikeController.delete,3,"DomainEntity, UserAccount, ",SAGA,3,4,-1,0,0,0,93,50,43
+Acme-Newspaper-maven,SystemConfigurationAdministratorController.deleteTabooWord,1,"Administrator, Advertisement, SystemConfiguration, ",SAGA,120,111,9,0,0,0,30,10,20
+Acme-Newspaper-maven,VolumeSubscriptionCustomerController.save,2,"Volume, ",SAGA,22,18,4,0,9,-9,20,11,9
+Acme-Newspaper-maven,NewspaperUserController.privatize,0,"DomainEntity, UserAccount, ",SAGA,86,0,86,0,0,0,66,15,51
+Acme-Newspaper-maven,SystemConfigurationAdministratorController.editTabooWord,1,"Administrator, Advertisement, SystemConfiguration, ",SAGA,120,110,10,0,9,-9,73,10,63
+Acme-Newspaper-maven,NewspaperUserController.publish,1,"Administrator, Agent, SystemConfiguration, ",SAGA,138,0,138,0,9,-9,113,15,98
+Acme-Newspaper-maven,AdvertisementAgentController.create,2,"Newspaper, ",SAGA,85,72,13,0,0,0,11,6,5
+Acme-Newspaper-maven,SubscriptionCustomerController.create,0,"DomainEntity, UserAccount, ",SAGA,60,19,41,0,6,-6,36,14,22
+Acme-Newspaper-maven,VolumeSubscriptionCustomerController.create,0,"DomainEntity, UserAccount, ",SAGA,30,33,-3,0,5,-5,22,9,13
+Acme-Newspaper-maven,NewspaperUserController.edit,0,"DomainEntity, UserAccount, ",SAGA,366,101,265,0,2,-2,68,19,49
+Acme-Newspaper-maven,NewspaperAdministratorController.delete,1,"Administrator, ",SAGA,86,88,-2,0,0,0,34,14,20
+Acme-Newspaper-maven,SubscriptionCustomerController.save,2,"Newspaper, ",SAGA,24,19,5,0,0,0,11,21,-10
+Acme-Newspaper-maven,AdvertisementAgentController.save,2,"Newspaper, ",SAGA,97,72,25,0,14,-14,49,8,41
+Acme-Newspaper-maven,ChirpUserController.edit,0,"DomainEntity, UserAccount, ",SAGA,69,48,21,0,9,-9,30,7,23
+Acme-Newspaper-maven,NewspaperUserController.unprivatize,0,"DomainEntity, UserAccount, ",SAGA,86,0,86,0,0,0,19,15,4
+Acme-Newspaper-maven,ArticleUserController.edit,0,"DomainEntity, UserAccount, ",SAGA,252,108,144,0,0,0,232,34,198
+Acme-Parade-maven,PositionAdministratorController.delete,3,"Position, TranslationPosition, ",SAGA,13,0,13,0,0,0,58,20,38
+Acme-Parade-maven,PositionAdministratorController.save,0,"Customisation, ",SAGA,39,15,24,0,0,0,6,8,-2
+Acme-Parade-maven,EnrolmentBrotherhoodController.edit,3,"Position, TranslationPosition, ",SAGA,14,14,0,0,0,0,93,37,56
+Acme-Parade-maven,SponsorshipSponsorController.create,0,"Customisation, DomainEntity, UserAccount, ",SAGA,66,26,40,0,0,0,15,17,-2
+Acme-Parade-maven,SponsorshipSponsorController.save,5,"Sponsor, Sponsorship, ",SAGA,312,92,220,0,0,0,117,13,104
+Acme-Parade-maven,ParadeController.display,5,"Sponsor, Sponsorship, ",SAGA,23,23,0,0,0,0,238,95,143
+Acme-Parade-maven,ParadeBroherhoodController.delete,5,"Sponsorship, ",SAGA,69,12,57,0,0,0,79,39,40
+Acme-Parade-maven,EnrolmentMemberController.dropOut,3,"Position, ",SAGA,130,31,99,0,0,0,129,43,86
+Acme-Parade-maven,EnrolmentBrotherhoodController.remove,3,"Position, ",SAGA,130,31,99,0,0,0,139,43,96
+Acme-Parade-maven,ActorMultiUserController.deleteBrotherhood,2,"History, LinkRecord, ",SAGA,221,215,6,0,0,0,332,42,290
+Acme-Parade-maven,ExportDataBrotherhoodController.test,2,"MiscellaneousRecord, PeriodRecord, History, InceptionRecord, LegalRecord, LinkRecord, ",SAGA,28,15,13,0,0,0,100,133,-33
+Acme-Personal-Trainer-maven,MiscellaneousRecordTrainerController.save,1,"Trainer, ",SAGA,6,0,6,0,0,0,31,42,-11
+Acme-Personal-Trainer-maven,AuditAuditorController.create,0,"UserAccount, DomainEntity, ",SAGA,54,46,8,0,0,0,7,30,-23
+Acme-Personal-Trainer-maven,CreditCardCustomerController.save,0,"UserAccount, DomainEntity, ",SAGA,56,58,-2,0,2,-2,61,70,-9
+Acme-Personal-Trainer-maven,EndorsementCustomerTrainerController.create,4,"WorkingOut, ",SAGA,117,98,19,0,0,0,12,49,-37
+Acme-Personal-Trainer-maven,CommentCustomerNutritionistController.create,1,"Customer, ",SAGA,66,58,8,0,0,0,98,43,55
+Acme-Personal-Trainer-maven,WorkingOutTrainerController.create,4,"Session, Category, WorkingOut, ",SAGA,148,64,84,0,0,0,36,36,0
+Acme-Personal-Trainer-maven,EducationRecordTrainerController.delete,1,"Trainer, ",SAGA,3,4,-1,0,4,-4,23,43,-20
+Acme-Personal-Trainer-maven,WorkingOutTrainerController.delete,1,"Trainer, ",SAGA,35,0,35,0,0,0,25,48,-23
+Acme-Personal-Trainer-maven,AuditAuditorController.save,3,"Audit, Auditor, ",SAGA,213,46,167,0,0,0,149,19,130
+Acme-Personal-Trainer-maven,MiscellaneousRecordTrainerController.delete,1,"Trainer, ",SAGA,3,4,-1,0,0,0,180,43,137
+Acme-Personal-Trainer-maven,ActorAdministratorController.saveNutritionist,2,"Nutritionist, ",SAGA,370,231,139,0,0,0,35,8,27
+Acme-Personal-Trainer-maven,CreditCardCustomerController.create,6,"Customisation, ",SAGA,48,49,-1,0,0,0,13,30,-17
+Acme-Personal-Trainer-maven,ApplicationCustomerController.create,4,"WorkingOut, ",SAGA,120,36,84,0,2,-2,188,41,147
+Acme-Personal-Trainer-maven,ActorAdministratorController.scoreProcess,1,"Endorsement, Trainer, ",SAGA,71,73,-2,0,0,0,21,48,-27
+Acme-Personal-Trainer-maven,FinderCustomerController.clear,4,"Finder, Category, ",SAGA,25,26,-1,0,0,0,62,47,15
+Acme-Personal-Trainer-maven,ProfessionalRecordTrainerController.delete,1,"Trainer, ",SAGA,3,3,0,0,0,0,141,43,98
+Acme-Personal-Trainer-maven,EducationRecordTrainerController.save,1,"Trainer, ",SAGA,6,0,6,0,2,-2,8,42,-34
+Acme-Personal-Trainer-maven,PersonalRecordTrainerController.save,1,"Trainer, ",SAGA,25,27,-2,0,34,-34,7,44,-37
+Acme-Personal-Trainer-maven,ArticleNutritionistController.makeFinal,1,"Customer, ",SAGA,64,30,34,0,0,0,82,56,26
+Acme-Personal-Trainer-maven,EndorserRecordTrainerController.delete,1,"Trainer, ",SAGA,3,4,-1,0,2,-2,114,43,71
+Acme-Personal-Trainer-maven,ApplicationCustomerController.save,4,"WorkingOut, ",SAGA,148,35,113,0,0,0,761,62,699
+Acme-Personal-Trainer-maven,ProfessionalRecordTrainerController.save,1,"Trainer, ",SAGA,6,0,6,0,0,0,37,42,-5
+Acme-Personal-Trainer-maven,CurriculumTrainerController.create,5,"EndorserRecord, MiscellaneousRecord, PersonalRecord, ProfessionalRecord, Curriculum, EducationRecord, ",SAGA,141,116,25,0,2,-2,54,35,19
+Acme-Personal-Trainer-maven,ActorAdministratorController.saveAuditor,3,"Auditor, ",SAGA,370,232,138,0,34,-34,45,8,37
+Acme-Personal-Trainer-maven,ActorMultiUserController.saveNutritionist,2,"Nutritionist, ",SAGA,370,234,136,0,2,-2,11,8,3
+Acme-Personal-Trainer-maven,SessionTrainerController.save,1,"Trainer, ",SAGA,275,47,228,0,0,0,54,22,32
+Acme-Personal-Trainer-maven,WorkingOutTrainerController.makeFinal,1,"Trainer, Customer, ",SAGA,65,30,35,0,14,-14,115,69,46
+Acme-Personal-Trainer-maven,ActorMultiUserController.saveTrainer,6,"Customisation, ",SAGA,579,282,297,0,0,0,145,7,138
+Acme-Personal-Trainer-maven,SessionTrainerController.delete,1,"Trainer, ",SAGA,45,47,-2,0,2,-2,32,39,-7
+Acme-Personal-Trainer-maven,EndorserRecordTrainerController.save,1,"Trainer, ",SAGA,6,0,6,0,0,0,113,53,60
+Acme-Personal-Trainer-maven,FinderCustomerController.display,6,"Customisation, ",SAGA,43,0,43,0,0,0,123,51,72
+Acme-Personal-Trainer-maven,ApplicationTrainerController.reject,4,"WorkingOut, ",SAGA,49,30,19,0,0,0,108,76,32
+Acme-Personal-Trainer-maven,ActorMultiUserController.deleteCustomer,4,"Finder, ",SAGA,90,99,-9,0,0,0,322,54,268
+Acme-Personal-Trainer-maven,WorkingOutTrainerController.save,1,"Trainer, ",SAGA,544,64,480,0,4,-4,186,13,173
+Acme-Personal-Trainer-maven,CommentCustomerNutritionistController.save,1,"Customer, ",SAGA,71,57,14,0,0,0,212,56,156
+Acme-Personal-Trainer-maven,ActorMultiUserController.saveCustomer,6,"Customisation, ",SAGA,681,315,366,0,20,-20,199,20,179
+Acme-Personal-Trainer-maven,ActorController.saveTrainer,6,"Customisation, ",SAGA,579,281,298,0,0,0,41,7,34
+Acme-Personal-Trainer-maven,FinderCustomerController.save,6,"Customisation, ",SAGA,356,61,295,0,0,0,139,17,122
+Acme-Personal-Trainer-maven,ActorMultiUserController.saveAuditor,3,"Auditor, ",SAGA,370,229,141,0,2,-2,25,8,17
+Acme-Personal-Trainer-maven,EndorsementCustomerTrainerController.edit,4,"WorkingOut, ",SAGA,44,23,21,0,2,-2,321,72,249
+Acme-Personal-Trainer-maven,ActorController.saveCustomer,6,"Customisation, ",SAGA,681,316,365,0,0,0,284,20,264
+Acme-Personal-Trainer-maven,EndorsementCustomerTrainerController.save,4,"WorkingOut, ",SAGA,517,98,419,0,0,0,430,30,400
+Acme-Personal-Trainer-maven,EndorsementCustomerTrainerController.delete,4,"WorkingOut, ",SAGA,146,23,123,0,20,-20,798,57,741
+Acme-Personal-Trainer-maven,ApplicationTrainerController.accept,6,"Customisation, ",SAGA,136,30,106,0,0,0,207,89,118
+Acme-Personal-Trainer-maven,CurriculumTrainerController.save,4,"WorkingOut, ",SAGA,206,66,140,0,0,0,97,48,49
+Acme-Personal-Trainer-maven,ActorMultiUserController.deleteTrainer,3,"Audit, ",SAGA,135,143,-8,0,0,0,47,51,-4
+Acme-Personal-Trainer-maven,ExportDataMultiUserController.export,2,"Article, Nutritionist, ",SAGA,22,0,22,0,2,-2,352,140,212
+Acme-Pet-maven,TypeAdministratorController.save,0,"Pet, ",SAGA,10,11,-1,0,0,0,14,29,-15
+Acme-Pet-maven,TypeAdministratorController.delete,0,"Pet, ",SAGA,10,11,-1,0,0,0,28,29,-1
+Acme-Pet-maven,PetAnimaniacController.create,1,"UserAccount, DomainEntity, ",SAGA,113,87,26,0,0,0,10,22,-12
+Acme-Pet-maven,AnimaniacController.saveNew,4,"Configuration, ",SAGA,404,136,268,0,0,0,34,15,19
+Acme-Pet-maven,CommentAnimaniacController.delete,2,"Type, ",SAGA,9,0,9,0,0,0,70,71,-1
+Acme-Pet-maven,PetAnimaniacController.edit,1,"DomainEntity, ",SAGA,40,38,2,0,0,0,36,19,17
+Acme-Pet-maven,AttributeAdministratorController.delete,2,"Attribute, Type, ",SAGA,13,14,-1,0,0,0,43,24,19
+Acme-Pet-maven,AnimaniacAnimaniacController.save,4,"Configuration, ",SAGA,455,184,271,0,0,0,97,8,89
+Acme-Pet-maven,AttributeAdministratorController.save,0,"AttributeValue, ",SAGA,4,5,-1,0,0,0,5,29,-24
+Acme-Pet-maven,CommentAnimaniacController.save,1,"Actor, UserAccount, DomainEntity, ",SAGA,111,0,111,0,0,0,205,46,159
+Acme-Pet-maven,PetAnimaniacController.write,2,"Type, Attribute, ",SAGA,729,102,627,0,0,0,400,47,353
+Acme-Pet-maven,SearchEngineAnimaniacController.search,4,"Configuration, ",SAGA,224,77,147,0,0,0,91,39,52
+Acme-Pet-maven,AnimaniacAdministratorController.ban,0,"Pet, Animaniac, Request, Application, ",SAGA,117,87,30,0,0,0,152,58,94
+Acme-Recycling-maven,LabelProductManagerController.delete,6,"Item, ",SAGA,6,7,-1,0,0,0,50,72,-22
+Acme-Recycling-maven,RecyclerController.createRecycler,4,"Comment, ",SAGA,353,267,86,0,0,0,9,7,2
+Acme-Recycling-maven,LabelMaterialManagerController.delete,2,"Material, ",SAGA,6,7,-1,0,0,0,50,70,-20
+Acme-Recycling-maven,NewscastAdminController.delete,4,"Comment, Newscast, Editor, ",SAGA,22,24,-2,0,0,0,373,106,267
+Acme-Recycling-maven,MaterialAdminController.save,7,"LabelMaterial, ",SAGA,138,22,116,0,10,-10,81,57,24
+Acme-Recycling-maven,CourseAdminController.delete,2,"Buyer, ",SAGA,59,36,23,0,23,-23,150,59,91
+Acme-Recycling-maven,RequestManagerController.create,3,"CleanPoint, ",SAGA,26,4,22,0,0,0,37,16,21
+Acme-Recycling-maven,LessonBuyerController.create,0,"DomainEntity, UserAccount, ",SAGA,34,36,-2,0,10,-10,35,59,-24
+Acme-Recycling-maven,BuyerController.createBuyer,2,"Buy, Buyer, ",SAGA,257,212,45,0,5,-5,7,6,1
+Acme-Recycling-maven,CommentRecyclerController.delete,6,"Recycler, ",SAGA,10,11,-1,0,3,-3,155,50,105
+Acme-Recycling-maven,LabelProductManagerController.save,6,"Item, ",SAGA,145,38,107,0,3,-3,146,28,118
+Acme-Recycling-maven,ProfileEditorController.saveEditor,0,"Actor, MessageFolder, DomainEntity, UserAccount, ",SAGA,714,303,411,0,10,-10,232,7,225
+Acme-Recycling-maven,LabelMaterialManagerController.save,2,"Material, ",SAGA,109,7,102,0,2,-2,72,36,36
+Acme-Recycling-maven,EditorAdminController.saveEditor,6,"Opinion, ",SAGA,714,299,415,0,0,0,98,7,91
+Acme-Recycling-maven,CourseBuyerController.create,6,"Lesson, Course, Opinable, Opinion, ",SAGA,102,77,25,0,0,0,47,58,-11
+Acme-Recycling-maven,NewscastEditorController.delete,6,"Recycler, ",SAGA,22,23,-1,0,10,-10,15,66,-51
+Acme-Recycling-maven,CommentRecyclerController.addNewspaper,4,"Comment, Newscast, ",SAGA,155,43,112,0,0,0,170,33,137
+Acme-Recycling-maven,LessonBuyerController.delete,6,"Lesson, Course, ",SAGA,34,34,0,0,0,0,52,90,-38
+Acme-Recycling-maven,EditorAdminController.createEditor,6,"Opinion, ",SAGA,230,184,46,0,0,0,6,5,1
+Acme-Recycling-maven,CourseBuyerController.delete,2,"Buyer, Material, ",SAGA,59,36,23,0,7,-7,133,84,49
+Acme-Recycling-maven,RecyclerController.saveRecycler,4,"Comment, ",SAGA,1021,387,634,0,10,-10,194,9,185
+Acme-Recycling-maven,ItemRecyclerController.create,0,"DomainEntity, UserAccount, ",SAGA,94,95,-1,0,10,-10,17,61,-44
+Acme-Recycling-maven,CommentRecyclerController.save,6,"Recycler, ",SAGA,143,11,132,0,10,-10,65,39,26
+Acme-Recycling-maven,CourseBuyerController.save,2,"Buyer, Material, ",SAGA,322,61,261,0,2,-2,250,29,221
+Acme-Recycling-maven,IncidenceManagerController.edit,5,"TabooWord, ",SAGA,197,121,76,0,10,-10,549,164,385
+Acme-Recycling-maven,LessonBuyerController.save,2,"Buyer, ",SAGA,146,34,112,0,3,-3,4,27,-23
+Acme-Recycling-maven,ProfileBuyerController.saveAgent,6,"Course, Opinion, ",SAGA,829,348,481,0,0,0,102,10,92
+Acme-Recycling-maven,ProfileRecyclerController.saveAgent,6,"Course, Opinion, Recycler, Item, ",SAGA,1021,387,634,0,3,-3,287,9,278
+Acme-Recycling-maven,ItemRecyclerController.save,7,"LabelProduct, ",SAGA,494,95,399,0,10,-10,331,58,273
+Acme-Recycling-maven,BuyerController.saveBuyer,6,"Course, Opinion, ",SAGA,829,346,483,0,0,0,56,10,46
+Acme-Recycling-maven,RequestManagerController.saveChangeStatus,5,"TabooWord, ",SAGA,312,169,143,0,0,0,350,154,196
+Acme-Recycling-maven,FinderBuyerController.listByKeywordPriceDate,5,"ConfigurationSystem, ",SAGA,244,194,50,0,5,-5,251,44,207
+Acme-Recycling-maven,RequestCarrierController.saveChangeStatus,5,"TabooWord, ",SAGA,312,168,144,0,0,0,244,150,94
+Acme-Recycling-maven,RequestManagerController.save,6,"Recycler, Item, ",SAGA,384,97,287,0,5,-5,395,76,319
+Acme-Recycling-maven,IncidenceRecyclerController.save,5,"TabooWord, ",SAGA,403,223,180,0,0,0,439,118,321
+Acme-Rendezvous-maven,AdministratorController.save,2,"DomainEntity, UserAccount, ",SAGA,97,78,19,0,2,-2,112,17,95
+Acme-Rendezvous-maven,ManagerController.saveManager,3,"ServiceOffered, ",SAGA,152,78,74,0,0,0,11,5,6
+Acme-Rendezvous-maven,ServiceOfferedManagerController.delete,0,"Manager, ",SAGA,131,61,70,0,3,-3,181,9,172
+Acme-Rendezvous-maven,CategoryAdministratorController.create,3,"Category, ServiceOffered, ",SAGA,30,29,1,0,0,0,7,20,-13
+Acme-Rendezvous-maven,CategoryAdministratorController.save,1,"Administrator, ",SAGA,88,30,58,0,0,0,82,7,75
+Acme-Rendezvous-maven,ManagerController.createManager,3,"ServiceOffered, ",SAGA,77,52,25,0,3,-3,5,4,1
+Acme-Rendezvous-maven,ServiceOfferedManagerController.save,0,"Manager, ",SAGA,129,60,69,0,0,0,134,14,120
+Acme-Rendezvous-maven,CategoryAdministratorController.delete,2,"DomainEntity, UserAccount, ",SAGA,88,30,58,0,2,-2,57,9,48
+Acme-Restaurante-maven,ActorController.save,0,"Actor, Restaurante, UserAccount, ",SAGA,202,149,53,0,0,0,7,5,2
+Acme-Restaurante-maven,AlergenoAdministratorController.create,2,"Alergeno, ",SAGA,4,4,0,0,2,-2,21,16,5
+Acme-Restaurante-maven,AlergenoAdministratorController.delete,2,"Alergeno, ",SAGA,3,4,-1,0,0,0,15,25,-10
+Acme-Restaurante-maven,PlatosRestauranteController.delete,6,"LineaPlatoOferta, Oferta, ",SAGA,108,78,30,0,0,0,70,24,46
+Acme-Restaurante-maven,LineaPlatoOfertaRestauranteController.create,2,"Plato, ",SAGA,46,33,13,0,0,0,46,30,16
+Acme-Restaurante-maven,AlergenoAdministratorController.saveEdit,0,"Actor, UserAccount, DomainEntity, ",SAGA,6,4,2,0,2,-2,4,16,-12
+Acme-Restaurante-maven,LineaPlatoOfertaRestauranteController.delete,0,"Actor, Restaurante, UserAccount, DomainEntity, ",SAGA,84,0,84,0,2,-2,140,23,117
+Acme-Restaurante-maven,BuscadorClienteController.create,2,"Plato, ",SAGA,131,51,80,0,5,-5,101,21,80
+Acme-Restaurante-maven,MensajeController.create,0,"Actor, UserAccount, DomainEntity, ",SAGA,104,100,4,0,5,-5,73,23,50
+Acme-Restaurante-maven,LineaPlatoOfertaRestauranteController.edit,6,"LineaPlatoOferta, Oferta, ",SAGA,154,16,138,0,0,0,43,17,26
+Acme-Restaurante-maven,BuscadorClienteController.save,4,"Buscador, SystemConfig, Valoracion, ",SAGA,57,58,-1,0,0,0,142,45,97
+Acme-Restaurante-maven,OfertaRestauranteController.delete,2,"Plato, ",SAGA,86,10,76,0,0,0,226,38,188
+Acme-Restaurante-maven,ReservaClienteController.confirm,3,"Mensaje, Bandeja, ContencionMensaje, Ticket, ",SAGA,194,104,90,0,0,0,52,46,6
+Acme-Rookie-mave,PositionDataRookieController.delete,6,"Rookie, ",SAGA,3,4,-1,0,0,0,1,28,-27
+Acme-Rookie-mave,AdministratorController.computeAuditScores,0,"DomainEntity, UserAccount, ",SAGA,48,25,23,0,2,-2,36,33,3
+Acme-Rookie-mave,SponsorshipProviderController.delete,0,"DomainEntity, UserAccount, ",SAGA,49,51,-2,0,0,0,22,16,6
+Acme-Rookie-mave,CurriculaRookieController.delete,6,"Rookie, ",SAGA,15,0,15,0,0,0,74,21,53
+Acme-Rookie-mave,PersonalDataRookieController.save,6,"Rookie, ",SAGA,102,26,76,0,0,0,67,13,54
+Acme-Rookie-mave,AuditAuditorController.save,2,"Position, ",SAGA,97,58,39,0,2,-2,61,12,49
+Acme-Rookie-mave,NotificationController.save,0,"DomainEntity, UserAccount, ",SAGA,34,36,-2,0,2,-2,30,13,17
+Acme-Rookie-mave,EducationDataRookieController.delete,0,"DomainEntity, UserAccount, ",SAGA,3,4,-1,0,0,0,91,31,60
+Acme-Rookie-mave,ActorController.save,0,"Actor, UserAccount, ",SAGA,254,137,117,0,0,0,8,6,2
+Acme-Rookie-mave,NuevaEntidadXXXCompanyController.delete,2,"Position, Company, ",SAGA,24,21,3,0,0,0,60,29,31
+Acme-Rookie-mave,SponsorshipProviderController.create,0,"DomainEntity, ",SAGA,46,11,35,0,2,-2,50,6,44
+Acme-Rookie-mave,MiscellaneousDataRookieController.save,6,"Rookie, ",SAGA,132,113,19,0,0,0,42,14,28
+Acme-Rookie-mave,MiscellaneousDataRookieController.delete,5,"Curricula, ",SAGA,3,4,-1,0,2,-2,80,22,58
+Acme-Rookie-mave,NuevaEntidadXXXCompanyController.save,2,"Position, Company, ",SAGA,24,20,4,0,2,-2,66,30,36
+Acme-Rookie-mave,AuditAuditorController.create,3,"Audit, Auditor, ",SAGA,56,56,0,0,0,0,4,14,-10
+Acme-Rookie-mave,ApplicationRookieController.create,6,"Rookie, ",SAGA,64,47,17,0,2,-2,126,50,76
+Acme-Rookie-mave,PositionDataRookieController.save,6,"Rookie, ",SAGA,114,113,1,0,0,0,17,14,3
+Acme-Rookie-mave,FinderRookieController.save,0,"DomainEntity, UserAccount, ",SAGA,63,29,34,0,0,0,38,19,19
+Acme-Rookie-mave,PositionCompanyController.save,9,"SystemConfig, ",SAGA,222,88,134,0,2,-2,222,37,185
+Acme-Rookie-mave,ExportAndDeleteDataRookieController.export,2,"Application, PositionProblem, ",SAGA,15,16,-1,0,2,-2,25,46,-21
+Acme-Rookie-mave,PositionController.display,9,"SystemConfig, ",SAGA,56,43,13,0,0,0,57,36,21
+Acme-Rookie-mave,EducationDataRookieController.save,6,"Rookie, ",SAGA,114,113,1,0,0,0,22,14,8
+Acme-Rookie-mave,FinderRookieController.create,9,"SystemConfig, ",SAGA,131,60,71,0,0,0,119,14,105
+Acme-Rookie-mave,ApplicationCompanyController.rejectApplication,6,"Rookie, ",SAGA,160,45,115,0,0,0,67,42,25
+Acme-Rookie-mave,SponsorshipProviderController.save,2,"Position, ",SAGA,225,85,140,0,0,0,106,10,96
+Acme-Rookie-mave,ApplicationCompanyController.acceptApplication,6,"Rookie, ",SAGA,320,88,232,0,2,-2,239,51,188
+Acme-Rookie-mave,AdministratorController.dashboard,3,"Audit, ",SAGA,60,0,60,0,2,-2,395,52,343
+Acme-Santiago-maven,ChirpAdministratorController.list,3,"Chirp, ",SAGA,6,7,-1,0,0,0,19,13,6
+Acme-Santiago-maven,ChirpAdministratorController.listAll,3,"Chirp, ",SAGA,6,7,-1,0,0,0,3,21,-18
+Acme-Santiago-maven,CommentUserController.saveRoute,6,"Configuration, ",SAGA,118,73,45,0,0,0,32,16,16
+Acme-Santiago-maven,RegisterUserController.save,4,"User, Comment, Route, ",SAGA,358,162,196,0,0,0,35,7,28
+Acme-Santiago-maven,CompostelaAdministratorController.save,5,"Walk, Compostela, Registry, ",SAGA,9,0,9,0,0,0,83,66,17
+Acme-Santiago-maven,AdvertisementAdministratorController.save,1,"Advertisement, Agent, ",SAGA,90,21,69,0,0,0,11,10,1
+Acme-Santiago-maven,InnInnkeeperController.save,5,"Registry, ",SAGA,86,14,72,0,0,0,29,15,14
+Acme-Santiago-maven,CompostelaUserController.create,0,"UserAccount, DomainEntity, ",SAGA,55,47,8,0,0,0,9,14,-5
+Acme-Santiago-maven,WalkUserController.save,0,"Actor, UserAccount, DomainEntity, ",SAGA,7,7,0,0,0,0,35,21,14
+Acme-Santiago-maven,AdvertisementAgentController.save,6,"Configuration, ",SAGA,90,23,67,0,0,0,64,8,56
+Acme-Santiago-maven,WalkUserController.create,2,"Inn, ",SAGA,28,22,6,0,0,0,55,42,13
+Acme-Santiago-maven,ChirpUserController.save,3,"Chirp, ",SAGA,132,92,40,0,0,0,50,11,39
+Acme-Santiago-maven,ChirpUserController.create,0,"UserAccount, DomainEntity, ",SAGA,36,36,0,0,0,0,6,14,-8
+Acme-Santiago-maven,CommentUserController.saveHike,6,"Configuration, ",SAGA,118,73,45,0,2,-2,105,17,88
+Acme-Santiago-maven,HikeUserController.delete,5,"Registry, ",SAGA,69,54,15,0,0,0,99,19,80
+Acme-Santiago-maven,RouteAdministratorController.delete,5,"Walk, Compostela, Registry, ",SAGA,213,157,56,0,0,0,188,23,165
+Acme-Santiago-maven,RouteUserController.delete,5,"Walk, Compostela, Registry, ",SAGA,213,110,103,0,0,0,13,22,-9
+Acme-Series-maven,ApplicationController.create,3,"Serie, ",SAGA,21,23,-2,0,0,0,21,41,-20
+Acme-Series-maven,SerieController.delete,1,"Publisher, ",SAGA,124,54,70,0,0,0,225,21,204
+Acme-Series-maven,SeasonController.adminSave,0,"SystemConfiguration, UserAccount, DomainEntity, ",SAGA,94,31,63,0,0,0,45,10,35
+Acme-Series-maven,SeasonController.adminDelete,2,"Chapter, Season, ",SAGA,84,30,54,0,0,0,54,10,44
+Acme-Series-maven,SeasonController.save,0,"SystemConfiguration, UserAccount, DomainEntity, ",SAGA,94,31,63,0,0,0,123,10,113
+Acme-Series-maven,CritiqueController.create,0,"SystemConfiguration, UserAccount, DomainEntity, ",SAGA,49,14,35,0,0,0,43,10,33
+Acme-Series-maven,CritiqueController.save,0,"SystemConfiguration, UserAccount, DomainEntity, ",SAGA,54,50,4,0,0,0,27,11,16
+Acme-Series-maven,ApplicationController.accept,0,"Actor, UserAccount, DomainEntity, ",SAGA,49,51,-2,0,0,0,94,27,67
+Acme-Series-maven,ApplicationController.save,0,"SystemConfiguration, Actor, UserAccount, DomainEntity, ",SAGA,63,60,3,0,0,0,57,21,36
+Acme-Series-maven,SerieController.adminDelete,1,"Publisher, ",SAGA,124,53,71,0,0,0,255,22,233
+Acme-Series-maven,SeasonController.delete,2,"Chapter, Season, ",SAGA,84,30,54,0,0,0,8,10,-2
+Acme-Series-maven,SerieController.save,2,"Chapter, Season, ",SAGA,166,68,98,0,0,0,118,11,107
+Acme-Series-maven,SerieController.adminSave,1,"Publisher, ",SAGA,166,82,84,0,0,0,314,25,289
+Acme-Supermarket-maven,ContentConsumerController.save,1,"Item, ",SAGA,24,0,24,0,0,0,49,16,33
+Acme-Supermarket-maven,CommentAdministratorController.delete,0,"Actor, UserAccount, DomainEntity, ",SAGA,5,6,-1,0,0,0,8,14,-6
+Acme-Supermarket-maven,CommentController.save,3,"Comment, ",SAGA,10,12,-2,0,4,-4,16,15,1
+Acme-Supermarket-maven,ContentConsumerController.delete,1,"Item, ",SAGA,24,0,24,0,0,0,30,9,21
+Acme-Supermarket-maven,CommentController.create,0,"Actor, UserAccount, DomainEntity, ",SAGA,67,33,34,0,0,0,5,6,-1
+Acme-Supermarket-maven,RegisterController.save,2,"Order, ",SAGA,134,95,39,0,0,0,14,8,6
+Acme-Supermarket-maven,WarehouseAdministratorController.delete,0,"Actor, UserAccount, DomainEntity, ",SAGA,8,9,-1,0,0,0,1,13,-12
+Acme-Supermarket-maven,StorageAdministratorController.create,1,"Category, Item, ",SAGA,14,13,1,0,0,0,10,13,-3
+Acme-Supermarket-maven,OrderConsumerController.save,0,"UserAccount, DomainEntity, ",SAGA,117,33,84,0,0,0,20,30,-10
+Acme-Supermarket-maven,StorageAdministratorController.save,1,"Category, Item, ",SAGA,49,0,49,0,0,0,47,13,34
+Acme-Supermarket-maven,OrderItemClerkController.save,0,"UserAccount, DomainEntity, ",SAGA,67,15,52,0,0,0,54,8,46
+Acme-Supermarket-maven,ItemAdministratorController.delete,4,"ShoppingCart, Content, ",SAGA,76,19,57,0,0,0,16,14,2
+Acme-Supermarket-maven,ItemConsumerController.add,1,"Item, ",SAGA,74,46,28,0,0,0,55,13,42
+Acme-Supermarket-maven,OrderConsumerController.cancel,4,"Consumer, ",SAGA,10,10,0,0,0,0,16,8,8
+Acme-Supermarket-maven,OrderConsumerController.create,6,"ExchangeRate, ",SAGA,73,30,43,0,0,0,185,25,160
+Acme-Taxi-maven,CommentAdminController.delete,3,"Configuration, ",SAGA,8,9,-1,0,0,0,40,51,-11
+Acme-Taxi-maven,CarDriverController.removeShop,0,"DomainEntity, UserAccount, ",SAGA,50,50,0,0,0,0,44,30,14
+Acme-Taxi-maven,RequestUserController.delete,1,"User, ",SAGA,23,24,-1,0,0,0,46,76,-30
+Acme-Taxi-maven,CarDriverController.select,0,"DomainEntity, UserAccount, ",SAGA,49,51,-2,0,0,0,59,30,29
+Acme-Taxi-maven,ServiceMechanicController.save,1,"SpamWord, ",SAGA,79,51,28,0,0,0,27,52,-25
+Acme-Taxi-maven,RequestUserController.confirm,1,"User, ",SAGA,282,236,46,0,0,0,12,20,-8
+Acme-Taxi-maven,ReviewAdminController.delete,4,"RepairShop, ",SAGA,152,155,-3,0,0,0,193,9,184
+Acme-Taxi-maven,ReservationUserController.create,0,"DomainEntity, UserAccount, ",SAGA,96,72,24,0,0,0,56,30,26
+Acme-Taxi-maven,RepairShopMechanicController.create,1,"Review, ",SAGA,84,85,-1,0,0,0,10,17,-7
+Acme-Taxi-maven,ReviewUserController.saveDriver,2,"Driver, Request, ",SAGA,200,151,49,0,0,0,302,28,274
+Acme-Taxi-maven,ReviewUserController.saveRepairShop,0,"Actor, DomainEntity, UserAccount, ",SAGA,202,152,50,0,2,-2,115,34,81
+Acme-Taxi-maven,ReportActorController.save,5,"Report, ",SAGA,160,161,-1,0,0,0,36,20,16
+Acme-Taxi-maven,ReviewUserController.delete,4,"RepairShop, ",SAGA,152,156,-4,0,0,0,67,18,49
+Acme-Taxi-maven,RequestAdminController.delete,1,"User, ",SAGA,23,24,-1,0,0,0,53,74,-21
+Acme-Taxi-maven,ReservationUserController.suspend,1,"User, ",SAGA,180,61,119,0,0,0,175,61,114
+Acme-Taxi-maven,RepairShopMechanicController.save,1,"Review, SpamWord, ",SAGA,404,114,290,0,2,-2,291,26,265
+Acme-Taxi-maven,RepairShopAdminController.delete,4,"Reservation, Service, RepairShop, ",SAGA,110,79,31,0,0,0,5,55,-50
+Acme-Taxi-maven,RequestDriverController.accept,1,"User, ",SAGA,224,49,175,0,0,0,302,44,258
+Acme-Taxi-maven,RequestUserController.cancel,1,"User, ",SAGA,191,48,143,0,0,0,481,70,411
+Acme-Taxi-maven,RequestUserController.confirmEdit,0,"DomainEntity, UserAccount, ",SAGA,305,141,164,0,0,0,69,20,49
+Acme-Taxi-maven,RequestUserController.save,3,"Configuration, ",SAGA,381,211,170,0,0,0,150,22,128
+Acme-Taxi-maven,RepairShopMechanicController.delete,4,"Reservation, Service, Mechanic, RepairShop, ",SAGA,110,79,31,0,0,0,60,68,-8
+Acme-Taxi-maven,RequestUserController.saveEdit,3,"Configuration, ",SAGA,404,58,346,0,2,-2,95,19,76
+Acme-Taxi-maven,ReviewUserController.save,4,"RepairShop, ",SAGA,209,187,22,0,0,0,204,21,183
+Acme-Taxi-maven,MechanicController.save,3,"Configuration, IdNumberPattern, ",SAGA,510,185,325,0,0,0,183,18,165
+Acme-Taxi-maven,UserUserController.save,3,"Configuration, ",SAGA,516,277,239,0,0,0,185,18,167
+Acme-Taxi-maven,UserController.save,3,"Configuration, ",SAGA,525,278,247,0,0,0,13,19,-6
+Acme-Taxi-maven,MechanicMechanicController.save,4,"Mechanic, ",SAGA,542,183,359,0,0,0,64,31,33
+Acme-Taxi-maven,CarDriverController.save,4,"RepairShop, ",SAGA,189,121,68,0,0,0,76,26,50
+Acme-Taxi-maven,ReservationUserController.save,1,"SpamWord, User, ",SAGA,280,108,172,0,0,0,438,83,355
+Acme-Taxi-maven,DriverController.save,3,"Configuration, IdNumberPattern, ",SAGA,594,225,369,0,0,0,251,19,232
+Acme-Taxi-maven,DriverDriverController.save,3,"Configuration, IdNumberPattern, ",SAGA,472,224,248,0,0,0,164,19,145
+Acme-Trip-maven,ActivityCommentActorController.save,0,"Activity, ",SAGA,54,50,4,0,0,0,12,7,5
+Acme-Trip-maven,TripCommentActorController.create,1,"Comment, ",SAGA,50,51,-1,0,2,-2,15,16,-1
+Acme-Trip-maven,TripCommentActorController.save,2,"Actor, UserAccount, DomainEntity, ",SAGA,54,52,2,0,2,-2,25,7,18
+Acme-Trip-maven,ActivityCommentActorController.create,2,"Actor, UserAccount, DomainEntity, ",SAGA,49,51,-2,0,0,0,19,7,12
+Acme-Un-Viaje-maven,RequestCustomerController.save,2,"Customer, ",SAGA,74,34,40,0,2,-2,6,31,-25
+Acme-Un-Viaje-maven,CustomerController.rateTravelAgency,6,"Valoration, ",SAGA,70,65,5,0,2,-2,81,23,58
+Acme-Un-Viaje-maven,BookingAccomodationTravelAgencyController.save,2,"TravelAgency, TravelPack, ",SAGA,51,40,11,0,9,-9,139,35,104
+Acme-Un-Viaje-maven,RequestCustomerController.create,4,"Request, ",SAGA,33,34,-1,0,8,-8,36,16,20
+Acme-Un-Viaje-maven,RefereeController.delete,1,"Actor, DomainEntity, UserAccount, ",SAGA,73,27,46,0,2,-2,189,18,171
+Acme-Un-Viaje-maven,TransporterController.delete,1,"Actor, DomainEntity, UserAccount, ",SAGA,118,74,44,0,16,-16,95,26,69
+Acme-Un-Viaje-maven,FinderAccomodationTravelAgencyController.show,2,"TravelAgency, TravelPack, ",SAGA,28,28,0,0,0,0,124,46,78
+Acme-Un-Viaje-maven,TransporterController.rateCustomer,1,"DomainEntity, UserAccount, ",SAGA,57,54,3,0,2,-2,7,35,-28
+Acme-Un-Viaje-maven,RequestCustomerController.delete,2,"Customer, ",SAGA,5,6,-1,0,0,0,22,30,-8
+Acme-Un-Viaje-maven,HostController.rateCleaner,6,"Valoration, ",SAGA,71,68,3,0,9,-9,99,24,75
+Acme-Un-Viaje-maven,CurriculaController.show,0,"CleaningTask, ",SAGA,19,21,-2,0,0,0,43,33,10
+Acme-Un-Viaje-maven,CleaningTaskController.saveEdit,3,"Cleaner, ",SAGA,89,0,89,0,10,-10,217,26,191
+Acme-Un-Viaje-maven,CustomerController.rateTransporter,1,"DomainEntity, UserAccount, ",SAGA,57,54,3,0,2,-2,40,38,2
+Acme-Un-Viaje-maven,HostController.rateCustomer,1,"DomainEntity, UserAccount, ",SAGA,70,67,3,0,2,-2,69,38,31
+Acme-Un-Viaje-maven,FinderRequestTravelAgencyController.show,1,"DomainEntity, UserAccount, ",SAGA,6,8,-2,0,2,-2,59,28,31
+Acme-Un-Viaje-maven,ComplaintCustomerController.editPost,0,"Host, ",SAGA,312,130,182,0,0,0,158,21,137
+Acme-Un-Viaje-maven,TravelAgencyController.delete,6,"SocialProfile, ",SAGA,179,137,42,0,9,-9,164,30,134
+Acme-Un-Viaje-maven,JobApplicationCleanerController.delete,0,"Host, JobApplication, ",SAGA,37,41,-4,0,2,-2,214,41,173
+Acme-Un-Viaje-maven,CleanerController.delete,0,"JobApplication, CleaningTask, ",SAGA,139,98,41,0,2,-2,137,23,114
+Acme-Un-Viaje-maven,FinderRequestTravelAgencyController.refresh,4,"Request, FinderRequest, ",SAGA,131,8,123,0,2,-2,92,25,67
+Acme-Un-Viaje-maven,JobApplicationCleanerController.create,3,"Cleaner, Curricula, ",SAGA,85,47,38,0,4,-4,23,28,-5
+Acme-Un-Viaje-maven,FinderAccomodationTravelAgencyController.refresh,0,"Accomodation, FinderAccomodation, ",SAGA,155,30,125,0,2,-2,105,32,73
+Acme-Un-Viaje-maven,TravelPackTravelAgencyController.save,1,"DomainEntity, UserAccount, ",SAGA,465,123,342,0,2,-2,114,52,62
+Acme-Un-Viaje-maven,TravelAgencyController.save,2,"TravelAgency, ",SAGA,447,206,241,0,8,-8,23,13,10
+Acme-Un-Viaje-maven,ComplaintCustomerController.createPost,0,"Host, Accomodation, BookingAccomodation, ",SAGA,324,95,229,0,9,-9,33,46,-13
+Acme-Un-Viaje-maven,HostController.delete,2,"Complaint, TravelPack, ",SAGA,169,128,41,0,2,-2,168,33,135
+Acme-Un-Viaje-maven,ReviewController.saveEdit,0,"Host, ",SAGA,209,177,32,0,2,-2,168,64,104
+Acme-Un-Viaje-maven,TravelPackCustomerController.accept,0,"Accomodation, BookingAccomodation, ",SAGA,413,166,247,0,0,0,32,54,-22
+AcmeDistributor-maven,CommentCustomerController.delete,2,"Customer, ",SAGA,6,7,-1,0,2,-2,19,9,10
+AcmeDistributor-maven,ShoppingCartCustomerController.edit,0,"UserAccount, DomainEntity, ",SAGA,11,12,-1,0,0,0,15,20,-5
+AcmeDistributor-maven,CommentCustomerController.saveCreate,2,"Customer, ",SAGA,6,7,-1,0,2,-2,11,9,2
+AcmeDistributor-maven,CommentCustomerController.create,2,"Customer, ",SAGA,54,49,5,0,0,0,14,9,5
+AcmeDistributor-maven,ShoppingLineCustomerController.add,2,"Customer, ShoppingCart, ",SAGA,22,0,22,0,2,-2,198,35,163
+AcmeDistributor-maven,CommentCustomerController.save,2,"Customer, ",SAGA,6,7,-1,0,6,-6,12,9,3
+AcmeDistributor-maven,ShoppingLineCustomerController.create,0,"UserAccount, DomainEntity, ",SAGA,50,34,16,0,0,0,73,17,56
+AcmeDistributor-maven,InvoiceCustomerController.save,0,"UserAccount, DomainEntity, ",SAGA,131,31,100,0,2,-2,69,22,47
+AcmeDistributor-maven,ShoppingLineCustomerController.save,0,"UserAccount, DomainEntity, ",SAGA,11,0,11,0,0,0,114,29,85
+AcmeDistributor-maven,CustomerController.save,1,"Comment, ",SAGA,190,83,107,0,0,0,16,8,8
+AcmeShop-maven,QuestionUserController.save,5,"Config, ",SAGA,55,51,4,0,0,0,11,12,-1
+AcmeShop-maven,ActorMessageController.send,5,"Config, ",SAGA,185,13,172,0,0,0,170,3,167
+AcmeShop-maven,ReviewUserController.create,6,"SaleLine, ",SAGA,53,52,1,0,0,0,17,29,-12
+AcmeShop-maven,AnswerBusinessController.save,1,"Question, Answer, ",SAGA,26,2,24,0,0,0,11,33,-22
+AcmeShop-maven,ReviewUserController.save,9,"Review, ",SAGA,37,2,35,0,0,0,8,19,-11
+AcmeShop-maven,AuctionAdvertisementController.save,2,"AuctionAdvertisement, ",SAGA,130,22,108,0,8,-8,139,12,127
+AcmeShop-maven,PaymentUserController.executePaypal,10,"Ticket, ",SAGA,636,119,517,0,8,-8,412,17,395
+AcmeShop-maven,PaymentUserController.executeBid,6,"SaleLine, ShipmentAddress, FacturationData, ",SAGA,361,33,328,0,0,0,194,17,177
+AcmeShop-maven,ReportController.save,10,"Ticket, ",SAGA,73,0,73,0,2,-2,200,39,161
+AcmeShop-maven,ValorationController.create,3,"Valoration, ",SAGA,274,8,266,0,0,0,128,12,116
+AcmeShop-maven,PaymentUserController.executeBuyNow,6,"SaleLine, ShipmentAddress, FacturationData, ",SAGA,379,39,340,0,6,-6,236,18,218
+AcmeShop-maven,ActorController.register,3,"BusinessInfo, SocialIdentity, Valoration, ",SAGA,865,224,641,0,0,0,25,11,14
+AppPortal-maven,OrderApiController.addOrderList,4,"Product, ",SAGA,64,32,32,0,0,0,84,9,75
+AppPortal-maven,OrderApiController.addOrder,3,"TenancyUser, ",SAGA,74,32,42,0,0,0,62,10,52
+AppPortal-maven,CompanyApiController.getCompanys,10,"NewsCategory, ",SAGA,16,10,6,0,0,0,4,4,0
+AppPortal-maven,NewsController.updateNews,1,"NewsAuthCfg, AuthCfg, ",SAGA,14,16,-2,0,0,0,6,13,-7
+AppPortal-maven,CompanyController.info,3,"Tenancy, User, ",SAGA,5,0,5,0,0,0,12,6,6
+AppPortal-maven,NewsController.saveNews,10,"News, NewsCategory, NewsContent, ",SAGA,14,16,-2,0,0,0,17,6,11
+AppPortal-maven,NewsController.createForm,3,"BaseEntity, User, ",SAGA,3,3,0,0,0,0,2,8,-6
+AppPortal-maven,OrderApiController.delProducts,3,"TenancyUser, ",SAGA,55,30,25,0,0,0,7,9,-2
+AppPortal-maven,OrderApiController.delete,3,"TenancyUser, ",SAGA,65,30,35,0,0,0,54,11,43
+AppCan-coopMan,UserController.findUserList,0,"User, Setting, ",SAGA,3,4,-1,0,0,0,25,12,13
+cloudstreetmarket.com-maven,StockProductController.get,3,"Industry, ",SAGA,93,29,64,0,0,0,87,10,77
+cloudstreetmarket.com-maven,ChartIndexController.get,2,"IndexQuote, ChartIndex, ",SAGA,106,29,77,0,0,0,72,9,63
+cloudstreetmarket.com-maven,IndexController.get,2,"IndexQuote, ChartIndex, ",SAGA,106,26,80,0,0,0,57,9,48
+cloudstreetmarket.com-maven,IndexController.getSeveral,2,"IndexQuote, ChartIndex, ",SAGA,106,29,77,0,0,0,33,9,24
+cms_wanzi-maven,OrderController.edit,6,"UserDetail, ",SAGA,3,2,1,0,0,0,351,196,155
+cms_wanzi-maven,MemberGroupController.delete,6,"UserMemberGroup, ",SAGA,737,713,24,0,0,0,123,19,104
+cms_wanzi-maven,OrderController.list,4,"Order, Product, ",SAGA,3,2,1,0,0,0,791,195,596
+cms_wanzi-maven,GenerationController.makeHomeHtml,0,"Model, Task, Node, ",SAGA,3594,686,2908,0,0,0,7198,46,7152
+cms_wanzi-maven,GenerationController.deleteHomeHtml,1,"NodeDetail, ",SAGA,687,686,1,0,0,0,5823,124,5699
+cms_wanzi-maven,OAuthRegisterController.oauthRegisterSubmit,0,"Role, ",SAGA,6136,639,5497,0,0,0,1506,155,1351
+cms_wanzi-maven,UserGlobalController.save,0,"Role, ",SAGA,6522,1149,5373,0,0,0,1567,11,1556
+cms_wanzi-maven,GenerationController.makeAllHtml,0,"Task, Model, Node, Info, ",SAGA,10229,1346,8883,0,2,-2,50938,49,50889
+cms_wanzi-maven,InfoController.list,1,"WorkflowProcess, ",SAGA,1029,443,586,0,0,0,414,253,161
+cms_wanzi-maven,UserGlobalController.update,6,"UserDetail, UserMemberGroup, UserOrg, ",SAGA,3321,1046,2275,0,0,0,187,28,159
+cms_wanzi-maven,UserController.save,0,"Role, ",SAGA,6522,1149,5373,0,0,0,1136,11,1125
+cms_wanzi-maven,UserController.update,6,"UserDetail, UserMemberGroup, UserOrg, ",SAGA,3321,1042,2279,0,0,0,1853,28,1825
+cms_wanzi-maven,RegisterController.registerSubmit,6,"UserStatus, UserDetail, UserMemberGroup, UserOrg, ",SAGA,6440,662,5778,0,0,0,867,158,709
+cms_wanzi-maven,TagController.delete,0,"Ad, AdSlot, Attachment, Attribute, Collect, CollectField, VisitLog, Comment, Vote, Friendlink, FriendlinkType, Workflow, WorkflowGroup, Guestbook, GuestbookType, Info, Model, Node, Question, Resume, Role, ScheduleJob, ScoreGroup, Special, SpecialCategory, Tag, Task, ",SAGA,1096,686,410,0,0,0,1352,331,1021
+cms_wanzi-maven,AttachmentController.delete,1,"AttachmentRef, ",SAGA,1108,689,419,0,0,0,2225,344,1881
+cms_wanzi-maven,AttributeController.delete,3,"InfoAttribute, ",SAGA,1100,686,414,0,0,0,12319,323,11996
+cms_wanzi-maven,AdController.update,1,"AttachmentRef, ",SAGA,2012,728,1284,0,0,0,3084,332,2752
+cms_wanzi-maven,RoleController.delete,1,"WorkflowStepRole, ",SAGA,1142,686,456,0,0,0,5035,299,4736
+cms_wanzi-maven,InfoController.download,1,"InfoDetail, ",SAGA,450,0,450,0,0,0,10101,613,9488
+cms_wanzi-maven,AdController.delete,1,"AttachmentRef, ",SAGA,3338,1343,1995,0,0,0,5252,339,4913
+cms_wanzi-maven,AdController.save,1,"AttachmentRef, ",SAGA,2516,1343,1173,0,0,0,14466,339,14127
+cms_wanzi-maven,SpecialController.update,1,"AttachmentRef, ",SAGA,2676,733,1943,0,0,0,23794,324,23470
+cms_wanzi-maven,InfoController.view,1,"WorkflowProcess, ",SAGA,2908,0,2908,0,0,0,14434,542,13892
+cms_wanzi-maven,GenerationController.makeNodeHtml,1,"NodeDetail, ",SAGA,6859,1164,5695,0,0,0,18036,295,17741
+cms_wanzi-maven,SpecialController.save,1,"AttachmentRef, ",SAGA,3781,1569,2212,0,0,0,4686,327,4359
+cms_wanzi-maven,QuestionController.answer,5,"QuestionItemRec, QuestionOptRec, QuestionRecord, ",SAGA,1723,598,1125,0,0,0,3351,925,2426
+cms_wanzi-maven,NodeController.update,1,"AttachmentRef, NodeDetail, ",SAGA,10400,34,10366,0,0,0,10226,174,10052
+cms_wanzi-maven,NodeController.save,2,"NodeMemberGroup, NodeOrg, NodeRole, OperationLog, Org, Site, PublishPoint, MemberGroup, Global, User, ModelField, NodeBuffer, ",SAGA,12692,2612,10080,0,0,0,31159,763,30396
+cms_wanzi-maven,InfoController.makeHtml,2,"OperationLog, Site, PublishPoint, Global, ",SAGA,2246,426,1820,0,0,0,24457,1002,23455
+cms_wanzi-maven,InfoController.edit,1,"WorkflowProcess, ",SAGA,3390,0,3390,0,0,0,10273,544,9729
+cms_wanzi-maven,SpecialController.delete,3,"InfoSpecial, ",SAGA,2948,686,2262,0,0,0,8598,321,8277
+cms_wanzi-maven,WorkflowController.delete,4,"WorkflowLog, ",SAGA,1212,707,505,0,0,0,11973,323,11650
+cms_wanzi-maven,ContributionController.delete,3,"InfoMemberGroup, InfoOrg, ",SAGA,16942,1272,15670,0,0,0,113433,222,113211
+cms_wanzi-maven,InfoController.auditPass,1,"WorkflowStepRole, InfoDetail, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,10522,1920,8602,0,0,0,51622,224,51398
+cms_wanzi-maven,InfoController.auditReturn,1,"WorkflowStepRole, InfoDetail, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,11353,1919,9434,0,0,0,32457,223,32234
+cms_wanzi-maven,ContributionController.createSubmit,3,"InfoMemberGroup, InfoNode, InfoOrg, InfoSpecial, InfoTag, InfoAttribute, ",SAGA,30751,2922,27829,0,0,0,3406,47,3359
+cms_wanzi-maven,CommentController.submit,1,"InfoDetail, ",SAGA,2729,1274,1455,0,0,0,12203,392,11811
+cms_wanzi-maven,InfoController.auditReject,1,"WorkflowStepRole, InfoDetail, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,11353,1919,9434,0,0,0,82409,223,82186
+cms_wanzi-maven,CommentController.comment_submit_new,1,"InfoDetail, ",SAGA,2729,1280,1449,0,0,0,15915,397,15518
+cms_wanzi-maven,GenerationController.fulltextSubmit,3,"InfoTag, InfoAttribute, ",SAGA,3065,1317,1748,0,0,0,12856,298,12558
+cms_wanzi-maven,InfoController.save,1,"WorkflowStepRole, InfoDetail, AttachmentRef, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,30877,3094,27783,0,0,0,32243,89,32154
+cms_wanzi-maven,ContributionController.updateSubmit,3,"InfoMemberGroup, InfoNode, InfoOrg, InfoSpecial, InfoTag, InfoAttribute, ",SAGA,26047,2907,23140,0,0,0,42289,46,42243
+cms_wanzi-maven,InfoController.info,1,"InfoDetail, NodeDetail, ",SAGA,1567,237,1330,0,0,0,3596,700,2896
+cms_wanzi-maven,GenerationController.makeInfoHtml,1,"InfoDetail, NodeDetail, ",SAGA,5383,2609,2774,0,0,0,27670,1034,26636
+cms_wanzi-maven,InfoController.moveSubmit,1,"InfoDetail, NodeDetail, ",SAGA,9888,696,9192,0,0,0,17907,232,17675
+cms_wanzi-maven,InfoController.logicDelete,1,"WorkflowStepRole, InfoDetail, InfoProcess, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,11220,2946,8274,0,0,0,61472,803,60669
+cms_wanzi-maven,InfoController.recall,1,"WorkflowStepRole, InfoDetail, InfoProcess, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,11220,2733,8487,0,0,0,22052,700,21352
+cms_wanzi-maven,InfoController.archive,1,"WorkflowStepRole, InfoDetail, InfoProcess, WorkflowProcess, WorkflowStep, NodeDetail, ",SAGA,11220,2958,8262,0,0,0,14761,803,13958
+cms_wanzi-maven,NodeController.mergeSubmit,1,"InfoDetail, AttachmentRef, NodeDetail, ",SAGA,13559,796,12763,0,0,0,113724,254,113470
+cms_wanzi-maven,InfoController.antiArchive,2,"UserRole, NodeRole, OperationLog, Org, Site, PublishPoint, Global, User, ",SAGA,11220,2663,8557,0,0,0,57674,1403,56271
+cms_wanzi-maven,OrgController.delete,6,"UserOrg, ",SAGA,17381,1581,15800,0,0,0,1425,75,1350
+cms_wanzi-maven,OrgGlobalController.delete,6,"UserOrg, ",SAGA,17381,1586,15795,0,2,-2,116983,76,116907
+cms_wanzi-maven,SiteController.delete,3,"InfoMemberGroup, InfoOrg, ",SAGA,18520,687,17833,0,2,-2,130405,153,130252
+cms_wanzi-maven,UserGlobalController.delete,4,"WorkflowLog, ",SAGA,17502,687,16815,0,0,0,83366,92,83274
+cms_wanzi-maven,InfoController.delete,3,"InfoMemberGroup, InfoOrg, ",SAGA,20722,689,20033,0,0,0,148248,338,147910
+cms_wanzi-maven,UserController.delete,4,"WorkflowLog, ",SAGA,17502,686,16816,0,0,0,132220,107,132113
+cms_wanzi-maven,InfoController.update,3,"InfoMemberGroup, InfoNode, InfoOrg, InfoSpecial, InfoTag, InfoAttribute, ",SAGA,29368,2307,27061,0,0,0,9322,223,9099
+cms_wanzi-maven,NodeController.delete,1,"InfoDetail, AttachmentRef, NodeDetail, ",SAGA,36434,794,35640,0,0,0,208698,215,208483
+Corpore-Fit-maven,ActorProviderController.save,2,"Provider, ",SAGA,564,16,548,0,0,0,299,8,291
+Corpore-Fit-maven,RegisterAccountController.saveProvider,2,"Provider, ",SAGA,682,188,494,0,0,0,135,22,113
+Corpore-Fit-maven,ActorManagerController.delete,1,"Actor, ",SAGA,83,63,20,0,0,0,588,87,501
+Corpore-Fit-maven,RegisterAccountController.saveManager,0,"Manager, ",SAGA,694,203,491,0,0,0,118,24,94
+Corpore-Fit-maven,ProviderAdministratorController.delete,2,"Advert, Product, Provider, ",SAGA,47,43,4,0,2,-2,409,94,315
+Corpore-Fit-maven,ActorController.save,0,"GymRating, ",SAGA,934,258,676,0,0,0,106,32,74
+Corpore-Fit-maven,ActorManagerController.save,0,"Gym, Manager, ",SAGA,635,89,546,0,0,0,48,15,33
+Corpore-Fit-maven,ActorProviderController.delete,1,"Actor, ",SAGA,47,44,3,0,0,0,83,74,9
+Corpore-Fit-maven,GymAdministratorController.deleteGym,1,"Administrator, ",SAGA,146,106,40,0,0,0,98,44,54
+Corpore-Fit-maven,ActorUserController.save,5,"Routine, ",SAGA,850,19,831,0,0,0,373,2,371
+Corpore-Fit-maven,ActorUserController.delete,0,"Activity, Subscription, ActivityBook, Gym, GymRating, Manager, ",SAGA,167,32,135,0,0,0,465,225,240
+CPIS_hindi-maven,CICLSocialInvestigationReportController.saveCICLSocialIvestigationreport,1,"AreaDetails, ChildDetails, ",SAGA,136,64,72,0,0,0,95,9,86
+CPIS_hindi-maven,CaseHistoryController.saveCaseHistory,2,"CaseHistoryCCI, ChildEmploymentDetails, ",SAGA,315,68,247,0,0,0,37,5,32
+CPIS_hindi-maven,FinalOrderController.saveRestorationData,2,"RestorationDetails, ",SAGA,130,4,126,0,0,0,99,19,80
+CPIS_hindi-maven,CICLInterimController.saveCICLChildCareInstitutionPendingInquiry,2,"CICLChildCareInstitutionPendingInquiry, ",SAGA,147,81,66,0,0,0,281,15,266
+CPIS_hindi-maven,InterimDecisionController.fitInstitutionDetails,2,"ChildPlacedInFitInstitution, ",SAGA,172,8,164,0,0,0,163,14,149
+CPIS_hindi-maven,LoginController.loginController,1,"AreaDetails, ",SAGA,15,16,-1,0,0,0,54,16,38
+CPIS_hindi-maven,SocialInvestigationReportController.saveSocialIvestigationreport,1,"ChildDetails, ",SAGA,136,64,72,0,0,0,58,3,55
+CPIS_hindi-maven,InterimDecisionController.getFosterCareDetails,1,"AreaDetails, ChildDetails, ",SAGA,129,5,124,0,0,0,162,12,150
+CPIS_hindi-maven,FinalOrderController.saveLegallyFreeData,2,"LegallyFreeForAdoption, ",SAGA,126,3,123,0,0,0,344,19,325
+CPIS_hindi-maven,CCTSChildRegistrationController.childRegistration,5,"NotificationDetails, ",SAGA,151,7,144,0,0,0,97,4,93
+CPIS_hindi-maven,CICLSocialBackgroundReportController.init,2,"CICLSocialBackgroundReport, ",SAGA,347,94,253,0,0,0,70,10,60
+CPIS_hindi-maven,JobController.doAggregationSingleTp,2,"IndividualCarePlanD, ChildPlacedInFitInstitution, AreaLevel, ChildRegistrationDetails, LegallyFreeForAdoption, RestorationDetails, SocialinvestigationReport, SponsorshipOrder, CICLCaseMoniteringSheet, CICLChildCareInstitutionPendingInquiry, CICLSocialBackgroundReport, CICLSocialInvestigationReport, FollowUpForm, FosterCareDetails, CaseHistoryCCI, IndividualCarePlanA, ChildEmploymentDetails, ",SAGA,11925,112,11813,0,0,0,221659,24,221635
+CPIS_hindi-maven,DashboardController.runJob,4,"CCTSTypeDetails, ",SAGA,11905,107,11798,0,0,0,6615,23,6592
+CPIS_hindi-maven,JobController.doAggregation,4,"CCTSTypeDetails, ",SAGA,11925,112,11813,0,0,0,298380,24,298356
+Curso-Systema-Web-brewer-maven,VendasController.enviarEmail,0,"Cerveja, ItemVenda, Venda, ",SAGA,4,4,0,0,0,0,4,4,0
+extremeworld-maven,DiscussController.create,7,"Taxonomy, Media, MediaWrap, ",SAGA,190,66,124,0,0,0,14,6,8
+extremeworld-maven,TopicRestController.get,4,"Collection, ",SAGA,18,19,-1,0,0,0,34,26,8
+extremeworld-maven,TopicRestController.getTopicByReplyId,10,"User, ",SAGA,18,18,0,0,0,0,30,28,2
+extremeworld-maven,CourseController.addExplan,2,"Hobby, Topic, ",SAGA,191,72,119,0,0,0,18,5,13
+extremeworld-maven,TopicController.create,10,"User, ",SAGA,125,44,81,0,0,0,9,4,5
+extremeworld-maven,CollectionRestController.collection,4,"Collection, ",SAGA,67,46,21,0,0,0,12,4,8
+extremeworld-maven,TopicRestController.getTopicOfMe,4,"Collection, ",SAGA,18,18,0,0,4,-4,22,26,-4
+extremeworld-maven,ExhibitionRestController.create,10,"User, ",SAGA,114,25,89,0,0,0,15,8,7
+extremeworld-maven,VideoController.create,2,"Hobby, Topic, ",SAGA,148,67,81,0,0,0,10,5,5
+extremeworld-maven,TopicScoreRestController.create,5,"Course, ",SAGA,145,65,80,0,0,0,255,11,244
+FirstWebShop-maven,CheckoutController.checkout,0,"Wood, Butt, CarvingJoint, Category, Damper, Ferula, GashType, MainMaterial, MaterialJoint, RingBumper, RingEnd, Shaft, TypeSticker, ",SAGA,817,695,122,0,2,-2,186,51,135
+hrm_backend-maven,TerminationRecordController.addTerminationRecord,2,"User, ",SAGA,196,93,103,0,0,0,8,3,5
+hrm_backend-maven,TerminationRecordController.editTerminationRecord,2,"User, ",SAGA,192,92,100,0,0,0,8,3,5
+hrm_backend-maven,AttachmentsController.addAttachments,2,"User, ",SAGA,200,95,105,0,0,0,10,4,6
+hrm_backend-maven,LeaveAllocationController.allocateLeave,1,"LeaveAllocation, LeaveType, ",SAGA,214,107,107,0,0,0,12,4,8
+hrm_backend-maven,VacancyController.updateVacancy,2,"User, ",SAGA,166,86,80,0,0,0,10,5,5
+hrm_backend-maven,CancelLeaveRequestController.rejectCancelLeaveRequest,1,"LeaveRequest, CancelLeaveRequest, ",SAGA,94,94,0,0,0,0,16,5,11
+hrm_backend-maven,AttachmentsController.editAttachments,11,"TerminationType, ",SAGA,200,95,105,0,8,-8,10,4,6
+hrm_backend-maven,VacancyController.postVacancy,2,"User, ",SAGA,166,86,80,0,0,0,10,5,5
+hrm_backend-maven,AppointmentController.AddAppointment,5,"AppointmentType, ",SAGA,98,96,2,0,0,0,38,7,31
+JavaSpringMvcBlog-maven,PostsController.like,2,"PostRating, ",SAGA,19,18,1,0,0,0,17,5,12
+JavaSpringMvcBlog-maven,PostsController.dislike,1,"Post, ",SAGA,19,15,4,0,0,0,10,5,5
+learndemo-soufang-maven,AdminController.addHouse,1,"User, ",SAGA,43,17,26,0,0,0,9,4,5
+Logos-ShopingCartUnregisteredUser-maven,IndexController.index,0,"Category, ",SAGA,2,2,0,0,0,0,8,5,3
+Logos-ShopingCartUnregisteredUser-maven,ItemController.save,0,"Category, NameOfSpecificationDigital, NameOfSpecificationString, SpecificationString, ",SAGA,38,25,13,0,0,0,14,10,4
+maven-project-maven,BankTransController.create,1,"BankEntity, ",SAGA,1231,415,816,0,0,0,445,6,439
+maven-project-maven,BankTransRestController.update,1,"BankEntity, ",SAGA,1231,415,816,0,0,0,233,6,227
+maven-project-maven,BankTransRestController.create,1,"BankEntity, ",SAGA,1231,413,818,0,0,0,176,6,170
+maven-project-maven,BankTransController.update,1,"BankEntity, ",SAGA,1231,413,818,0,0,0,712,6,706
+maven-project-maven,WaybillTransRelationController.create,3,"GlobalPrivateCodeEntity, GlobalTransPointEntity, SaleSellerEntity, ContactEntity, StockDepotEntity, ",SAGA,138,39,99,0,0,0,201,221,-20
+maven-project-maven,WaybillTransRelationController.update,3,"GlobalPrivateCodeEntity, GlobalTransPointEntity, SaleSellerEntity, ContactEntity, StockDepotEntity, ",SAGA,138,39,99,0,0,0,126,216,-90
+maven-project-maven,OrderTransFactorController.create,7,"OrderTransSourceEntity, OrderTransStatusEntity, OrderTransEntity, ",SAGA,155,78,77,0,0,0,1478,223,1255
+maven-project-maven,WaybillTransFactorController.create,3,"GlobalPrivateCodeEntity, GlobalTransPointEntity, SaleSellerEntity, ContactEntity, StockDepotEntity, ",SAGA,185,88,97,0,0,0,1566,218,1348
+maven-project-maven,OrderTransFactorController.update,3,"GlobalPrivateCodeEntity, GlobalTransPointEntity, SaleSellerEntity, ContactEntity, StockDepotEntity, ",SAGA,155,78,77,0,0,0,1032,223,809
+maven-project-maven,WaybillTransFactorController.update,10,"WaybillTransSourceEntity, WaybillTransStatusEntity, WaybillTransEntity, ",SAGA,185,88,97,0,0,0,1258,223,1035
+maven-project-maven,WaybillTransDetailRestController.update,8,"StockEntity, ",SAGA,2624,914,1710,0,0,0,424,10,414
+maven-project-maven,WaybillTransDetailRestController.create,8,"StockEntity, ",SAGA,2624,914,1710,0,0,0,111,10,101
+maven-project-maven,OrderTransDetailRestController.create,8,"StockEntity, ",SAGA,2606,894,1712,0,0,0,126,10,116
+maven-project-maven,OrderTransDetailRestController.update,8,"StockEntity, ",SAGA,2606,896,1710,0,0,0,464,10,454
+maven-project-maven,WaybillTransDetailController.update,8,"StockEntity, StockExtraFieldsEntity, StockCategoryEntity, ",SAGA,2624,914,1710,0,0,0,1835,44,1791
+maven-project-maven,WaybillTransDetailController.create,8,"StockEntity, StockExtraFieldsEntity, StockCategoryEntity, ",SAGA,2624,914,1710,0,0,0,3501,44,3457
+maven-project-maven,OrderTransDetailController.create,8,"StockEntity, StockExtraFieldsEntity, StockCategoryEntity, ",SAGA,2606,896,1710,0,0,0,3515,44,3471
+maven-project-maven,OrderTransDetailController.update,7,"OrderTransSourceEntity, OrderTransStatusEntity, OrderTransDetailEntity, OrderTransEntity, ",SAGA,2606,902,1704,0,0,0,2128,73,2055
+myweb-maven,RoleController.auth,0,"Operation, ",SAGA,8,7,1,0,0,0,10,4,6
+quizzes-tutor-launcher,AssessmentController.createAssessment,0,"Assessment, TopicConjunction, ",SAGA,97,25,72,0,0,0,13,16,-3
+quizzes-tutor-launcher,AdministrationController.removeCourseExecution,2,"CourseExecution, Quiz, User, ",SAGA,33,36,-3,0,0,0,24,9,15
+quizzes-tutor-launcher,StatementController.getNewQuiz,0,"Assessment, TopicConjunction, ",SAGA,212,98,114,0,0,0,66,40,26
+soad-maven,TeamController.associateStack,0,"Application, ",SAGA,46,16,30,0,0,0,36,11,25
+soad-maven,TeamController.associateApplication,0,"Application, ",SAGA,15,17,-2,0,0,0,23,15,8
+soad-maven,TeamController.disassociateStack,0,"Application, ",SAGA,46,15,31,0,0,0,12,11,1
+soad-maven,ApplicationController.setActiveApplication,4,"Environment, Stack, StackEnvironmentServer, ",SAGA,38,14,24,0,0,0,8,13,-5
+soad-maven,TeamController.removeApplicationAssociation,4,"Stack, ",SAGA,15,17,-2,0,0,0,39,15,24
+soad-maven,TeamController.updateTeam,1,"ApplicationOwner, StackOwner, Team, ",SAGA,9,0,9,0,0,0,1,14,-13
+soad-maven,ApplicationController.associateStack,4,"Environment, Stack, StackEnvironmentServer, ",SAGA,190,20,170,0,0,0,142,16,126
+soad-maven,ApplicationController.deleteApplication,1,"ApplicationOwner, ",SAGA,49,59,-10,0,0,0,37,20,17
+SoloMusic-maven,PlayListController.delete,1,"UserSpace, ",SAGA,33,34,-1,0,0,0,26,17,9
+SoloMusic-maven,PlayListController.saveCreate,1,"UserSpace, ",SAGA,35,34,1,0,0,0,49,9,40
+SoloMusic-maven,TrackController.delete,1,"UserSpace, ",SAGA,39,37,2,0,3,-3,110,8,102
+SoloMusic-maven,UserSpaceController.saveCreate,3,"PlayList, ",SAGA,161,80,81,0,3,-3,68,8,60
+SoloMusic-maven,TrackController.saveCreate,1,"UserSpace, ",SAGA,39,36,3,0,3,-3,61,9,52
+SoloMusic-maven,UserSpaceController.delete,3,"PlayList, ",SAGA,163,79,84,0,0,0,57,9,48
+SoloMusic-maven,UserSpaceController.saveComment,3,"PlayList, ",SAGA,195,83,112,0,3,-3,38,9,29
+WJKJ-center-admin-maven,AmuseAppealController.detail,3,"AmuseMsgFeedback, ",SAGA,9,0,9,0,0,0,15,0,15
+WJKJ-center-admin-maven,AmuseVerifyController.detail,2,"CommodityIcon, AmuseActivityInfo, ",SAGA,23,8,15,0,0,0,6,8,-2
+WJKJ-center-admin-maven,CoherePrizeController.sendPrize,0,"CoherePrize, ",SAGA,0,3,-3,0,0,0,46,12,34
+WJKJ-center-admin-maven,NetbarResourceOrderController.cancel,3,"SysUserArea, SystemUser, ",SAGA,1,0,1,0,0,0,7,2,5
+WJKJ-center-admin-maven,NetbarResourceCommodityPropertyController.save,3,"SystemUser, ",SAGA,4,4,0,0,0,0,6,4,2
+WJKJ-center-admin-maven,ActivityApplyController.personalApply,2,"ActivityInfo, ",SAGA,3,5,-2,0,0,0,15,20,-5
+WJKJ-center-admin-maven,AmuseBlackListController.delete,2,"CommodityIcon, ",SAGA,47,53,-6,0,0,0,32,8,24
+WJKJ-center-admin-maven,ActivityApplyController.teamApply,2,"ActivityInfo, ",SAGA,4,6,-2,0,0,0,45,30,15
+WJKJ-center-admin-maven,AmuseGrantController.grant,3,"SystemUser, ",SAGA,106,41,65,0,0,0,180,17,163
+WJKJ-center-admin-maven,AmuseVerifyController.operate,2,"CommodityIcon, AmuseActivityInfo, ",SAGA,172,43,129,0,0,0,282,18,264
+WJKJ-center-admin-maven,AmuseAppealController.operate,2,"CommodityIcon, AmuseActivityInfo, ",SAGA,118,38,80,0,0,0,123,21,102
+zsymvp_shatou-maven,WeiXinController.process,6,"CFan, CFanUser, CAutoDefault, CClickTw, ",SAGA,205,25,180,0,0,0,61,14,47

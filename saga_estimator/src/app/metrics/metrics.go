@@ -197,10 +197,6 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 	var systemComplexity int
 
 	for _, invocation := range redesign.Redesign {
-		if len(invocation.ClusterAccesses) == 0 {
-			continue
-		}
-
 		for i := range invocation.ClusterAccesses {
 			entity := invocation.GetAccessEntityID(i)
 			mode := files.MapAccessTypeToMode(invocation.GetAccessType(i))
@@ -210,10 +206,7 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 					functionalityComplexity++
 					systemComplexity += svc.systemComplexity(decomposition, controller, redesign, entity)
 				}
-				continue
-			}
-
-			if mode != WriteMode { // 1 -> R, 3 -> RW
+			} else if mode != WriteMode { // 1 -> R, 3 -> RW
 				functionalityComplexity += svc.costOfRead(decomposition, controller, redesign, entity)
 			}
 		}
@@ -228,7 +221,7 @@ func (svc *DefaultHandler) systemComplexity(decomposition *files.Decomposition, 
 
 	for _, otherController := range decomposition.Controllers {
 		mode, containsEntity := otherController.GetEntityMode(entity)
-		if otherController.Name == controller.Name || len(otherController.EntitiesPerCluster) <= 1 || !containsEntity || mode == WriteMode {
+		if otherController.Name == controller.Name || !containsEntity || mode == WriteMode {
 			continue
 		}
 

@@ -1,0 +1,19 @@
+{
+  "1" : "Actor",
+  "2" : "Administrator",
+  "3" : "Announcement",
+  "4" : "Answer",
+  "5" : "Certification",
+  "6" : "Customer",
+  "7" : "DomainEntity",
+  "8" : "Exam",
+  "9" : "ExamPaper",
+  "10" : "OpenAnswer",
+  "11" : "OpenQuestion",
+  "12" : "Question",
+  "13" : "Registration",
+  "14" : "Reviewer",
+  "15" : "TestAnswer",
+  "16" : "TestQuestion",
+  "17" : "UserAccount"
+}

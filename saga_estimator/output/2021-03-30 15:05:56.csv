@@ -1,0 +1,32 @@
+Codebase,Feature,Orchestrator,Entities,Initial System Complexity,Final System Complexity,System Complexity Reduction,Initial Functionality Complexity,Final Functionality Complexity,Functionality Complexity Reduction
+ldod-static,FragmentController.getTaxonomy,1,"Member, Section, VirtualEdition, VirtualEditionInter, ",254,73,181,25,83,-58
+ldod-static,FragmentController.getTaxonomy,0,"LdoD, ",254,128,126,25,125,-100
+ldod-static,FragmentController.getTaxonomy,2,"LdoDUser, ",254,127,127,25,168,-143
+ldod-static,VirtualEditionController.approveParticipant,0,"LdoD, ",28,29,-1,10,115,-105
+ldod-static,VirtualEditionController.approveParticipant,2,"LdoDUser, ",28,28,0,10,116,-106
+ldod-static,VirtualEditionController.approveParticipant,1,"Member, VirtualEdition, ",28,29,-1,10,151,-141
+ldod-static,VirtualEditionController.deleteTaxonomy,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",900,385,515,172,11,161
+ldod-static,VirtualEditionController.mergeCategories,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",1433,386,1047,447,11,436
+ldod-static,VirtualEditionController.deleteTaxonomy,2,"LdoDUser, ",900,664,236,172,17,155
+ldod-static,VirtualEditionController.deleteTaxonomy,1,"VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Tag, Taxonomy, ",900,694,206,172,17,155
+ldod-static,VirtualEditionController.mergeCategories,2,"LdoDUser, ",1433,614,819,447,53,394
+ldod-static,VirtualEditionController.mergeCategories,1,"VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Tag, Taxonomy, ",1433,699,734,447,54,393
+ldod-static,AdminController.removeTweets,0,"FragInter, Fragment, LdoD, ",390,346,44,55,13,42
+ldod-static,AdminController.removeTweets,4,"Tweet, TwitterCitation, AwareAnnotation, Citation, InfoRange, LastTwitterID, ",390,355,35,55,14,41
+ldod-static,AdminController.removeTweets,1,"Annotation, VirtualEditionInter, Range, ",390,340,50,55,37,18
+ldod-static,AdminController.removeTweets,2,"LdoDUser, ",390,347,43,55,38,17
+ldod-static,SignupController.signup,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",2837,549,2288,1107,66,1041
+ldod-static,SignupController.signup,2,"LdoDUser, RegistrationToken, Role, UserConnection, ",2837,844,1993,1107,73,1034
+ldod-static,SignupController.signup,1,"Member, Annotation, VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Range, Tag, Taxonomy, RecommendationWeights, ",2837,941,1896,1107,75,1032
+ldod-static,SignupController.signup,0,"LdoD, ",2837,801,2036,1107,95,1012
+ldod-static,VirtualEditionController.dissociate,2,"LdoDUser, ",1570,730,840,390,21,369
+ldod-static,VirtualEditionController.dissociate,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",1570,518,1052,390,136,254
+ldod-static,VirtualEditionController.dissociate,0,"SimpleText, ",1570,619,951,390,140,250
+ldod-static,VirtualEditionController.dissociate,1,"Annotation, VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Range, Tag, Taxonomy, ",1570,769,801,390,162,228
+ldod-static,RecommendationController.createLinearVirtualEdition,1,"Member, Section, VirtualEdition, VirtualEditionInter, Taxonomy, ",2914,571,2343,2694,106,2588
+ldod-static,RecommendationController.createLinearVirtualEdition,0,"ExpertEdition, ExpertEditionInter, FragInter, Fragment, NullEdition, SourceInter, Heteronym, LdoD, Edition, LdoDDate, ",2914,498,2416,2694,133,2561
+ldod-static,RecommendationController.createLinearVirtualEdition,2,"LdoDUser, ",2914,1426,1488,2694,743,1951
+ldod-static,VirtualEditionController.associateCategory,3,"ClassificationGame, Player, ClassificationGameParticipant, ClassificationGameRound, ",2014,446,1568,174,304,-130
+ldod-static,VirtualEditionController.associateCategory,1,"Member, Section, Annotation, VirtualEdition, VirtualEditionInter, Category, HumanAnnotation, Range, Tag, Taxonomy, ",2014,764,1250,174,307,-133
+ldod-static,VirtualEditionController.associateCategory,0,"ExpertEdition, FragInter, SimpleText, LdoD, Edition, ",2014,606,1408,174,316,-142
+ldod-static,VirtualEditionController.associateCategory,2,"LdoDUser, ",2014,940,1074,174,412,-238
