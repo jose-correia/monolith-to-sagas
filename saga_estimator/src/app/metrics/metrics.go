@@ -57,6 +57,26 @@ func (svc *DefaultHandler) CalculateDecompositionMetrics(decomposition *files.De
 		// coupling += cluster.Coupling
 	}
 
+	cluster_invocations := map[int]int{}
+	for _, invocation := range redesign.Redesign {
+		if len(invocation.ClusterAccesses) > 0 {
+			redesign.InvocationsCount += 1
+		}
+
+		_, exists := cluster_invocations[invocation.ClusterID]
+		if !exists {
+			cluster_invocations[invocation.ClusterID] = 1
+		} else {
+			cluster_invocations[invocation.ClusterID] += 1
+		}
+	}
+
+	for cluster_id, count := range cluster_invocations {
+		if count > 1 && cluster_id != redesign.OrchestratorID {
+			redesign.ClustersBesidesOrchestratorWithMultipleInvocations += 1
+		}
+	}
+
 	decomposition.Complexity = complexity / float32(len(decomposition.Controllers))
 	decomposition.Cohesion = cohesion / float32(len(decomposition.Clusters))
 	decomposition.Coupling = coupling / float32(len(decomposition.Clusters))
@@ -206,7 +226,9 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 					functionalityComplexity++
 					systemComplexity += svc.systemComplexity(decomposition, controller, redesign, entity)
 				}
-			} else if mode != WriteMode { // 1 -> R, 3 -> RW
+			}
+
+			if mode != WriteMode { // 1 -> R
 				functionalityComplexity += svc.costOfRead(decomposition, controller, redesign, entity)
 			}
 		}

@@ -10,7 +10,7 @@ import (
 
 type TrainingHandler interface {
 	CalculateControllerTrainingFeatures(*files.FunctionalityRedesign) map[int]*ClusterMetrics
-	AddDataToTrainingDataset([][]string, *files.Codebase, *files.Controller, map[int]*ClusterMetrics, int, map[string]string) [][]string
+	AddDataToTrainingDataset([][]string, *files.Codebase, *files.Controller, map[int]*ClusterMetrics, *files.FunctionalityRedesign, map[string]string) [][]string
 }
 
 type DefaultHandler struct {
@@ -72,6 +72,10 @@ func (svc *DefaultHandler) CalculateControllerTrainingFeatures(redesign *files.F
 			featureMetrics.ReadInvocations += 1
 		}
 
+		if index > 0 && redesign.Redesign[index-1].ContainsLock() {
+			metrics.DataDependentInvocations += 1
+		}
+
 		metrics.Invocations += 1
 		featureMetrics.Invocations += 1
 	}
@@ -94,6 +98,7 @@ func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureM
 
 		metrics.LockInvocationProbability = float32(metrics.LockInvocations) / float32(metrics.Invocations)
 		metrics.ReadInvocationProbability = float32(metrics.ReadInvocations) / float32(metrics.Invocations)
+		metrics.DataDependentInvocationProbability = float32(metrics.DataDependentInvocations) / float32(metrics.Invocations)
 		metrics.ReadOperationProbability = float32(metrics.ReadOperations) / float32(metrics.Operations)
 		metrics.WriteOperationProbability = float32(metrics.WriteOperations) / float32(metrics.Operations)
 		metrics.InvocationProbability = float32(metrics.Invocations) / float32(featureMetrics.Invocations)
@@ -112,11 +117,11 @@ func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureM
 }
 
 func (svc *DefaultHandler) AddDataToTrainingDataset(
-	data [][]string, codebase *files.Codebase, controller *files.Controller, clusterMetrics map[int]*ClusterMetrics, orchestratorID int, idToEntityMap map[string]string,
+	data [][]string, codebase *files.Codebase, controller *files.Controller, clusterMetrics map[int]*ClusterMetrics, redesign *files.FunctionalityRedesign, idToEntityMap map[string]string,
 ) [][]string {
 	for cluster, metrics := range clusterMetrics {
 		var result int
-		if orchestratorID == cluster {
+		if redesign.OrchestratorID == cluster {
 			result = 1
 		}
 
@@ -142,6 +147,7 @@ func (svc *DefaultHandler) AddDataToTrainingDataset(
 			fmt.Sprintf("%f", metrics.ReadOperationProbability),
 			fmt.Sprintf("%f", metrics.WriteOperationProbability),
 			fmt.Sprintf("%f", metrics.InvocationProbability),
+			fmt.Sprintf("%f", metrics.DataDependentInvocationProbability),
 			fmt.Sprintf("%f", metrics.OperationProbability),
 			fmt.Sprintf("%f", metrics.PivotInvocationFactor),
 			fmt.Sprintf("%f", metrics.InvocationOperationFactor),

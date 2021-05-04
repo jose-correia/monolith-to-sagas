@@ -171,14 +171,18 @@ func (c *Controller) EntitiesTouchedInMode(mode int) map[int]int {
 }
 
 type FunctionalityRedesign struct {
-	Name                    string        `json:"name,omitempty"`
-	UsedForMetrics          bool          `json:"usedForMetrics,omitempty"`
-	Redesign                []*Invocation `json:"redesign,omitempty"`
-	SystemComplexity        int           `json:"systemComplexity,omitempty"`
-	FunctionalityComplexity int           `json:"functionalityComplexity,omitempty"`
-	InconsistencyComplexity int           `json:"inconsistencyComplexity,omitempty"`
-	PivotTransaction        int           `json:"pivotTransaction,omitempty"`
-	OrchestratorID          int
+	Name                                               string        `json:"name,omitempty"`
+	UsedForMetrics                                     bool          `json:"usedForMetrics,omitempty"`
+	Redesign                                           []*Invocation `json:"redesign,omitempty"`
+	SystemComplexity                                   int           `json:"systemComplexity,omitempty"`
+	FunctionalityComplexity                            int           `json:"functionalityComplexity,omitempty"`
+	InconsistencyComplexity                            int           `json:"inconsistencyComplexity,omitempty"`
+	PivotTransaction                                   int           `json:"pivotTransaction,omitempty"`
+	OrchestratorID                                     int           `json:"orchestrator_id,omitempty"`
+	RecursiveIterations                                int           `json:"recursive_iterations,omitempty"`
+	MergedInvocationsCount                             int           `json:"merged_invocations_count,omitempty"`
+	InvocationsCount                                   int           `json:"invocations_count,omitempty"`
+	ClustersBesidesOrchestratorWithMultipleInvocations int           `json:"clusters_besides_orchestrator_with_multiple_invocations,omitempty"`
 }
 
 func (f *FunctionalityRedesign) GetInvocation(idx int) *Invocation {
@@ -232,7 +236,7 @@ func (i *Invocation) ContainsLock() bool {
 
 func (i *Invocation) ContainsRead() bool {
 	for _, access := range i.ClusterAccesses {
-		if access[0] == "R" {
+		if access[0] == "R" || access[0] == "RW" {
 			return true
 		}
 	}
@@ -254,4 +258,60 @@ func MapAccessTypeToMode(accessType string) int {
 	}
 
 	return modeMap[accessType]
+}
+
+type Datasets struct {
+	MetricsDataset      [][]string `json:"metrics_dataset,omitempty"`
+	ComplexitiesDataset [][]string `json:"complexities_dataset,omitempty"`
+}
+
+func InitializeDatasets() *Datasets {
+	return &Datasets{
+		MetricsDataset: [][]string{
+			{
+				"Codebase",
+				"Feature",
+				"Cluster",
+				//"Entities",
+				"CLIP",
+				"CRIP",
+				"CROP",
+				"CWOP",
+				"CIP",
+				"CDDIP",
+				"COP",
+				"CPIF",
+				"CIOF",
+				"Orchestrator",
+			},
+		},
+		ComplexitiesDataset: [][]string{
+			{
+				"Codebase",
+				"Feature",
+				"Orchestrator",
+				"Entities",
+				"Initial System Complexity",
+				"Final System Complexity",
+				"System Complexity Reduction",
+				"Initial Functionality Complexity",
+				"Final Functionality Complexity",
+				"Functionality Complexity Reduction",
+				"Initial Invocations Count",
+				"Final Invocations Count",
+				"Total Invocation Merges",
+				"Total Trace Sweeps w/ Merges",
+				"Clusters with multiple invocations",
+				"CLIP",
+				"CRIP",
+				"CROP",
+				"CWOP",
+				"CIP",
+				"CDDIP",
+				"COP",
+				"CPIF",
+				"CIOF",
+			},
+		},
+	}
 }
