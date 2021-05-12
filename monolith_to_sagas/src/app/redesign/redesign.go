@@ -212,6 +212,8 @@ func (svc *DefaultHandler) addResultToDataset(
 		strconv.Itoa(bestRedesign.InitialInvocationsCount),
 		strconv.Itoa(bestRedesign.InvocationsCount),
 		strconv.Itoa(bestRedesign.MergedInvocationsCount),
+		strconv.Itoa(initialRedesign.AccessesCount),
+		strconv.Itoa(bestRedesign.AccessesCount),
 		strconv.Itoa(bestRedesign.RecursiveIterations),
 		strconv.Itoa(bestRedesign.ClustersBesidesOrchestratorWithMultipleInvocations),
 		fmt.Sprintf("%f", orchestratorMetrics.LockInvocationProbability),

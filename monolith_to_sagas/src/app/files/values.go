@@ -184,6 +184,7 @@ type FunctionalityRedesign struct {
 	InvocationsCount                                   int           `json:"invocations_count,omitempty"`
 	ClustersBesidesOrchestratorWithMultipleInvocations int           `json:"clusters_besides_orchestrator_with_multiple_invocations,omitempty"`
 	InitialInvocationsCount                            int           `json:"initial_invocations_count,omitempty"`
+	AccessesCount                                      int           `json:"accesses_count,omitempty"`
 }
 
 func (f *FunctionalityRedesign) GetInvocation(idx int) *Invocation {
@@ -306,6 +307,8 @@ func InitializeDatasets() *Datasets {
 				"Initial Invocations Count W/ Empties",
 				"Final Invocations Count",
 				"Total Invocation Merges",
+				"Initial Accesses count",
+				"Final Accesses count",
 				"Total Trace Sweeps w/ Merges",
 				"Clusters with multiple invocations",
 				"CLIP",

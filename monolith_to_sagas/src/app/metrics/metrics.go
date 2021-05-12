@@ -59,6 +59,8 @@ func (svc *DefaultHandler) CalculateDecompositionMetrics(decomposition *files.De
 
 	cluster_invocations := map[int]int{}
 	for _, invocation := range redesign.Redesign {
+		redesign.AccessesCount += len(invocation.ClusterAccesses)
+
 		if len(invocation.ClusterAccesses) > 0 {
 			redesign.InvocationsCount += 1
 		}
