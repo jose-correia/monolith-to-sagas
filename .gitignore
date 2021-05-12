@@ -5,4 +5,4 @@ monolith_to_sagas/scripts
 .ipynb_checkpoints/
 codebases/*
 !codebases/codebases.zip
-!codebases/list.md
+!codebases/README.md
