@@ -3,3 +3,5 @@ __pycache__/
 monolith_to_sagas/output/*
 monolith_to_sagas/scripts
 .ipynb_checkpoints/
+codebases/*
+!codebases/codebases.zip
