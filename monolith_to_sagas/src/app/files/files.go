@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	codebaseFolderPath = "../../data/"
+	codebaseFolderPath = "../../../codebases/"
 	codebaseFileName   = "/codebase.json"
 	idToEntityFileName = "/IDToEntity.json"
 	outputPath         = "../../output/"

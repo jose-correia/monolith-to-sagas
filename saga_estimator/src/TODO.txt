@@ -1,3 +1,0 @@
-## TODO:
-
-Analisar os casos do Joao e perceber porque e' que o script da diferente.

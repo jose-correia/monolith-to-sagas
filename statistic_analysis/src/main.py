@@ -4,7 +4,7 @@ from modules.configuration.orchestrator_data import OrchestratorsData
 
 
 def main():
-    datasets_folder = "../../output"
+    datasets_folder = "../../monolith_to_sagas/output"
 
     config = Extraction(
         complexities_csv=f"{datasets_folder}/all-complexities-2021-05-11-17-16-01.csv",
