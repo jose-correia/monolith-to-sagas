@@ -17,6 +17,9 @@ class OrchestratorsData:
         self.initial_invocations_count = []
         self.final_invocations_count = []
         self.merge_percentages = []
+        self.initial_accesses_count = []
+        self.final_accesses_count = []
+        self.access_reduction_percentage = []
         self.merges = []
         self.sweeps = []
         self.color = color
@@ -69,3 +72,13 @@ class OrchestratorsData:
 
         for metric in self.features:
             self.metrics[metric].append(self.config.complexities_dataset[metric][index])
+        
+        self.initial_accesses_count.append(complexities_dataset[self.row_data.initial_accesses_row][index])
+        self.final_accesses_count.append(complexities_dataset[self.row_data.final_accesses_row][index])
+
+        access_reduction = complexities_dataset[self.row_data.initial_accesses_row][index] - complexities_dataset[self.row_data.final_accesses_row][index]
+        self.access_reduction_percentage.append(
+            (
+                access_reduction*100
+            )/complexities_dataset[self.row_data.initial_accesses_row][index]
+        )

@@ -3,26 +3,25 @@ from ..datasets.helpers import read_dataset, mean, stdev
 
 
 class RowData:
+    initial_complexity_row="Initial Functionality Complexity"
+    final_complexity_row="Final Functionality Complexity"
+    complexity_reduction_row="Functionality Complexity Reduction"
+    initial_invocations_row="Initial Invocations Count W/ Empties"
+    final_invocations_row="Final Invocations Count"
+    merges_row="Total Invocation Merges"
+    functionality_name="Feature"
+    sweeps_row="Total Trace Sweeps w/ Merges"
+    initial_accesses_row="Initial Accesses count"
+    final_accesses_row="Final Accesses count"
 
     def __init__(
         self,
-        initial_complexity_row,
-        final_complexity_row,
-        complexity_reduction_row,
-        initial_invocations_row,
-        final_invocations_row,
-        merges_row,
-        functionality_name,
-        sweeps_row,
+        use_system_complexity: bool = False,
     ):
-        self.initial_complexity_row = initial_complexity_row
-        self.final_complexity_row = final_complexity_row
-        self.complexity_reduction_row = complexity_reduction_row
-        self.functionality_name = functionality_name
-        self.initial_invocations_row = initial_invocations_row
-        self.final_invocations_row = final_invocations_row
-        self.merges_row = merges_row
-        self.sweeps_row = sweeps_row
+        if use_system_complexity:
+            self.initial_complexity_row="Initial System Complexity"
+            self.final_complexity_row="Final System Complexity"
+            self.complexity_reduction_row="System Complexity Reduction"
 
 
 class Extraction:
@@ -49,27 +48,7 @@ class Extraction:
         self.complexities_dataset = None
         self.training_dataset = None
         
-        self.rows = RowData(
-            initial_complexity_row="Initial Functionality Complexity",
-            final_complexity_row="Final Functionality Complexity",
-            complexity_reduction_row="Functionality Complexity Reduction",
-            initial_invocations_row="Initial Invocations Count W/ Empties",
-            final_invocations_row="Final Invocations Count",
-            merges_row="Total Invocation Merges",
-            functionality_name="Feature",
-            sweeps_row="Total Trace Sweeps w/ Merges",
-        )
-        if use_system_complexity:
-            self.rows = RowData(
-                initial_complexity_row="Initial System Complexity",
-                final_complexity_row="Final System Complexity",
-                complexity_reduction_row="System Complexity Reduction",
-                initial_invocations_row="Initial Invocations Count W/ Empties",
-                final_invocations_row="Final Invocations Count",
-                merges_row="Total Invocation Merges",
-                functionality_name="Feature",
-                sweeps_row="Total Trace Sweeps w/ Merges",
-            )
+        self.rows = RowData(use_system_complexity)
 
         self._read_datasets()
     
@@ -92,10 +71,10 @@ class Extraction:
         print("Average " + str(mean(best_clusters.complexity_reductions)))
         print("Stdev " + str(stdev(best_clusters.complexity_reductions)))
 
+
         print("\nInitial invocations count:")
         print("Average " + str(mean(best_clusters.initial_invocations_count)))
         print("Stdev " + str(stdev(best_clusters.initial_invocations_count)))
-
 
         print("\nFinal invocations count:")
         print("Average " + str(mean(best_clusters.final_invocations_count)))
@@ -104,6 +83,20 @@ class Extraction:
         print("\nMerges count:")
         print("Average " + str(mean(best_clusters.merges)))
         print("Stdev " + str(stdev(best_clusters.merges)))
+
+
+        print("\nInitial accesses count:")
+        print("Average " + str(mean(best_clusters.initial_accesses_count)))
+        print("Stdev " + str(stdev(best_clusters.initial_accesses_count)))
+
+        print("\nFinal accesses count:")
+        print("Average " + str(mean(best_clusters.final_accesses_count)))
+        print("Stdev " + str(stdev(best_clusters.final_accesses_count)))
+
+        print("\nAccess reduction %:")
+        print("Average " + str(mean(best_clusters.access_reduction_percentage)))
+        print("Stdev " + str(stdev(best_clusters.access_reduction_percentage)))
+
 
         print("\nMerge %:")
         print("Average " + str(mean(best_clusters.merge_percentages)))

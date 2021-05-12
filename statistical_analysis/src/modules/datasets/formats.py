@@ -13,6 +13,8 @@ CSV_ROWS = [
     "Initial Invocations Count W/ Empties",
     "Final Invocations Count",
     "Total Invocation Merges",
+    "Initial Accesses count",
+    "Final Accesses count",
     "Total Trace Sweeps w/ Merges",
     "Clusters with multiple invocations",
     "CLIP",
@@ -25,7 +27,7 @@ CSV_ROWS = [
     "CPIF",
     "CIOF",
     "SCCP",
-    "FCCP", 
+    "FCCP",
 ]
 
 ADAPTED_CSV_ROWS = [
