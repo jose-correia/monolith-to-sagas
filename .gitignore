@@ -6,3 +6,5 @@ saga_estimator/output
 saga_estimator/data
 saga_estimator/notebooks/venv
 saga_estimator/notebooks/runs
+.ipynb_checkpoints/
+saga_estimator/notebooks/.ipynb_checkpoints/
