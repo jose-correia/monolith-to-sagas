@@ -1,0 +1,23 @@
+{
+  "1" : "Actor",
+  "2" : "BankAccount",
+  "3" : "BankAgent",
+  "4" : "Candidate",
+  "5" : "Candidature",
+  "6" : "Chirp",
+  "7" : "Citizen",
+  "8" : "Comment",
+  "9" : "Commentable",
+  "10" : "Configuration",
+  "11" : "DomainEntity",
+  "12" : "EconomicTransaction",
+  "13" : "Election",
+  "14" : "Folder",
+  "15" : "GovernmentAgent",
+  "16" : "Lottery",
+  "17" : "LotteryTicket",
+  "18" : "Message",
+  "19" : "Petition",
+  "20" : "UserAccount",
+  "21" : "WelcomeMessage"
+}

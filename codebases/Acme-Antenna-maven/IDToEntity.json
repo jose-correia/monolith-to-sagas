@@ -1,0 +1,19 @@
+{
+  "1" : "Actor",
+  "2" : "Administrator",
+  "3" : "Agent",
+  "4" : "Antenna",
+  "5" : "Banner",
+  "6" : "Comment",
+  "7" : "Configuration",
+  "8" : "DomainEntity",
+  "9" : "Franchise",
+  "10" : "Handyworker",
+  "11" : "Platform",
+  "12" : "Request",
+  "13" : "Satellite",
+  "14" : "Subscription",
+  "15" : "Tutorial",
+  "16" : "User",
+  "17" : "UserAccount"
+}
