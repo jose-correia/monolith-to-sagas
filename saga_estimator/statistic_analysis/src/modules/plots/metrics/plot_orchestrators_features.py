@@ -6,13 +6,13 @@ from matplotlib import pyplot as plt
 
 plt.style.use('ggplot')
 
-CSV_FILE = "../../output/all-metrics-2021-05-02-23-50-02.csv"
-CSV_ROWS = ["Codebase", "Feature", "Cluster", "CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF", "CIOF", "Orchestrator"]
-PLOT_METRICS_INDIVIDUALLY = True
+CSV_FILE = "../../output/all-metrics-2021-05-04-22-15-56.csv"
+CSV_ROWS = ["Codebase", "Feature", "Cluster", "CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF", "CIOF", "SCCP", "FCCP", "Orchestrator"]
+PLOT_METRICS_INDIVIDUALLY = False
 
 dataset = pd.read_csv(CSV_FILE, names=CSV_ROWS, skiprows=1)
 
-features_to_plot = ["CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF"]
+features_to_plot = ["CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF", "SCCP", "FCCP"]
 
 orchestrator_features = dict(csv_indexes=[])
 non_orchestrator_features = dict(csv_indexes=[])
@@ -42,7 +42,7 @@ if PLOT_METRICS_INDIVIDUALLY:
     row = 0
     column = 0
 
-    fig, ax = plt.subplots(2, 4, figsize=(18, 8))
+    fig, ax = plt.subplots(3, 4, figsize=(18, 8))
     for idx, feature in enumerate(features_to_plot):
         ax[row][column].scatter(orchestrator_ids, orchestrator_features[feature], s=10, color="red")
         ax[row][column].scatter(non_orchestrator_ids, non_orchestrator_features[feature], s=10, color="blue")
@@ -63,7 +63,7 @@ if PLOT_METRICS_INDIVIDUALLY:
 
 else:
     for idx, feature in enumerate(features_to_plot):
-        fig, ax = plt.subplots(2, 4, figsize=(18, 8))
+        fig, ax = plt.subplots(3, 4, figsize=(18, 8))
 
         row = 0
         column = 0

@@ -6,8 +6,8 @@ from matplotlib import pyplot as plt
 
 plt.style.use('ggplot')
 
-CSV_FILE = "../../output/all-complexities-2021-05-02-23-50-02.csv"
-ADAPTED_CSV_FILE = "../../output/all-metrics-2021-05-02-23-50-02.csv"
+CSV_FILE = "../../output/all-complexities-2021-05-09-11-12-32.csv"
+ADAPTED_CSV_FILE = "../../output/all-metrics-2021-05-09-11-12-32.csv"
 
 CSV_ROWS = [
     "Codebase",
@@ -21,6 +21,7 @@ CSV_ROWS = [
     "Final Functionality Complexity",
     "Functionality Complexity Reduction",
     "Initial Invocations Count",
+    "Initial Invocations Count W/ Empties",
     "Final Invocations Count",
     "Total Invocation Merges",
     "Total Trace Sweeps w/ Merges",
@@ -34,6 +35,8 @@ CSV_ROWS = [
     "COP",
     "CPIF",
     "CIOF",
+    "SCCP",
+    "FCCP", 
 ]
 
 ADAPTED_CSV_ROWS = [
@@ -49,6 +52,8 @@ ADAPTED_CSV_ROWS = [
     "COP",
     "CPIF",
     "CIOF",
+    "SCCP",
+    "FCCP", 
     "Orchestrator",
 ]
 
@@ -76,6 +81,7 @@ elif PLOT_SPECIFIC_CODEBASE:
 # features_to_plot = ["CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF", "CIOF"]
 features_to_plot = ["CLIP", "CRIP", "CROP", "CWOP", "CIP", "CDDIP", "COP", "CPIF"]
 
+merges_row = dataset["Total Invocation Merges"]
 if not SHOW_SYSTEM_COMPLEXITY_REDUCTION:
     initial_row = dataset["Initial Functionality Complexity"]
     reduction_row = dataset["Functionality Complexity Reduction"]
@@ -88,12 +94,14 @@ else:
 best_clusters = {
     "metrics": {},
     "reductions": [],
+    "merges": [],
     "color": "red",
 }
 
 other_clusters = {
     "metrics": {},
     "reductions": [],
+    "merges": [],
     "color": "cornflowerblue",
 }
 
@@ -103,7 +111,13 @@ for metric in features_to_plot:
 
 def set_metrics(cluster_dict, dataset, idx):
     reduction_percentage = (reduction_row[idx] * 100)/initial_row[idx]
+
+    if reduction_percentage <= 0:
+        return
+
     cluster_dict["reductions"].append(reduction_percentage)
+
+    cluster_dict["merges"].append(merges_row[idx])
 
     for metric in features_to_plot:
         cluster_dict["metrics"][metric].append(dataset[metric][idx])
@@ -120,56 +134,47 @@ for idx in dataset.index:
         set_metrics(best_clusters, dataset, idx)
     else:
         set_metrics(other_clusters, dataset, idx)
-    # if dataset["Feature"][idx] != last_feature:
-    #     set_metrics(best_clusters, dataset, idx)
 
-    #     if ONLY_SHOW_BEST_AND_WORST:
-    #         if last_feature != "":
-    #             set_metrics(other_clusters, dataset, idx-1)
-
-    #     last_feature = dataset["Feature"][idx]
-
-    # elif not ONLY_SHOW_BEST_AND_WORST:
-    #     set_metrics(other_clusters, dataset, idx)
-    
     index = idx
 
-print(len(best_clusters["reductions"]))
-print(len(other_clusters["reductions"]))
 
-row = 0
-column = 0
-best_x = np.array(best_clusters["reductions"])
-other_x = np.array(other_clusters["reductions"])
+# PLOT REDUCTION PER MERGES PLOTS
+fig, ax = plt.subplots(1, 1, figsize=(4, 4))
 
-fig, ax = plt.subplots(2, 4, figsize=(18, 8))
-for idx, feature in enumerate(features_to_plot):
-    best_y = np.array(best_clusters["metrics"][feature])
-    best_m, best_b = np.polyfit(best_x, best_y, 1)
-    ax[row][column].plot(best_x, best_m*best_x + best_b, color=best_clusters["color"])
+def func(x, a, b, c, d, g):
+    return ( ( (a-d) / ( (1+( (x/c)** b )) **g) ) + d )
 
-    other_y = np.array(other_clusters["metrics"][feature])
-    other_m, other_b = np.polyfit(other_x, other_y, 1)
-    ax[row][column].plot(other_x, other_m*other_x + other_b, color=other_clusters["color"])
+from scipy.optimize import curve_fit
+popt, _ = curve_fit(func, best_clusters["merges"], best_clusters["reductions"])
+
+a, b, c, d, g = popt
+
+# define a sequence of inputs between the smallest and largest known inputs
+from numpy import arange
+x_line = arange(min(best_clusters["merges"]), max(best_clusters["merges"]), 1)
+# calculate the output for the range
+y_line = func(x_line, a, b, c, d, g)
+# create a line plot for the mapping function
+ax.plot(x_line, y_line, '--', color='red')
 
 
+# ax.plot(best_clusters["merges"], func(best_clusters["merges"], *popt), 'r-', label="Fitted Curve")
 
-    ax[row][column].scatter(best_clusters["reductions"], best_clusters["metrics"][feature], s=size, color=best_clusters["color"], label="best cluster")
-    ax[row][column].scatter(other_clusters["reductions"], other_clusters["metrics"][feature], s=size, color=other_clusters["color"], label="other cluster")
+ax.scatter(best_clusters["merges"], best_clusters["reductions"], s=size, color=other_clusters["color"])
+# ax.scatter(other_clusters["merges"], other_clusters["reductions"], s=size, color=other_clusters["color"], label="bad cluster")
 
-    ax[row][column].set_xlabel("FRC reduction %", fontsize=10)
-    ax[row][column].set_ylabel(feature, fontsize=10)
+ax.set_xlabel("Merge Operations", fontsize=10)
+ax.set_ylabel("FRC reduction %", fontsize=10)
 
-    ax[row][column].legend()
-    ax[row][column].set_axisbelow(True)
-    ax[row][column].grid(True)
+ax.set_xlim(0, 200)
+ax.set_ylim(0, 100)
 
-    if column == 3:
-        column = 0
-        row += 1
-    else:
-        column += 1
+ax.legend()
+ax.set_axisbelow(True)
+ax.grid(True)
 
-    fig.tight_layout()
+fig.tight_layout()
 
+invocations_reduction = (dataset["Total Invocation Merges"].mean() * 100)/dataset["Initial Invocations Count"].mean()
+print(invocations_reduction)
 plt.show()

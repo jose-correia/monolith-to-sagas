@@ -183,6 +183,7 @@ type FunctionalityRedesign struct {
 	MergedInvocationsCount                             int           `json:"merged_invocations_count,omitempty"`
 	InvocationsCount                                   int           `json:"invocations_count,omitempty"`
 	ClustersBesidesOrchestratorWithMultipleInvocations int           `json:"clusters_besides_orchestrator_with_multiple_invocations,omitempty"`
+	InitialInvocationsCount                            int           `json:"initial_invocations_count,omitempty"`
 }
 
 func (f *FunctionalityRedesign) GetInvocation(idx int) *Invocation {
@@ -190,12 +191,14 @@ func (f *FunctionalityRedesign) GetInvocation(idx int) *Invocation {
 }
 
 type Invocation struct {
-	Name              string          `json:"name,omitempty"`
-	ID                int             `json:"id,omitempty"`
-	ClusterID         int             `json:"clusterID,omitempty"`
-	ClusterAccesses   [][]interface{} `json:"clusterAccesses,omitempty"`
-	RemoteInvocations []int           `json:"remoteInvocations,omitempty"`
-	Type              string          `json:"type,omitempty"`
+	Name                                  string          `json:"name,omitempty"`
+	ID                                    int             `json:"id,omitempty"`
+	ClusterID                             int             `json:"clusterID,omitempty"`
+	ClusterAccesses                       [][]interface{} `json:"clusterAccesses,omitempty"`
+	RemoteInvocations                     []int           `json:"remoteInvocations,omitempty"`
+	Type                                  string          `json:"type,omitempty"`
+	ControllerstThatReadInWrittenEntities int             `json:"controllerst_that_read_in_written_entities,omitempty"`
+	ControllersThatWriteInReadEntities    int             `json:"controllers_that_write_in_read_entities,omitempty"`
 }
 
 func (i *Invocation) AddPrunedAccess(entity int, accessType string) {
@@ -282,6 +285,8 @@ func InitializeDatasets() *Datasets {
 				"COP",
 				"CPIF",
 				"CIOF",
+				"SCCP",
+				"FCCP",
 				"Orchestrator",
 			},
 		},
@@ -298,6 +303,7 @@ func InitializeDatasets() *Datasets {
 				"Final Functionality Complexity",
 				"Functionality Complexity Reduction",
 				"Initial Invocations Count",
+				"Initial Invocations Count W/ Empties",
 				"Final Invocations Count",
 				"Total Invocation Merges",
 				"Total Trace Sweeps w/ Merges",
@@ -311,6 +317,8 @@ func InitializeDatasets() *Datasets {
 				"COP",
 				"CPIF",
 				"CIOF",
+				"SCCP",
+				"FCCP",
 			},
 		},
 	}

@@ -47,6 +47,9 @@ func (svc *DefaultHandler) CalculateControllerTrainingFeatures(redesign *files.F
 
 		metrics.InvocationIds = append(metrics.InvocationIds, index)
 
+		metrics.ControllersThatWriteInReadEntities += invocation.ControllersThatWriteInReadEntities
+		metrics.ControllerstThatReadInWrittenEntities += invocation.ControllerstThatReadInWrittenEntities
+
 		var containsSemanticLock bool
 		for idx := range invocation.ClusterAccesses {
 			accessType = invocation.GetAccessType(idx)
@@ -80,11 +83,11 @@ func (svc *DefaultHandler) CalculateControllerTrainingFeatures(redesign *files.F
 		featureMetrics.Invocations += 1
 	}
 
-	svc.calculateFinalClusterMetrics(&featureMetrics, clusterMetrics)
+	svc.calculateFinalClusterMetrics(&featureMetrics, clusterMetrics, redesign)
 	return clusterMetrics
 }
 
-func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureMetrics, clusterMetrics map[int]*ClusterMetrics) {
+func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureMetrics, clusterMetrics map[int]*ClusterMetrics, redesign *files.FunctionalityRedesign) {
 	for _, metrics := range clusterMetrics {
 		metrics.PivotInvocations = featureMetrics.Invocations - metrics.Invocations - metrics.InvocationIds[0] - (featureMetrics.Invocations - metrics.InvocationIds[len(metrics.InvocationIds)-1] - 1)
 
@@ -113,6 +116,9 @@ func (svc *DefaultHandler) calculateFinalClusterMetrics(featureMetrics *FeatureM
 	for _, metrics := range clusterMetrics {
 		metrics.PivotInvocationFactor = float32(metrics.AveragePivotInvocations) / float32(featureMetrics.AveragePivotInvocations)
 		metrics.InvocationOperationFactor = float32(metrics.AverageInvocationOperations) / float32(featureMetrics.AverageInvocationOperations)
+
+		metrics.SystemComplexityContributionPercentage = float32(metrics.ControllerstThatReadInWrittenEntities) / float32(redesign.SystemComplexity)
+		metrics.FunctionalityComplexityContributionPercentage = float32(metrics.ControllersThatWriteInReadEntities) / float32(redesign.FunctionalityComplexity)
 	}
 }
 
@@ -151,6 +157,8 @@ func (svc *DefaultHandler) AddDataToTrainingDataset(
 			fmt.Sprintf("%f", metrics.OperationProbability),
 			fmt.Sprintf("%f", metrics.PivotInvocationFactor),
 			fmt.Sprintf("%f", metrics.InvocationOperationFactor),
+			fmt.Sprintf("%f", metrics.SystemComplexityContributionPercentage),
+			fmt.Sprintf("%f", metrics.FunctionalityComplexityContributionPercentage),
 			strconv.Itoa(result),
 		})
 	}

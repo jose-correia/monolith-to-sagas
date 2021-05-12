@@ -217,21 +217,35 @@ func (svc *DefaultHandler) sagasRedesignComplexity(decomposition *files.Decompos
 	var systemComplexity int
 
 	for _, invocation := range redesign.Redesign {
+		var controllerstThatReadInWrittenEntities int
+		var controllersThatWriteInReadEntities int
+
 		for i := range invocation.ClusterAccesses {
 			entity := invocation.GetAccessEntityID(i)
 			mode := files.MapAccessTypeToMode(invocation.GetAccessType(i))
 
 			if mode >= WriteMode { // 2 -> W, 3 -> RW
 				if invocation.Type == "COMPENSATABLE" {
+					systemComplexityResult := svc.systemComplexity(decomposition, controller, redesign, entity)
+
+					controllerstThatReadInWrittenEntities += systemComplexityResult
+					systemComplexity += systemComplexityResult
+
 					functionalityComplexity++
-					systemComplexity += svc.systemComplexity(decomposition, controller, redesign, entity)
 				}
 			}
 
 			if mode != WriteMode { // 1 -> R
-				functionalityComplexity += svc.costOfRead(decomposition, controller, redesign, entity)
+				costOfRead := svc.costOfRead(decomposition, controller, redesign, entity)
+
+				controllersThatWriteInReadEntities += costOfRead
+
+				functionalityComplexity += costOfRead
 			}
 		}
+
+		invocation.ControllerstThatReadInWrittenEntities = controllerstThatReadInWrittenEntities
+		invocation.ControllersThatWriteInReadEntities = controllersThatWriteInReadEntities
 	}
 
 	redesign.FunctionalityComplexity = functionalityComplexity

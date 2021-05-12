@@ -15,13 +15,14 @@ const (
 	onlyJoaoControllers     = false
 	generateMetricsCSV      = true
 	generateComplexitiesCSV = true
+	executions              = 1
 )
 
 type CodebaseData struct {
-	Name                    string  `json:"name,omitempty"`
-	CutValue                float32 `json:"cut_value,omitempty"`
-	UseExpertDecompositions bool    `json:"use_expert_decompositions,omitempty"`
-	Controllers             []string
+	Name                    string   `json:"name,omitempty"`
+	CutValue                float32  `json:"cut_value,omitempty"`
+	UseExpertDecompositions bool     `json:"use_expert_decompositions,omitempty"`
+	Controllers             []string `json:"controllers,omitempty"`
 }
 
 func main() {
@@ -33,50 +34,71 @@ func main() {
 		training.New(logger),
 	)
 
-	codebasesData := initializeCodebaseData()
+	execution_times := make([]time.Duration, executions)
 
-	fmt.Printf("Estimating the best saga redesign for %v codebases...\n\n", len(codebasesData))
+	for i := 0; i < executions; i++ {
+		codebasesData := initializeCodebaseData()
 
-	csvData := files.InitializeDatasets()
+		fmt.Printf("Estimating the best saga redesign for %v codebases...\n\n", len(codebasesData))
 
-	for _, codebaseData := range codebasesData {
-		codebase, err := filesHandler.ReadCodebase(codebaseData.Name)
-		if err != nil {
-			logger.Log("Failed to decode codebase %s | %s", codebaseData.Name, err.Error())
-			continue
-		}
+		csvData := files.InitializeDatasets()
 
-		idToEntityMap, err := filesHandler.ReadIDToEntityFile(codebaseData.Name)
-		if err != nil {
-			logger.Log("Failed to decode id_to_entity map %s | %s", codebaseData.Name, err.Error())
-			continue
-		}
+		start := time.Now()
 
-		datasets := redesignHandler.EstimateCodebaseOrchestrators(
-			codebase,
-			idToEntityMap,
-			codebaseData.CutValue,
-			codebaseData.UseExpertDecompositions,
-			codebaseData.Controllers,
-		)
-
-		if generateComplexitiesCSV {
-			for _, row := range datasets.ComplexitiesDataset {
-				csvData.ComplexitiesDataset = append(csvData.ComplexitiesDataset, row)
+		for _, codebaseData := range codebasesData {
+			codebase, err := filesHandler.ReadCodebase(codebaseData.Name)
+			if err != nil {
+				logger.Log("Failed to decode codebase %s | %s", codebaseData.Name, err.Error())
+				continue
 			}
-		}
 
-		if generateMetricsCSV {
-			for _, row := range datasets.MetricsDataset {
-				csvData.MetricsDataset = append(csvData.MetricsDataset, row)
+			idToEntityMap, err := filesHandler.ReadIDToEntityFile(codebaseData.Name)
+			if err != nil {
+				logger.Log("Failed to decode id_to_entity map %s | %s", codebaseData.Name, err.Error())
+				continue
 			}
+
+			datasets := redesignHandler.EstimateCodebaseOrchestrators(
+				codebase,
+				idToEntityMap,
+				codebaseData.CutValue,
+				codebaseData.UseExpertDecompositions,
+				codebaseData.Controllers,
+			)
+
+			if generateComplexitiesCSV {
+				for _, row := range datasets.ComplexitiesDataset {
+					csvData.ComplexitiesDataset = append(csvData.ComplexitiesDataset, row)
+				}
+			}
+
+			if generateMetricsCSV {
+				for _, row := range datasets.MetricsDataset {
+					csvData.MetricsDataset = append(csvData.MetricsDataset, row)
+				}
+			}
+
+			fmt.Printf("Finished estimation for codebase %v\n", codebase.Name)
 		}
 
-		fmt.Printf("Finished estimation for codebase %v\n", codebase.Name)
+		execution_times = append(execution_times, time.Since(start))
+		generateCSVFiles(filesHandler, csvData)
 	}
 
-	generateCSVFiles(filesHandler, csvData)
 	fmt.Printf("\nDone!\n")
+	fmt.Printf("\nExecution time: %s\n", execution_times)
+
+	var sum time.Duration
+	var length int64
+	for _, value := range execution_times {
+		if value != 0 {
+			sum += value
+			length += 1
+		}
+	}
+
+	average_execution_time := int64(sum) / length
+	fmt.Printf("\nAverage execution time: %s\n", time.Duration(average_execution_time))
 }
 
 func initializeCodebaseData() []CodebaseData {

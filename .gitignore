@@ -4,3 +4,5 @@ __pycache__/
 traces/
 saga_estimator/output
 saga_estimator/data
+saga_estimator/notebooks/venv
+saga_estimator/notebooks/runs

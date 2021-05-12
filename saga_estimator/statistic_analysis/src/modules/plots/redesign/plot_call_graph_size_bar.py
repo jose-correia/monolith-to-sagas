@@ -25,7 +25,7 @@ x = np.arange(len(graph_size_data))
 for i in range(len(graph_size_data[0])):
     y = [d[i] for d in graph_size_data]
     label = "initial" if i == 0 else "final"
-    color = "coral" if label == "initial" else "cornflowerblue"
+    color = "tomato" if label == "initial" else "cornflowerblue"
     b = ax.bar(x + i * dimw, y, dimw, bottom=0, label=label, color=color)
 
 ax.set_xticks(x + dimw / 2)

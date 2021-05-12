@@ -75,7 +75,7 @@ for name, y, x in zip(FUNCTIONALITY_IDS, ESTIMATOR_FRC["final"], ESTIMATOR_FRC["
     plt.annotate(name, xy=(x,y), xytext=(0,np.sqrt(y)/2.+5), textcoords="offset points", ha="center", va="top", fontsize=8)
 
 
-ax.scatter(DEVELOPER_FRC["initial"], DEVELOPER_FRC["final"], s=35, color="blue", label="developer")
+ax.scatter(DEVELOPER_FRC["initial"], DEVELOPER_FRC["final"], s=35, color="cornflowerblue", label="developer")
 
 for name, y, x in zip(FUNCTIONALITY_IDS, DEVELOPER_FRC["final"], DEVELOPER_FRC["initial"]):
     plt.annotate(name, xy=(x,y), xytext=(0,np.sqrt(y)/2.+5), textcoords="offset points", ha="center", va="top", fontsize=8)

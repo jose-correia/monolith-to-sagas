@@ -20,8 +20,9 @@ const (
 	previousReadDistanceThreshold             = 0
 	printTraces                               = false
 	printSpecificFunctionality                = ""
-	excludeLowDistanceRedesigns               = true
-	acceptable_complexity_distance_percentage = 0.20
+	excludeLowDistanceRedesigns               = false
+	acceptable_complexity_distance_percentage = 0.30
+	minimizeSumBothComplexities               = false
 )
 
 var (
@@ -208,6 +209,7 @@ func (svc *DefaultHandler) addResultToDataset(
 		strconv.Itoa(bestRedesign.FunctionalityComplexity),
 		strconv.Itoa(functionalityComplexityReduction),
 		strconv.Itoa(initialRedesign.InvocationsCount),
+		strconv.Itoa(bestRedesign.InitialInvocationsCount),
 		strconv.Itoa(bestRedesign.InvocationsCount),
 		strconv.Itoa(bestRedesign.MergedInvocationsCount),
 		strconv.Itoa(bestRedesign.RecursiveIterations),
@@ -221,6 +223,8 @@ func (svc *DefaultHandler) addResultToDataset(
 		fmt.Sprintf("%f", orchestratorMetrics.OperationProbability),
 		fmt.Sprintf("%f", orchestratorMetrics.PivotInvocationFactor),
 		fmt.Sprintf("%f", orchestratorMetrics.InvocationOperationFactor),
+		fmt.Sprintf("%f", orchestratorMetrics.SystemComplexityContributionPercentage),
+		fmt.Sprintf("%f", orchestratorMetrics.FunctionalityComplexityContributionPercentage),
 	})
 
 	return data
@@ -244,10 +248,14 @@ func (svc *DefaultHandler) CreateSagaRedesigns(decomposition *files.Decompositio
 
 	// order the redesigns by ascending complexity
 	sort.Slice(sagaRedesigns, func(i, j int) bool {
-		// return sagaRedesigns[i].SystemComplexity < sagaRedesigns[j].SystemComplexity
+		if minimizeSumBothComplexities {
+			return sagaRedesigns[i].FunctionalityComplexity+sagaRedesigns[i].SystemComplexity < sagaRedesigns[j].FunctionalityComplexity+sagaRedesigns[j].SystemComplexity
+		}
+
 		if sagaRedesigns[i].FunctionalityComplexity == sagaRedesigns[j].FunctionalityComplexity {
 			return sagaRedesigns[i].SystemComplexity < sagaRedesigns[j].SystemComplexity
 		}
+
 		return sagaRedesigns[i].FunctionalityComplexity < sagaRedesigns[j].FunctionalityComplexity
 	})
 
@@ -306,6 +314,8 @@ func (svc *DefaultHandler) RedesignControllerUsingRules(controller *files.Contro
 		invocationID++
 	}
 
+	redesign.InitialInvocationsCount = len(redesign.Redesign)
+
 	// while any merge is done, iterate all the invocations
 	mergedInvocations := 1
 	for mergedInvocations > 0 {
@@ -334,7 +344,7 @@ func (svc *DefaultHandler) mergeAllPossibleInvocations(redesign *files.Functiona
 
 		prevInvocations, exists := prevClusterInvocations[invocation.ClusterID]
 
-		hasAccesses := len(invocation.ClusterAccesses) > 0
+		//hasAccesses := len(invocation.ClusterAccesses) > 0
 
 		if !exists {
 			addToPreviousInvocations = true
@@ -350,9 +360,7 @@ func (svc *DefaultHandler) mergeAllPossibleInvocations(redesign *files.Functiona
 				invocations, prevClusterInvocations, deleted = svc.mergeInvocations(invocations, prevClusterInvocations, prevInvocationIdx, idx)
 				svc.pruneInvocationAccesses(invocations[prevInvocationIdx])
 
-				if hasAccesses {
-					redesign.MergedInvocationsCount += 1
-				}
+				redesign.MergedInvocationsCount += 1
 				mergeCount += 1
 
 				// fix prevInvocations map after merge changes
