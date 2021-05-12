@@ -1,10 +1,6 @@
-trace-automation-47099cfe1419.json
 __pycache__/
 .DS_Store
-traces/
-saga_estimator/output
-saga_estimator/data
-saga_estimator/notebooks/venv
-saga_estimator/notebooks/runs
+monolith_to_sagas/output/*
+monolith_to_sagas/scripts
 .ipynb_checkpoints/
-saga_estimator/notebooks/.ipynb_checkpoints/
+codebases/
