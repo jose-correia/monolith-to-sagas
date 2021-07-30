@@ -8,6 +8,7 @@ import (
 	"automation/app/redesign"
 	"automation/app/training"
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -17,15 +18,16 @@ const (
 )
 
 func main() {
+	PrintMemUsage()
 	execution := configuration.Execution{
 		Configuration: &configuration.Configuration{
-			LdodOnly:                              false,
+			LdodOnly:                              true,
 			OnlyJoaoControllers:                   true,
 			GenerateComplexitiesCSV:               false,
 			GenerateMetricsCSV:                    false,
 			Executions:                            1,
 			MinimizeSumBothComplexities:           false,
-			DataDependenceThreshold:               1,
+			DataDependenceThreshold:               0,
 			ExcludeLowDistanceRedesigns:           false,
 			AcceptableComplexityDistanceThreshold: 0,
 			OnlyExportBestRedesign:                false,
@@ -108,6 +110,24 @@ func performanceEvaluation(execution configuration.Execution) {
 	fmt.Printf("\nAverage refactorization time for each functionalities: %s\n", configuration.GetAverageDuration(execution.ResultsBatches[1].FunctionalityExecutionTimes))
 	highest, lowest = configuration.GetLowestAndHighestDuration(execution.ResultsBatches[1].FunctionalityExecutionTimes)
 	fmt.Printf("\nLowest: %s   |    Highest: %s\n", lowest, highest)
+
+	PrintMemUsage()
+}
+
+// PrintMemUsage outputs the current, total and OS memory being used. As well as the number
+// of garage collection cycles completed.
+func PrintMemUsage() {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	// For info on each, see: https://golang.org/pkg/runtime/#MemStats
+	fmt.Printf("Alloc = %v MiB", bToMb(m.Alloc))
+	fmt.Printf("\tTotalAlloc = %v MiB", bToMb(m.TotalAlloc))
+	fmt.Printf("\tSys = %v MiB", bToMb(m.Sys))
+	fmt.Printf("\tNumGC = %v\n", m.NumGC)
+}
+
+func bToMb(b uint64) uint64 {
+	return b / 1024 / 1024
 }
 
 func generateCSVFiles(
