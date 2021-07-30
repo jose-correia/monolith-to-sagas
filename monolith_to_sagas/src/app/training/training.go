@@ -1,7 +1,7 @@
 package training
 
 import (
-	"app/files"
+	"automation/app/files"
 	"fmt"
 	"strconv"
 

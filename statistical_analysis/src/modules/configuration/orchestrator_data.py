@@ -25,6 +25,15 @@ class OrchestratorsData:
         self.initial_accesses_count = []
         self.final_accesses_count = []
         self.access_reduction_percentage = []
+        self.clip = []
+        self.crip = []
+        self.crop = []
+        self.cwop = []
+        self.cip = []
+        self.cop = []
+        self.cddip = []
+        self.sccp = []
+        self.fccp = []
         self.merges = []
         self.sweeps = []
         self.color = color
@@ -98,3 +107,13 @@ class OrchestratorsData:
                 access_reduction*100
             )/complexities_dataset[self.row_data.initial_accesses_row][index]
         )
+
+        self.clip.append(self.config.complexities_dataset[self.row_data.cip][index])
+        self.crip.append(self.config.complexities_dataset[self.row_data.crip][index])
+        self.crop.append(self.config.complexities_dataset[self.row_data.crop][index])
+        self.cwop.append(self.config.complexities_dataset[self.row_data.cwop][index])
+        self.cip.append(self.config.complexities_dataset[self.row_data.cip][index])
+        self.cop.append(self.config.complexities_dataset[self.row_data.cop][index])
+        self.sccp.append(self.config.complexities_dataset[self.row_data.sccp][index])
+        self.fccp.append(self.config.complexities_dataset[self.row_data.fccp][index])
+        self.cddip.append(self.config.complexities_dataset[self.row_data.cddip][index])

@@ -1,6 +1,7 @@
 from typing import List
-from ..datasets.helpers import read_dataset, mean, stdev
+from ..datasets.helpers import read_dataset, mean, stdev, correlation
 from ..plots.metrics.plot_reduction_per_merge_percentage import plot_complexity_reduction_per_merge_percentage
+import numpy as np
 
 
 class RowData:
@@ -17,6 +18,16 @@ class RowData:
     sweeps_row="Total Trace Sweeps w/ Merges"
     initial_accesses_row="Initial Accesses count"
     final_accesses_row="Final Accesses count"
+    clip="CLIP"
+    crip="CRIP"
+    crop="CROP"
+    cwop="CWOP"
+    cip="CIP"
+    cop="COP"
+    cddip="CDDIP"
+    sccp="SCCP"
+    fccp="FCCP"
+
 
 
 class Extraction:
@@ -114,5 +125,197 @@ class Extraction:
         print("Average " + str(mean(best_clusters.sweeps)))
         print("Stdev " + str(stdev(best_clusters.sweeps)))
 
+        print("\nCRIP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.crip,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\nCIP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cip,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\nCROP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.crop,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\nCWOP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cwop,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\CDDIP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cddip,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\nCOP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cop,
+                best_clusters.frc_reductions,
+            )
+        )
+
+
+        print("\nSCCP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.fccp,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\FCCP Correlation with FRC reduction %")
+        print(
+            correlation(
+                best_clusters.fccp,
+                best_clusters.frc_reductions,
+            )
+        )
+
+        print("\nCRIP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.crip,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nCOP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.cop,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nSCCP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.sccp,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\FCCP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.fccp,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nCIP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.cip,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nCROP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.crop,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nCWOP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.cwop,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\CDDIP Correlation with SAC reduction %")
+        print(
+            correlation(
+                best_clusters.cddip,
+                best_clusters.sac_reductions,
+            )
+        )
+
+        print("\nCRIP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.crip,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\nCOP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cop,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\nSCCP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.sccp,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\FCCP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.fccp,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\nCIP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cip,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\nCROP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.crop,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\nCWOP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cwop,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
+
+        print("\CDDIP Correlation with SAC+FRC reduction %")
+        print(
+            correlation(
+                best_clusters.cddip,
+                np.add(best_clusters.sac_reductions, best_clusters.frc_reductions),
+            )
+        )
 
         plot_complexity_reduction_per_merge_percentage(best_clusters)

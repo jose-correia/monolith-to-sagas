@@ -409,8 +409,39 @@ func (c *CodebaseConfiguration) ShouldRefactorController(name string, controller
 }
 
 type Results struct {
-	Datasets      *Datasets     `json:"datasets,omitempty"`
-	ExecutionTime time.Duration `json:"execution_times,omitempty"`
+	Datasets                    *Datasets       `json:"datasets,omitempty"`
+	ExecutionTime               time.Duration   `json:"execution_times,omitempty"`
+	FunctionalityExecutionTimes []time.Duration `json:"functionality_execution_times,omitempty"`
+	CodebaseExecutionTimes      []time.Duration `json:"codebase_execution_times,omitempty"`
+}
+
+func GetAverageDuration(durations []time.Duration) time.Duration {
+	var sum time.Duration
+	var length int64
+	for _, result := range durations {
+		sum += result
+		length += 1
+	}
+
+	average_execution_time := int64(sum) / length
+	return time.Duration(float32(average_execution_time))
+}
+
+func GetLowestAndHighestDuration(durations []time.Duration) (time.Duration, time.Duration) {
+	lowest := durations[0]
+	highest := durations[0]
+
+	for _, result := range durations {
+		if result > highest {
+			highest = result
+		}
+
+		if result < lowest {
+			lowest = result
+		}
+	}
+
+	return highest, lowest
 }
 
 func (r *Results) GenerateDefaultDatasets() {

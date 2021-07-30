@@ -1,7 +1,7 @@
 package metrics
 
 import (
-	"app/files"
+	"automation/app/files"
 	"strconv"
 	"sync"
 
@@ -271,7 +271,6 @@ func (svc *DefaultHandler) systemComplexity(decomposition *files.Decomposition, 
 
 func (svc *DefaultHandler) costOfRead(decomposition *files.Decomposition, controller *files.Controller, redesign *files.FunctionalityRedesign, entity int) int {
 	var functionalityComplexity int
-
 	for _, otherController := range decomposition.Controllers {
 		mode, containsEntity := otherController.GetEntityMode(entity)
 		if otherController.Name == controller.Name || len(otherController.EntitiesPerCluster) <= 1 || !containsEntity {

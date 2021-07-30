@@ -1,10 +1,10 @@
 package redesign_test
 
 import (
-	"app/common/log"
-	"app/files"
-	"app/metrics"
-	"app/redesign"
+	"automation/app/common/log"
+	"automation/app/files"
+	"automation/app/metrics"
+	"automation/app/redesign"
 	"fmt"
 	"testing"
 

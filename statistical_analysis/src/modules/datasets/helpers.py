@@ -23,3 +23,7 @@ def mean(values: List) -> float:
 def stdev(values: List) -> float:
     data = np.array(values)
     return np.std(data)
+
+
+def correlation(np_array_x, np_array_y):
+    return np.corrcoef(np_array_x, np_array_y)

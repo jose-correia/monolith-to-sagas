@@ -3,6 +3,8 @@ import numpy as np
 from datetime import datetime
 
 from matplotlib import pyplot as plt
+import numpy as np
+from scipy.stats import gaussian_kde
 
 plt.style.use('ggplot')
 
@@ -27,7 +29,10 @@ def plot_complexity_reduction_per_merge_percentage(data):
     best_m, best_b = np.polyfit(best_x, best_y, 1)
     ax.plot(best_x, best_m*best_x + best_b, '--', color="red")
 
-    ax.scatter(data.merge_percentages, sac_frc_reductions, s=6, color="cornflowerblue")
+    # Calculate the point density
+    xy = np.vstack([best_x, best_y])
+    z = gaussian_kde(xy)(xy)
+    ax.scatter(best_x, best_y, c=z, s=6)
 
     ax.set_xlabel("Invocations merged %", fontsize=10)
     ax.set_ylabel("FRC+SAC % reduction", fontsize=10)

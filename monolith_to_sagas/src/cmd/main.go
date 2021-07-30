@@ -1,12 +1,12 @@
 package main
 
 import (
-	"app/common/log"
-	"app/configuration"
-	"app/files"
-	"app/metrics"
-	"app/redesign"
-	"app/training"
+	"automation/app/common/log"
+	"automation/app/configuration"
+	"automation/app/files"
+	"automation/app/metrics"
+	"automation/app/redesign"
+	"automation/app/training"
 	"fmt"
 	"time"
 )
@@ -20,12 +20,12 @@ func main() {
 	execution := configuration.Execution{
 		Configuration: &configuration.Configuration{
 			LdodOnly:                              false,
-			OnlyJoaoControllers:                   false,
-			GenerateComplexitiesCSV:               true,
-			GenerateMetricsCSV:                    true,
+			OnlyJoaoControllers:                   true,
+			GenerateComplexitiesCSV:               false,
+			GenerateMetricsCSV:                    false,
 			Executions:                            1,
 			MinimizeSumBothComplexities:           false,
-			DataDependenceThreshold:               ALL_PREVIOUS_INVOCATIONS,
+			DataDependenceThreshold:               1,
 			ExcludeLowDistanceRedesigns:           false,
 			AcceptableComplexityDistanceThreshold: 0,
 			OnlyExportBestRedesign:                false,
@@ -68,6 +68,7 @@ func main() {
 				codebase,
 				idToEntityMap,
 				codebaseConfig,
+				&results,
 			)
 
 			if execution.Configuration.GenerateComplexitiesCSV {
@@ -90,8 +91,23 @@ func main() {
 		generateCSVFiles(execution, results, filesHandler)
 	}
 
+	performanceEvaluation(execution)
+
 	fmt.Printf("\nDone!\n")
-	fmt.Printf("\nAverage execution times: %s\n", execution.GetAverageExecutionTimes())
+}
+
+func performanceEvaluation(execution configuration.Execution) {
+	fmt.Println(execution.ResultsBatches[1].FunctionalityExecutionTimes)
+
+	fmt.Printf("\nAverage refactorization duration for everything: %s\n", execution.GetAverageExecutionTimes())
+
+	fmt.Printf("\nAverage refactorization duration for each codebase: %s\n", configuration.GetAverageDuration(execution.ResultsBatches[1].CodebaseExecutionTimes))
+	highest, lowest := configuration.GetLowestAndHighestDuration(execution.ResultsBatches[1].CodebaseExecutionTimes)
+	fmt.Printf("\nLowest: %s   |    Highest: %s\n", lowest, highest)
+
+	fmt.Printf("\nAverage refactorization time for each functionalities: %s\n", configuration.GetAverageDuration(execution.ResultsBatches[1].FunctionalityExecutionTimes))
+	highest, lowest = configuration.GetLowestAndHighestDuration(execution.ResultsBatches[1].FunctionalityExecutionTimes)
+	fmt.Printf("\nLowest: %s   |    Highest: %s\n", lowest, highest)
 }
 
 func generateCSVFiles(

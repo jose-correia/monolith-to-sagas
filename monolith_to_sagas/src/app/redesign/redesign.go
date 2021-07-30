@@ -1,14 +1,15 @@
 package redesign
 
 import (
-	"app/configuration"
-	"app/files"
-	"app/metrics"
-	"app/training"
+	"automation/app/configuration"
+	"automation/app/files"
+	"automation/app/metrics"
+	"automation/app/training"
 	"fmt"
 	"sort"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/go-kit/kit/log"
 )
@@ -24,7 +25,7 @@ const (
 )
 
 type RedesignHandler interface {
-	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, configuration.CodebaseConfiguration) *configuration.Datasets
+	EstimateCodebaseOrchestrators(*files.Codebase, map[string]string, configuration.CodebaseConfiguration, *configuration.Results) *configuration.Datasets
 	CreateSagaRedesigns(*files.Decomposition, *files.Controller, *files.FunctionalityRedesign) ([]*files.FunctionalityRedesign, error)
 	RefactorController(*files.Controller, *files.FunctionalityRedesign, *files.Cluster) *files.FunctionalityRedesign
 }
@@ -74,12 +75,16 @@ func (svc *DefaultHandler) extractValidControllers(decomposition *files.Decompos
 }
 
 func (svc *DefaultHandler) EstimateCodebaseOrchestrators(
-	codebase *files.Codebase, idToEntityMap map[string]string, codebaseConfig configuration.CodebaseConfiguration,
+	codebase *files.Codebase, idToEntityMap map[string]string, codebaseConfig configuration.CodebaseConfiguration, results *configuration.Results,
 ) *configuration.Datasets {
 	datasets := &configuration.Datasets{
 		MetricsDataset:      [][]string{},
 		ComplexitiesDataset: [][]string{},
 	}
+
+	codebaseStart := time.Now()
+
+	var refactored bool
 
 	for _, dendogram := range codebase.Dendrograms {
 		decomposition := dendogram.GetDecomposition(
@@ -94,9 +99,12 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(
 		validControllers := svc.extractValidControllers(decomposition, codebaseConfig)
 
 		for _, controller := range validControllers {
+			refactored = true
 			wg.Add(1)
 			go func(controller *files.Controller) {
 				defer wg.Done()
+				start := time.Now()
+
 				initialRedesign := controller.GetFunctionalityRedesign()
 				svc.metricsHandler.CalculateDecompositionMetrics(decomposition, controller, initialRedesign)
 				controllerTrainingFeatures := svc.trainingHandler.CalculateControllerTrainingFeatures(initialRedesign)
@@ -147,9 +155,15 @@ func (svc *DefaultHandler) EstimateCodebaseOrchestrators(
 						break
 					}
 				}
+
+				results.FunctionalityExecutionTimes = append(results.FunctionalityExecutionTimes, time.Since(start))
 			}(controller)
 		}
 		wg.Wait()
+	}
+
+	if refactored {
+		results.CodebaseExecutionTimes = append(results.CodebaseExecutionTimes, time.Since(codebaseStart))
 	}
 
 	return datasets
@@ -310,14 +324,13 @@ func (svc *DefaultHandler) addOrchestratorPivotInvocations(
 		}
 
 		// add actual invocation
-		invocationType := initialInvocation.GetTypeFromAccesses()
 		invocation := &files.Invocation{
 			Name:              fmt.Sprintf("%d: %d", invocationID, initialInvocation.ClusterID),
 			ID:                invocationID,
 			ClusterID:         initialInvocation.ClusterID,
 			ClusterAccesses:   initialInvocation.ClusterAccesses,
 			RemoteInvocations: []int{},
-			Type:              invocationType,
+			Type:              "COMPENSATABLE",
 		}
 
 		newRedesign.Redesign = append(newRedesign.Redesign, invocation)
@@ -471,15 +484,15 @@ func (svc *DefaultHandler) pruneInvocationAccesses(invocation *files.Invocation)
 	previousEntityAccesses := map[int]string{}
 	newAccesses := [][]interface{}{}
 
-	var containsLock bool
+	// var containsLock bool
 
 	for idx := range invocation.ClusterAccesses {
 		entity := invocation.GetAccessEntityID(idx)
 		accessType := invocation.GetAccessType(idx)
 
-		if accessType == "W" {
-			containsLock = true
-		}
+		// if accessType == "W" {
+		// 	containsLock = true
+		// }
 
 		previousAccessType, exists := previousEntityAccesses[entity]
 		if !exists {
@@ -504,11 +517,11 @@ func (svc *DefaultHandler) pruneInvocationAccesses(invocation *files.Invocation)
 		newAccesses = append(newAccesses, []interface{}{accessType, entity})
 	}
 
-	if containsLock {
-		invocation.Type = "COMPENSATABLE"
-	} else {
-		invocation.Type = "RETRIABLE"
-	}
+	// if containsLock {
+	// 	invocation.Type = "COMPENSATABLE"
+	// } else {
+	// 	invocation.Type = "RETRIABLE"
+	// }
 	invocation.ClusterAccesses = newAccesses
 	return
 }
